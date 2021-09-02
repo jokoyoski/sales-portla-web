@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\Main-pages",
+    "\\src\\redux-store",
+    "\\src\\redux-store\\combine-reducer",
+    "\\src\\redux-store\\reducers",
+    "\\src\\redux-store\\reducers\\dashboard-reducer",
+    "\\src\\redux-store\\reducers\\product",
+    "\\src\\redux-store\\saga",
+    "\\src\\redux-store\\saga\\product"
+  ],
+  "SelectedNode": "\\src\\Main-pages\\All.js",
+  "PreviewInSolutionExplorer": false
+}
