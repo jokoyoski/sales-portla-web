@@ -1,0 +1,12 @@
+.first-box{
+    height: 100vh;
+}
+@media only screen and (max-width: 600px) {
+    .first-box{
+        display: none;
+    }   
+}
+
+.login-continer{
+    overflow: hidden;
+}

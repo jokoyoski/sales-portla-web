@@ -20,7 +20,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { store } from "../redux-store/store";
 import {
-  selectCartItems,selectCartTotal
+  selectCartItems, selectCartTotal
 } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
@@ -28,9 +28,8 @@ import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/
 // import CarouselPage from "./Cart";
 // import Category from "./Category";
 
-export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
+export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_name ,total}) {
   const [showBasic, setShowBasic] = useState(false);
-  console.log(store.getState().cartReducer.cartRecords);
   var cart = store.getState().cartReducer.cartRecords;
 
   return (
@@ -87,7 +86,7 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                   />
 
                   <span className="pl-2 pr-2">
-                    <strong>Hi Adeola</strong>
+                    <strong>Hi {cus_name ?? 'Anonymous'}</strong>
                   </span>
                   <a
                     class="dropdown-toggle align-items-center hidden-arrow d-inline"
@@ -179,7 +178,7 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                           {" "}
                           <span className="text-white">
                             {" "}
-                            <strong>UNIT PRICE</strong>
+                            <strong>  SALE PRICE</strong>
                           </span>
                         </th>
                         <th scope="col">
@@ -223,7 +222,7 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                                     >
                                       <i
                                         onClick={() =>
-                                      
+
                                           clearItem(product)
                                         }
                                         class="fas fa-trash"
@@ -238,7 +237,7 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                             <td>{product.salePrice}</td>
                             <td>
                               <span className="text-warning">
-                                <strong>{product.subTotal}</strong>
+                                <strong>N{product.quantityToAdd * product.salesPrice}</strong>
                               </span>
                             </td>
                           </tr>
@@ -364,23 +363,20 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>10 Items</strong>
+                  <strong>{itemCount} Items</strong>
                 </h6>
               </div>
               <div
                 className="p-0 m-0 d-flex container-fluid"
                 style={{ position: "relative" }}
               >
-                <h6 className="text-dark">
-                  {" "}
-                  <strong>Subtotal</strong>
-                </h6>
+               
                 <h6
                   className="text-primary"
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N4,000</strong>
+                
                 </h6>
               </div>
               <hr />
@@ -397,7 +393,7 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N40,800</strong>
+                  <strong>N {total}</strong>
                 </h4>
               </div>
               <span>
@@ -405,11 +401,21 @@ export function App({ cartItems, itemCount,addItem,removeItem,clearItem }) {
               </span>
 
               <div className="buttons pt-3">
-                <Link to="./Order">
-                  <button type="button" class="btn btn-primary">
-                    Proceed to Checkout
-                  </button>
-                </Link>
+
+                {
+                   cus_name !== 'undefined' ?
+                    <Link to="./Order">
+                      <button type="button" class="btn btn-primary">
+                        Proceed to Checkout
+                      </button>
+                    </Link> : <Link to="/user/login">
+                      <button type="button" class="btn btn-primary">
+                        Proceed to Checkout 
+                      </button>
+                    </Link>
+
+                }
+
 
                 <Link to="./dashboard">
                   <button
@@ -452,7 +458,8 @@ function mapStateToProps(state) {
   return {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
-    itemCount: selectCartItemsCount(state)
+    itemCount: selectCartItemsCount(state),
+    cus_name: state.userReducer.cus_name
   };
 }
 

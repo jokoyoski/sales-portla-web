@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MDBContainer,
   MDBNavbar,
@@ -24,12 +24,27 @@ import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
 import AddressModal from "../components/AddressModal";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import {
+  selectCartItems, selectCartTotal
+} from "../redux-store/reducers/cart-reducer/cart.selector";
+import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
+import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
+import { store } from "../redux-store/store";
+import AddLocationForm from '../Main-pages/location/AddLocationForm';
+import Popup from "../utilities/Popup";
+import Controls from "../controls/Controls";
 
 
-
-export default function App() {
+export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total }) {
   const [showBasic, setShowBasic] = useState(false);
+  const [openPopup, setOpenPopup] = useState(false)
+  const [addOpenPopup, setAddOpenPopup] = useState(false)
 
+  useEffect(() => {
+    LoadAddress();
+    return () => { };
+  }, []);
   return (
     <div>
       <header>
@@ -84,7 +99,7 @@ export default function App() {
                   />
 
                   <span className="pl-2 pr-2">
-                    <strong>Hi Adeola</strong>
+                    <strong>Hi {cus_name ?? 'Anonymous'}</strong>
                   </span>
                   <a
                     class="dropdown-toggle align-items-center hidden-arrow d-inline"
@@ -221,18 +236,30 @@ export default function App() {
                       className="text-primary"
                       style={{ position: "absolute", right: "2rem" }}
                     >
+                      <Popup
+                        title="Add Location Form"
+                        openPopup={addOpenPopup}
+                        setOpenPopup={setAddOpenPopup}
+                      >
+
+                        <AddLocationForm />
+                      </Popup>
+
+                      <Controls.Button
+                        text="Add New"
+                        variant="outlined"
+                        onClick={() => { setAddOpenPopup(true); }}
+                      />
                       {" "}
                       <a href="#" data-mdb-toggle="modal"
                         data-mdb-target="#exampleModal3"> <strong>Change</strong></a>
                     </h6>
                   </div>
                   <hr />
-                  <h5 class="card-title">Adeola Oladeinde</h5>
+                  <h5 class="card-title">{cus_name}</h5>
                   <p class="card-text">
-                    Address here Lorem ipsum dolor, sit amet consectetur
-                    adipisicing elit. Pariatur atque quam perferendis,
-                    reiciendis animi sapiente. <br />
-                    +234 3773 37373737
+                    {address[0]?.address ?? "No saved Address"}<br />
+                    {cus_number}
                   </p>
                 </div>
               </div>
@@ -378,7 +405,7 @@ export default function App() {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>10 Items</strong>
+                  <strong>{itemCount} Items</strong>
                 </h6>
               </div>
 
@@ -395,7 +422,7 @@ export default function App() {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N4000.00</strong>
+                  <strong>N {total}</strong>
                 </h6>
               </div>
 
@@ -412,7 +439,7 @@ export default function App() {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>400</strong>
+                  <strong> ₦ 400</strong>
                 </h6>
               </div>
               <hr />
@@ -430,21 +457,21 @@ export default function App() {
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N40380</strong>
+                  <strong> ₦ {total + 400}</strong>
                 </h6>
               </div>
               <div className="d-flex justify-content-center">
                 <Link to="./shoppingCart">
-                <button type="button" class="btn btn-primary">
-                  Modify Cart
-                </button>
+                  <button type="button" class="btn btn-primary">
+                    Modify Cart
+                  </button>
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <AddressModal />
+      <AddressModal address={address} />
       <Modal />
       <Modalcheckout />
       <footer class="bg-light text-center text-lg-start">
@@ -462,3 +489,22 @@ export default function App() {
     </div>
   );
 }
+
+const mapToDispatchToProps = (dispatch) => ({
+  LoadAddress(payload) {
+    dispatch({ type: "GET_ADDRESS", payload });
+  },
+});
+
+function mapStateToProps(state) {
+  console.log(state)
+  return {
+    total: selectCartTotal(state),
+    itemCount: selectCartItemsCount(state),
+    cus_name: state.userReducer.cus_name,
+    cus_number: state.userReducer.cus_number,
+    address: state.utilityReducer.address
+  };
+}
+
+export default connect(mapStateToProps, mapToDispatchToProps)(App);

@@ -5,6 +5,7 @@ const initialState = {
     spinner: false,
     currentPage: 1,
     itemsPerPage: 0,
+    address: [],
     totalItems: 0,
     totalPages: 0
 
@@ -38,6 +39,13 @@ function UtilityReducer(state = initialState, action) {
         return {
             ...state,
             spinner: !state.spinner
+        }
+    }
+
+    if (action.type === "ADDRESS_LIST") {
+        return {
+            ...state,
+            address: action.payload
         }
     }
 

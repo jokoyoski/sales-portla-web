@@ -3,7 +3,7 @@ import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
 
-
+var companyId=26;
 export default function* watcherSaveSalesPortalOrderSaga() {
     yield takeEvery("SAVE_SALES_PORTAL_ORDERS", workerSaga);
 }
@@ -17,7 +17,7 @@ function* workerSaga(action) {
             payload = response;
         });
         toast.success("Successful")
-        var formatUrl = `/get-sales-portal-transactions?orderId=${action.payload}&companyId=2`;
+        var formatUrl = `/get-sales-portal-transactions?orderId=${action.payload}&companyId=${companyId}`;
         yield request("get", payload, formatUrl).then((response) => {
             payload = response;
         });

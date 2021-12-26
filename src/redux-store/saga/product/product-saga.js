@@ -6,29 +6,28 @@ import { toast } from 'react-toastify';
 export default function* watcherGetProductsSaga() {
     yield takeEvery("LOAD_PRODUCT", workerSaga);
 }
-
+var companyId=26;
 function* workerSaga(action) {
     try {
-        alert(9)
+    
       
         yield put({ type: "DISPLAY_LOADER", payload: payload })
         var payload = {}
-        var  formatUrl = "/get-all-products-by-companyId?companyId=2"
+        var  formatUrl = `/get-all-products-by-companyId?companyId=${companyId}`
        
         yield request("get", action.payload, formatUrl).then(response => {
             payload = response;
         });
         yield put({ type: "PRODUCTS_LIST", payload: payload.products })
         yield put({ type: "ALL_ITEM_PRODUCTS", payload: payload })
-        console.log(222);
-        formatUrl = "/get-product-category?companyId=2"
+        formatUrl = `/get-product-category?companyId=${companyId}`
         yield request("get", payload, formatUrl).then(response => {
             payload = response;
         });
        
         yield put({ type: "PRODUCT_CATEGORY_LIST", payload: payload })
 
-        formatUrl = '/get-all-products-by-companyId-and-categoryId?companyId=2&${}'
+        formatUrl = `/get-all-products-by-companyId-and-categoryId?companyId=${companyId}&{}`
         yield request("get", payload, formatUrl).then(response => {
             payload = response;
         });
