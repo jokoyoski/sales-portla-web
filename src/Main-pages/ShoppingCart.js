@@ -403,7 +403,8 @@ export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_
               <div className="buttons pt-3">
 
                 {
-                   cus_name !== 'undefined' ?
+
+                   cus_name !== null ?
                     <Link to="./Order">
                       <button type="button" class="btn btn-primary">
                         Proceed to Checkout

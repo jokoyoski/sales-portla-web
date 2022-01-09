@@ -3,7 +3,6 @@ import {createSelector} from 'reselect';
 const selectCart=state=>state.cartReducer;   //root reducers
 
 
-console.log(selectCart)
 
 export const  selectCartItems=createSelector(
   [selectCart],
@@ -25,6 +24,7 @@ export const selectCartItemsCount=createSelector(
 
      )
   );
+
 
 
 

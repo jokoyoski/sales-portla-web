@@ -31,12 +31,12 @@ import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.
 import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
 
 
-//store.dispatch({ type: "DISPLAY_LOADER" })
 
-export function App({ cartRecords, itemCount,addItem,removeItem,cartItems,total}) {
-   var item = store.getState().productDetailsReducer.productDetails
+
+export function App({ cartRecords, itemCount, addItem, removeItem, cartItems, total }) {
+  var item = store.getState().productDetailsReducer.productDetails
   const [showBasic, setShowBasic] = useState(false);
-    console.log()
+  console.log(store.getState().productDetailsReducer.productDetails.categoryId)
   return (
     <div>
       <header>
@@ -73,12 +73,12 @@ export function App({ cartRecords, itemCount,addItem,removeItem,cartItems,total}
                 </form>
 
                 <div className="cart-container pr-3 p-2">
-                 <Link to="../shoppingCart">
+                  <Link to="../shoppingCart">
                     <i class="fas fa-shopping-cart fa-lg"></i>
                     <span class="badge rounded-pill badge-notification bg-danger">
-                        {
-                            itemCount
-                        }
+                      {
+                        itemCount
+                      }
                     </span>
                   </Link>
                 </div>
@@ -235,38 +235,38 @@ export function App({ cartRecords, itemCount,addItem,removeItem,cartItems,total}
                     {" "}
                     <strong></strong>{" "}
                   </h5>
-                   <p>{store.getState().productDetailsReducer.productDetails.productName}</p>
+                  <p>{store.getState().productDetailsReducer.productDetails.productName}</p>
                   <hr />
                   <h5>
                     {" "}
-                   <strong> {store.getState().productDetailsReducer.productDetails.salePrice} </strong>{" "}
+                    <strong> {store.getState().productDetailsReducer.productDetails.salePrice} </strong>{" "}
                     <span className="color-grey">
                     </span>{" "}
                   </h5>
                   <hr />
                   <div className="p-0">
                     <button
-                       onClick={() =>  addItem(store.getState().productDetailsReducer.productDetails)}
+                      onClick={() => addItem(store.getState().productDetailsReducer.productDetails)}
                       type="button"
-                     
+
                     >
                       <span>+</span>
                     </button>
                     <span>1</span>
                     <button
-                        onClick={() => removeItem(store.getState().productDetailsReducer.productDetails)}
-                        type="button"              
+                      onClick={() => removeItem(store.getState().productDetailsReducer.productDetails)}
+                      type="button"
                     >
-                        <span>-</span>
+                      <span>-</span>
                     </button>
                     <span className="color-grey">1 item(s) added</span>
                     <div className="pt-3">
                       <Link to="/shoppingCart">
-                      <button 
-                         
-                        type="button" class="btn btn-primary">
-                        Buy Now
-                      </button>
+                        <button
+
+                          type="button" class="btn btn-primary">
+                          Buy Now
+                        </button>
                       </Link>
                     </div>
                   </div>
@@ -310,7 +310,7 @@ export function App({ cartRecords, itemCount,addItem,removeItem,cartItems,total}
                     role="tabpanel"
                     aria-labelledby="home-tab0"
                   >
-                   {store.getState().productDetailsReducer.productDetails.productDescription}.{" "}
+                    {store.getState().productDetailsReducer.productDetails.productDescription}.{" "}
 
                   </div>
                   <div
@@ -525,7 +525,7 @@ export function App({ cartRecords, itemCount,addItem,removeItem,cartItems,total}
         </div>
       </footer>
     </div>
-    );
+  );
 
 }
 

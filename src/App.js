@@ -11,10 +11,14 @@ import ShoppingCart from "./Main-pages/ShoppingCart";
 import LoadingOverlay from "react-loading-overlay";
 import { connect } from "react-redux";
 import Order from "./Main-pages/Order";
+import Orders from "./Main-pages/orders/Order";
 import Profile from "./Main-pages/Others/Profile"
 import RegisterComponent  from "./components/register/register";
 import LoginPageComponent from "./components/login/LoginPageComponent"
 import AddLocationForm from "./Main-pages/location/AddLocationForm";
+import Account from "./Main-pages/account/Account";
+import OrderDetails from "./Main-pages/orders/OrderDetails";
+import SavedItems from "./Main-pages/saved-items/SavedItems";
 class App extends Component {
   render() {
     return (
@@ -34,7 +38,12 @@ class App extends Component {
           <Route path="/Order" exact component={Order} />
           <Route path="/location" exact component={AddLocationForm} />
           <Route path="/Profile" exact component={Profile} />
+          <Route path="/details" exact component={OrderDetails} />
+          <Route path="/select" exact component={Orders} />
+          <Route path="/select/details" exact component={Orders} />
           <Route path="/user/register" exact component={RegisterComponent} />
+          <Route path="/account" exact component={Account} />
+          <Route path="/saved-items" exact component={SavedItems} />
           <Route path="/user/login" exact component={LoginPageComponent} />
                     </LoadingOverlay>
         </Switch>
