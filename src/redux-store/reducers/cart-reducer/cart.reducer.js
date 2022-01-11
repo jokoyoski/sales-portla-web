@@ -1,9 +1,9 @@
-import { addItemToCart , addItemsToCart} from "../cart-reducer/cart.util";
+import { addItemToCart, addItemsToCart } from "../cart-reducer/cart.util";
 import { RemoveItemFromCart } from "../cart-reducer/cart.util";
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
-  pickUpStations:[]
+  pickUpStations: [],
 };
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -30,13 +30,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         cartItems: addItemsToCart(state.cartItems, action.payload),
       };
 
-      case "PICK_UP_STATION":
+    case "PICK_UP_STATION":
       return {
         ...state,
-        pickUpStations: action.payload
+        pickUpStations: action.payload,
       };
-
-      
 
     case "ADD_ITEM_TO_CART":
       return {
@@ -45,12 +43,10 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       };
 
     case "CLEAR_ITEM_FROM_CART":
-      console.log(action.payload)
+      console.log(action.payload);
       return {
         ...state,
-        cartItems: state.cartItems.filter(
-          (x) => x.sku !== action.payload.sku
-        ),
+        cartItems: state.cartItems.filter((x) => x.sku !== action.payload.sku),
       };
 
     case "REMOVE_ITEM":
