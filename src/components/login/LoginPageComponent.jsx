@@ -118,7 +118,7 @@ export const LoginPageComponent = ({ LoginUser, triggerLogging, loginbuttonloade
                                         Dont have an account <a href="/user/register"> Sign Up </a>
                                     </div>
                                 </div>
-                               
+
                             </div>
                         </Grid>
                     </Form>
