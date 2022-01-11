@@ -129,7 +129,7 @@ export default function PickUpStation({ statesV }) {
                                     name="flexRadioDefault"
                                     id="flexRadioDefault1"
                                 />
-                                <label class="form-check-label" onClick={} for="flexRadioDefault1"> <strong>{add.pickUpStationAddress}</strong><br />
+                                <label class="form-check-label" for="flexRadioDefault1"> <strong>{add.pickUpStationAddress}</strong><br />
 
                                 </label>
                             </div>

@@ -9,8 +9,6 @@ export default function* watcherGetProductsSaga() {
 var companyId=26;
 function* workerSaga(action) {
     try {
-    
-      
         yield put({ type: "DISPLAY_LOADER", payload: payload })
         var payload = {}
         var  formatUrl = `/get-all-products-by-companyId?companyId=${companyId}`

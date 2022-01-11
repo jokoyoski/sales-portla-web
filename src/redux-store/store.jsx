@@ -14,20 +14,22 @@ const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['userReducer', 'productDetailsReducer', 'CartReducer']
+    whitelist: ['userReducer', 'productDetailsReducer', 'cartReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-export const store = createStore(
+const store = createStore(
     persistedReducer,
     storeEnhancers(                              //sga middleware
         applyMiddleware(initialiseSagaMiddleware)
     )
 );
-export const persistor = persistStore(store)
+
+const persistor = persistStore(store)
 
 
 initialiseSagaMiddleware.run(RootSaga);
 
-//export default store;
+export { persistor, store };
+// export default store;   

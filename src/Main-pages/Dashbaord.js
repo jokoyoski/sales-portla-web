@@ -6,33 +6,33 @@ import {
   MDBNavbarBrand,
   MDBNavbarToggler,
   MDBIcon,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBBtn,
-  MDBDropdown,
-  MDBDropdownToggle,
-  MDBDropdownMenu,
-  MDBDropdownItem,
-  MDBDropdownLink,
-  MDBCollapse
-} from 'mdb-react-ui-kit';
+  MDBCollapse,
+} from "mdb-react-ui-kit";
 import CarouselPage from "./Cart";
-import Category from "./Category"
-import Modal from '../components/Modal';
+import Category from "./Category";
+import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
+import Classjs from "./Classjs";
+// import Classjs from "./Classjs";
 
-export function Dashboard({ products, productCategories, LoadProducts, SetProduct, itemCount,cartRecords}) {
+export function Dashboard({
+  products,
+  productCategories,
+  LoadProducts,
+  SetProduct,
+  itemCount,
+  cartRecords,
+}) {
   const [showBasic, setShowBasic] = useState(false);
 
-    useEffect(() => {
-       LoadProducts()
-    }, [])
+  useEffect(() => {
+    LoadProducts();
+  }, []);
   return (
     <div>
       <header>
-        <div className="container top-nav pt-3 p-0">
+        <div className="container top-nav pt-3 p-0 bg-blue-500">
           <MDBNavbar expand="lg" light bgColor="white">
             <MDBContainer fluid>
               <MDBNavbarBrand href="#" className="p-0">
@@ -65,12 +65,10 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
                 </form>
 
                 <div className="cart-container pr-3 p-2">
-                   <Link to="../shoppingCart">
+                  <Link to="../shoppingCart">
                     <i class="fas fa-shopping-cart fa-lg"></i>
                     <span class="badge rounded-pill badge-notification bg-danger">
-                        {
-                            itemCount
-                        }
+                      {itemCount}
                     </span>
                   </Link>
                 </div>
@@ -154,8 +152,7 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
               >
                 <i class="fas fa-bars"></i>
               </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-              </div>
+              <div class="collapse navbar-collapse" id="navbarNav"></div>
             </div>
           </nav>
         </div>
@@ -217,16 +214,17 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
           >
             {" "}
             <Link to="../Allitems">
-            <strong>See all items</strong>
+              <strong>See all items</strong>
             </Link>
           </h5>
         </div>
         <hr />
-              <Category setProdctDetails={SetProduct} products={products } />
+        {/* <Category setProductDetails={SetProduct} products={products} /> */}
+        <Classjs setProductDetails={SetProduct} products={products} />
       </div>
 
-      {/* Second Section With the Carousels  */}
-      <div className="container bg-white down-section-2 pt-3">
+      {/* Second Section  */}
+      <div className="container bg-white down-section-1 pt-3">
         <div
           className="p-0 m-0 d-flex container-fluid"
           style={{ position: "relative" }}
@@ -241,13 +239,15 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
           >
             {" "}
             <Link to="../Allitems">
-            <strong>See all items</strong>
+              <strong>See all items</strong>
             </Link>
           </h5>
         </div>
         <hr />
-              <Category products={products} />
+        {/* <Category setProductDetails={SetProduct} products={products} /> */}
+        <Classjs setProductDetails={SetProduct} products={products} />
       </div>
+
 
       {/* Third Section With the Carousels  */}
       <div className="container bg-white down-section-3 pt-3">
@@ -270,7 +270,7 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
           </h5>
         </div>
         <hr />
-              <Category products={products} />
+        <Classjs setProductDetails={SetProduct} products={products} />
       </div>
       <Modal />
       <Modalcheckout />
@@ -290,26 +290,22 @@ export function Dashboard({ products, productCategories, LoadProducts, SetProduc
   );
 }
 
-
-
 function mapStateToProps(state) {
-     console.log(state)
-    return {
-       products:state.dashboardReducer.products,
-        productDetails: state.productDetailsReducer.productDetails,
-        itemCount: state.cartReducer.itemCount,
-        cartRecords: state.cartReducer.cartRecords,
-    };
+  console.log(state);
+  return {
+    products: state.dashboardReducer.products,
+    productDetails: state.productDetailsReducer.productDetails,
+    itemCount: state.cartReducer.itemCount,
+    cartRecords: state.cartReducer.cartRecords,
+  };
 }
 const mapDispatchToProps = (dispatch) => ({
- 
-    LoadProducts(payload) {
-        dispatch({ type: "LOAD_PRODUCT", payload });
-    },
-    SetProduct(payload) {
-        dispatch({ type: "SET_PRODUCT_DETAILS", payload });
-    },
-   
+  LoadProducts(payload) {
+    dispatch({ type: "LOAD_PRODUCT", payload });
+  },
+  SetProduct(payload) {
+    dispatch({ type: "SET_PRODUCT_DETAILS", payload });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
