@@ -11,32 +11,32 @@ import ShoppingCart from "./Main-pages/ShoppingCart";
 import LoadingOverlay from "react-loading-overlay";
 import { connect } from "react-redux";
 import Order from "./Main-pages/Order";
-import Profile from "./Main-pages/Others/Profile"
-import RegisterComponent  from "./components/register/register";
-import LoginPageComponent from "./components/login/LoginPageComponent"
+import Profile from "./Main-pages/Others/Profile";
+import RegisterComponent from "./components/register/register";
+import LoginPageComponent from "./components/login/LoginPageComponent";
 import AddLocationForm from "./Main-pages/location/AddLocationForm";
 class App extends Component {
   render() {
     return (
       <Router>
-            <Switch>
-                <LoadingOverlay
-                    active={this.props.spinner}
-                    className="overlay-height"
-                    spinner
-                >
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/Cart" exact component={Cart} />
-          <Route path="/Cartegory" exact component={Category} />
-          <Route path="/Allitems" exact component={All} />
-          <Route path="/selected" exact component={Selected} />
-          <Route path="/shoppingCart" exact component={ShoppingCart} />
-          <Route path="/Order" exact component={Order} />
-          <Route path="/location" exact component={AddLocationForm} />
-          <Route path="/Profile" exact component={Profile} />
-          <Route path="/user/register" exact component={RegisterComponent} />
-          <Route path="/user/login" exact component={LoginPageComponent} />
-                    </LoadingOverlay>
+        <Switch>
+          <LoadingOverlay
+            active={this.props.spinner}
+            className="overlay-height"
+            spinner
+          >
+            <Route path="/" exact component={Dashboard} />
+            <Route path="/Cart" exact component={Cart} />
+            <Route path="/Cartegory" exact component={Category} />
+            <Route path="/Allitems" exact component={All} />
+            <Route path="/selected" exact component={Selected} />
+            <Route path="/shoppingCart" exact component={ShoppingCart} />
+            <Route path="/Order" exact component={Order} />
+            <Route path="/location" exact component={AddLocationForm} />
+            <Route path="/Profile" exact component={Profile} />
+            <Route path="/user/register" exact component={RegisterComponent} />
+            <Route path="/user/login" exact component={LoginPageComponent} />
+          </LoadingOverlay>
         </Switch>
       </Router>
 
@@ -46,16 +46,14 @@ class App extends Component {
 }
 
 function mapStateToProps(state) {
-    return {
-      
-        spinner: state.utilityReducer.spinner,
-    };
+  return {
+    spinner: state.utilityReducer.spinner,
+  };
 }
 const mapDispatchToProps = (dispatch) => ({
-    SetLoader() {
-        dispatch({ type: "LOADING_BUTTON_SPINNER" });
-    },
+  SetLoader() {
+    dispatch({ type: "LOADING_BUTTON_SPINNER" });
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-
