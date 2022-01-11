@@ -13,6 +13,7 @@ const initialState = {
     access: null,
     cus_name: null,
     cus_id: null,
+    cus_number:null,
     cacNumber: null
 };
 
@@ -60,6 +61,15 @@ function UserReducer(state = initialState, action) {
         var userdetails = {
             ...state,
             cus_id: action.payload
+        };
+        return userdetails;
+
+    }
+
+    if (action.type === "SET_CUSTOMER_PHONE_NUMBER") {
+        var userdetails = {
+            ...state,
+            cus_number: action.payload
         };
         return userdetails;
 

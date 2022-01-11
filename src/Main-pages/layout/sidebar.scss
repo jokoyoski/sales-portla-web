@@ -1,0 +1,54 @@
+.side{
+   
+    background-color: #FFFFFF;
+    color: black;
+    font-family: "Roboto",sans-serif;
+    font-weight: 300;
+    font-size: medium;
+    height: 320px;
+    .hunco{
+        cursor: pointer;
+        font-family: "Roboto",sans-serif;
+        width: 100%;
+        :hover{
+          color: blue;
+        }
+    }
+
+    .oke{
+        background-color: #001587;
+        border-right-color: #4D69FF;
+        border-right-style: solid;
+        border-right-width: 5px; /* 5px top and bottom, 20px on the sides */
+        
+       a{
+           color:white !important;
+       }
+    }
+
+
+
+    a {
+        display: inline-block;
+        width: 100%;
+        height: 60px !important;
+        padding-left: 40px;
+        padding-top: 3px;
+        color:#333333;
+        :hover {
+            background-color: #001587;
+            color: white;
+        }
+    }
+
+
+    .link{
+         padding: 10px 10px 30px 10px;
+        height:40px;
+        color:#333333;
+
+     
+        
+       
+    }
+}

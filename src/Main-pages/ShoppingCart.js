@@ -403,14 +403,15 @@ export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_
               <div className="buttons pt-3">
 
                 {
-                   cus_name !== 'undefined' ?
+
+                   cus_name !== null &&  cus_name !== undefined ?
                     <Link to="./Order">
                       <button type="button" class="btn btn-primary">
                         Proceed to Checkout
                       </button>
                     </Link> : <Link to="/user/login">
-                      <button type="button" class="btn btn-primary">
-                        Proceed to Checkout 
+                      <button type="buttogn" class="btn btn-primary">
+                        Proceed to Checkout
                       </button>
                     </Link>
 
@@ -455,6 +456,7 @@ const mapToDispatchToProps = (dispatch) => ({
 });
 
 function mapStateToProps(state) {
+  console.log(state.cartReducer)
   return {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),

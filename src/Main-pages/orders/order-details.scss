@@ -1,0 +1,33 @@
+.order-details{
+margin-top: 5px;
+ border: 0.6px solid #E2E7EC;
+ height: 180px;
+ display: flex;
+ 
+ .desc{
+     flex:1 1 70%;
+ }
+
+ 
+}
+
+.payment-info{
+    display: flex;
+    justify-content: space-between;
+
+    .f1{
+        flex:0 1 48%;
+    }
+
+    .f2{
+     flex:0 1 48%;
+ }
+
+
+    .bord{
+        padding: 20px;
+       border: 0.6px solid #E2E7EC;
+       height: 260px;
+    }
+
+}

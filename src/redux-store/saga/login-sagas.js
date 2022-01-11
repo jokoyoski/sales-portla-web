@@ -30,7 +30,7 @@ function* workerSaga(action) {
     );
     localStorage.setItem("countries", JSON.stringify(payload));
     yield put({ type: "COUNTRIES_DROPDOWN", payload: payload });
-    localStorage.setItem("userId", user.id);
+    localStorage.setItem("userId2", user.id);
     cacNumber = user.cacNumber;
     yield put({ type: "SET_CUSTOMER_ID", payload: user.id });
     yield put({ type: "SET_CUSTOMER_NAME", payload: user.firstName });

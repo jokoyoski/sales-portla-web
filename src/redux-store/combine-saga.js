@@ -5,6 +5,7 @@ import watcherGetAddressSaga from "./saga/address/address-saga";
 import watcherDeleteAddressSaga from "./saga/address/delete-address-saga";
 import watcherLoginSaga from "./saga/login-sagas";
 import watcherRegisterSaga from "./saga/register-saga";
+import watcherGetPickUpStationSaga from "./saga/address/pickupstation";
 
 
 export const UiSagas = [
@@ -14,5 +15,6 @@ export const UiSagas = [
     watcherRegisterSaga(),
     watcherAddAddressSaga(),
     watcherDeleteAddressSaga(),
+    watcherGetPickUpStationSaga(),
     watcherGetAddressSaga()
 ];
