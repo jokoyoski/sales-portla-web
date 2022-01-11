@@ -11,16 +11,10 @@ import ShoppingCart from "./Main-pages/ShoppingCart";
 import LoadingOverlay from "react-loading-overlay";
 import { connect } from "react-redux";
 import Order from "./Main-pages/Order";
-<<<<<<< HEAD
+import Orders from "./Main-pages/orders/Order";
 import Profile from "./Main-pages/Others/Profile";
 import RegisterComponent from "./components/register/register";
 import LoginPageComponent from "./components/login/LoginPageComponent";
-=======
-import Orders from "./Main-pages/orders/Order";
-import Profile from "./Main-pages/Others/Profile"
-import RegisterComponent  from "./components/register/register";
-import LoginPageComponent from "./components/login/LoginPageComponent"
->>>>>>> a2c88c1af6db6b0fd64986fb26a7800d2f16ca32
 import AddLocationForm from "./Main-pages/location/AddLocationForm";
 import Account from "./Main-pages/account/Account";
 import OrderDetails from "./Main-pages/orders/OrderDetails";
@@ -29,7 +23,6 @@ class App extends Component {
   render() {
     return (
       <Router>
-<<<<<<< HEAD
         <Switch>
           <LoadingOverlay
             active={this.props.spinner}
@@ -45,34 +38,14 @@ class App extends Component {
             <Route path="/Order" exact component={Order} />
             <Route path="/location" exact component={AddLocationForm} />
             <Route path="/Profile" exact component={Profile} />
+            <Route path="/details" exact component={OrderDetails} />
+            <Route path="/select" exact component={Orders} />
+            <Route path="/select/details" exact component={Orders} />
             <Route path="/user/register" exact component={RegisterComponent} />
+            <Route path="/account" exact component={Account} />
+            <Route path="/saved-items" exact component={SavedItems} />
             <Route path="/user/login" exact component={LoginPageComponent} />
           </LoadingOverlay>
-=======
-            <Switch>
-                <LoadingOverlay
-                    active={this.props.spinner}
-                    className="overlay-height"
-                    spinner
-                >
-          <Route path="/" exact component={Dashboard} />
-          <Route path="/Cart" exact component={Cart} />
-          <Route path="/Cartegory" exact component={Category} />
-          <Route path="/Allitems" exact component={All} />
-          <Route path="/selected" exact component={Selected} />
-          <Route path="/shoppingCart" exact component={ShoppingCart} />
-          <Route path="/Order" exact component={Order} />
-          <Route path="/location" exact component={AddLocationForm} />
-          <Route path="/Profile" exact component={Profile} />
-          <Route path="/details" exact component={OrderDetails} />
-          <Route path="/select" exact component={Orders} />
-          <Route path="/select/details" exact component={Orders} />
-          <Route path="/user/register" exact component={RegisterComponent} />
-          <Route path="/account" exact component={Account} />
-          <Route path="/saved-items" exact component={SavedItems} />
-          <Route path="/user/login" exact component={LoginPageComponent} />
-                    </LoadingOverlay>
->>>>>>> a2c88c1af6db6b0fd64986fb26a7800d2f16ca32
         </Switch>
       </Router>
 
