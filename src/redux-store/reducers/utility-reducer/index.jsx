@@ -7,7 +7,8 @@ const initialState = {
     itemsPerPage: 0,
     address: [],
     totalItems: 0,
-    totalPages: 0
+    totalPages: 0,
+    states:[]
 
 };
 
@@ -39,6 +40,13 @@ function UtilityReducer(state = initialState, action) {
         return {
             ...state,
             spinner: !state.spinner
+        }
+    }
+
+    if (action.type === "STATE_DROPDOWN") {
+        return {
+            ...state,
+            states: action.payload
         }
     }
 

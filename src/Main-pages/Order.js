@@ -33,10 +33,11 @@ import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/
 import { store } from "../redux-store/store";
 import AddLocationForm from '../Main-pages/location/AddLocationForm';
 import Popup from "../utilities/Popup";
+import PickUpStation from "../Main-pages/address/PickUpStation";
 import Controls from "../controls/Controls";
 
 
-export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total }) {
+export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total,states,pickUpStations }) {
   const [showBasic, setShowBasic] = useState(false);
   const [openPopup, setOpenPopup] = useState(false)
   const [addOpenPopup, setAddOpenPopup] = useState(false)
@@ -245,14 +246,20 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                         <AddLocationForm />
                       </Popup>
 
+                      <Popup
+                        title="Pick up Station"
+                        openPopup={openPopup}
+                        setOpenPopup={setOpenPopup}
+                      >
+                        <PickUpStation statesV={states} />
+                      </Popup>
+
                       <Controls.Button
                         text="Add New"
                         variant="outlined"
                         onClick={() => { setAddOpenPopup(true); }}
                       />
                       {" "}
-                      <a href="#" data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal3"> <strong>Change</strong></a>
                     </h6>
                   </div>
                   <hr />
@@ -320,7 +327,11 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                     </p>
                     <a href="#">
                       {" "}
-                      <b>Select Pickup Station </b>{" "}
+                      <Controls.Button
+                        text="Select Pick up Station"
+                        variant="outlined"
+                        onClick={() => { setOpenPopup(true); }}
+                      />{" "}
                     </a>
                   </div>
                 </div>
@@ -497,12 +508,14 @@ const mapToDispatchToProps = (dispatch) => ({
 });
 
 function mapStateToProps(state) {
-
+  console.log(state.utilityReducer.states)
   return {
     total: selectCartTotal(state),
     itemCount: selectCartItemsCount(state),
+    pickUpStations: state.cartReducer.pickUpStations,
     cus_name: state.userReducer.cus_name,
     cus_number: state.userReducer.cus_number,
+    states:state.utilityReducer.states,
     address: state.utilityReducer.address
   };
 }

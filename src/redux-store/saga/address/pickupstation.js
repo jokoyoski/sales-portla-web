@@ -4,24 +4,19 @@ import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandle
 import { toast } from 'react-toastify';
 
 var companyId = 26;
-export default function* watcherGetAddressSaga() {
-    yield takeEvery("GET_ADDRESS", workerSaga);
+export default function* watcherGetPickUpStationSaga() {
+    yield takeEvery("GET_PICK_UP_STATION", workerSaga);
 }
 
 function* workerSaga(action) {
     try {
         yield put({ type: "DISPLAY_LOADER", payload: payload });
         var payload = {};
-        var formatUrl = `get-delivery-addresses`;
+        var formatUrl = `get-pickup-stations?companyId=${26}&cityId=${action.payload.cityId}`;
         yield request("get", payload, formatUrl).then((response) => {
             payload = response;
         });
-        yield put({ type: "ADDRESS_LIST", payload: payload });
-
-        yield request("get", payload, `api/Admin/get-states-dropdown/${160}`).then(response => {
-            payload = response;
-        });
-        yield put({ type: "STATE_DROPDOWN", payload: payload })
+        yield put({ type: "PICK_UP_STATION", payload: payload });
         yield put({ type: "DISPLAY_LOADER", payload: payload });
     } catch (e) {
         console.log(e);

@@ -3,9 +3,10 @@ import { RemoveItemFromCart } from "../cart-reducer/cart.util";
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
+  pickUpStations:[]
 };
 
-const CartReducer = (state = INITIAL_STATE, action) => {
+const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "TOGGLE_CART_HIDDEN":
       return {
@@ -28,6 +29,14 @@ const CartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: addItemsToCart(state.cartItems, action.payload),
       };
+
+      case "PICK_UP_STATION":
+      return {
+        ...state,
+        pickUpStations: action.payload
+      };
+
+      
 
     case "ADD_ITEM_TO_CART":
       return {
@@ -55,7 +64,7 @@ const CartReducer = (state = INITIAL_STATE, action) => {
   }
 };
 
-export default CartReducer;
+export default cartReducer;
 
 //to set up redux we install the the necessary dependencies  npm install redux redux-logger react-redux
 //we create reducer , reduer is where the state is been changed . , we also go ahead to create the middleware and after we created the root reducer to link all the reducer together

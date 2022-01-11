@@ -410,7 +410,7 @@ export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_
                         Proceed to Checkout
                       </button>
                     </Link> : <Link to="/user/login">
-                      <button type="button" class="btn btn-primary">
+                      <button type="buttogn" class="btn btn-primary">
                         Proceed to Checkout
                       </button>
                     </Link>
@@ -456,7 +456,7 @@ const mapToDispatchToProps = (dispatch) => ({
 });
 
 function mapStateToProps(state) {
-  console.log(state.userReducer.cus_name)
+  console.log(state.cartReducer)
   return {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
