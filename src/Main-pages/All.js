@@ -224,7 +224,7 @@ export function App({ productCategories, allItems, AllItems, productsList, SetPr
                                   {
                                     allProducts.map(product => {
                                         return <div style={{cursor:'pointer'}} onClick={() => {
-                                            alert(999);
+                
                                             SetProduct(product)
                                         }}  class="col-sm-3">
                                             <div class="thumb-wrapper">
