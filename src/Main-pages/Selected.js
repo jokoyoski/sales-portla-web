@@ -8,6 +8,7 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import CarouselPage from "./Cart";
+import history from "../router/browserrouter";
 import Category from "./Category";
 import DropdownPage from "../components/dropdown";
 import Modal from "../components/Modal";
@@ -27,7 +28,10 @@ import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/
 export function App({ cartRecords, itemCount, addItem, removeItem, cartItems, total }) {
   var item = store.getState().productDetailsReducer.productDetails
   const [showBasic, setShowBasic] = useState(false);
-  console.log(store.getState().productDetailsReducer.productDetails.categoryId)
+  if (store.getState().productDetailsReducer.productDetails.categoryId == undefined) {
+    history.push("/")
+  }
+
   return (
     <div>
       <header>

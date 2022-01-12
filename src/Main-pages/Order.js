@@ -37,15 +37,23 @@ import PickUpStation from "../Main-pages/address/PickUpStation";
 import Controls from "../controls/Controls";
 
 
-export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total,states,pickUpStations }) {
+export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total, states, pickUpStations }) {
   const [showBasic, setShowBasic] = useState(false);
   const [openPopup, setOpenPopup] = useState(false)
   const [addOpenPopup, setAddOpenPopup] = useState(false)
-
   useEffect(() => {
     LoadAddress();
     return () => { };
   }, []);
+
+
+  var is_pick_up = (e) => {
+    store.dispatch({ type: "PAY_IS_PICK_UP_STATION", payload: e })
+  }
+
+  var is_cash_on_delivery = (e) => {
+    store.dispatch({ type: "IS_CASH_ON_DELIVERY", payload: e })
+  }
   return (
     <div>
       <header>
@@ -233,9 +241,11 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                       <i class="far fa-check-circle text-success"></i>{" "}
                       <strong>Address Details</strong>
                     </h6>
+                    <a href="#" data-mdb-toggle="modal"
+                      data-mdb-target="#exampleModal3"> <strong>Change</strong></a>
                     <h6
                       className="text-primary"
-                      style={{ position: "absolute", right: "2rem" }}
+                      style={{ position: "absolute", right: "2rem", textAlign: 'center' }}
                     >
                       <Popup
                         title="Add Location Form"
@@ -293,6 +303,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                     <input
                       class="form-check-input"
                       type="radio"
+                      onChange={is_pick_up(false)}
                       name="flexRadioDefault"
                       id="flexRadioDefault1"
                     />
@@ -312,6 +323,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                     <input
                       class="form-check-input"
                       type="radio"
+                      onChange={is_pick_up(true)}
                       name="flexRadioDefault"
                       id="flexRadioDefault2"
                       checked
@@ -359,7 +371,8 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                     <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
+                      name="flexRadioDefault8"
+                      onChange={is_cash_on_delivery(true)}
                       id="flexRadioDefault1"
                     />
                     <label class="form-check-label" for="flexRadioDefault1">
@@ -370,12 +383,12 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   <hr />
                   {/* <!-- Default checked radio --> */}
                   <div class="form-check">
-                    <input
+                  <input
                       class="form-check-input"
                       type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault2"
-                      checked
+                      name="flexRadioDefault8"
+                      onChange={is_cash_on_delivery(false)}
+                      id="flexRadioDefault1"
                     />
                     <label class="form-check-label" for="flexRadioDefault2">
                       {" "}
@@ -508,14 +521,13 @@ const mapToDispatchToProps = (dispatch) => ({
 });
 
 function mapStateToProps(state) {
-  console.log(state.utilityReducer.states)
   return {
     total: selectCartTotal(state),
     itemCount: selectCartItemsCount(state),
     pickUpStations: state.cartReducer.pickUpStations,
     cus_name: state.userReducer.cus_name,
     cus_number: state.userReducer.cus_number,
-    states:state.utilityReducer.states,
+    states: state.utilityReducer.states,
     address: state.utilityReducer.address
   };
 }

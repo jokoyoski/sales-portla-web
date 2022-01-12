@@ -7,8 +7,9 @@ const initialState = {
     itemsPerPage: 0,
     address: [],
     totalItems: 0,
+  
     totalPages: 0,
-    states:[]
+    states: []
 
 };
 
@@ -36,6 +37,7 @@ function UtilityReducer(state = initialState, action) {
         }
     }
 
+  
     if (action.type === "DISPLAY_LOADER") {
         return {
             ...state,
@@ -49,6 +51,7 @@ function UtilityReducer(state = initialState, action) {
             states: action.payload
         }
     }
+
 
     if (action.type === "ADDRESS_LIST") {
         return {

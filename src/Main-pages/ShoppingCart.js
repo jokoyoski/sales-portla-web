@@ -237,7 +237,7 @@ export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_
                             <td>{product.salePrice}</td>
                             <td>
                               <span className="text-warning">
-                                <strong>N{product.quantityToAdd * product.salesPrice}</strong>
+                                <strong>₦ {product.quantityToAdd * product.salesPrice}</strong>
                               </span>
                             </td>
                           </tr>
@@ -393,7 +393,7 @@ export function App({ cartItems, itemCount, addItem, removeItem, clearItem, cus_
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N {total}</strong>
+                  <strong>₦ {total}</strong>
                 </h4>
               </div>
               <span>

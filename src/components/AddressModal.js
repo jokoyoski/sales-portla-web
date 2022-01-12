@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-
+import { store } from '../redux-store/store';
 
 const AddressModal = ({ address }) => {
+  var deliveryAddress = (e) => {
+    store.dispatch({ type: "PAY_DELIVERY_ADDRESS", payload: e.target.value })
+  }
   return (
     <div>
-
       <div
         class="modal fade"
         id="exampleModal3"
@@ -40,7 +42,7 @@ const AddressModal = ({ address }) => {
                 >
                   {" "}
 
-                  <a href="#"> <strong>Add New Address</strong></a>
+
                 </h6>
               </div>
               <div>
@@ -52,20 +54,19 @@ const AddressModal = ({ address }) => {
                   {
                     address.length > 0 ?
                       address.map(add => {
-                        return <div style={{display:'flex' ,justifyContent:'space-between'}}>
+                        return <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                           <div>
                             <input
                               class="form-check-input"
                               type="radio"
-                              name="flexRadioDefault"
+                              value={add}
+                              onChange={deliveryAddress}
+                              name="flexRadioDefault6"
                               id="flexRadioDefault1"
                             />
                             <label class="form-check-label" for="flexRadioDefault1"> <strong>{add.firstName} {add.lastName}</strong><br />
                               <p>{add.address}</p>
                             </label>
-                          </div>
-                          <div className="d-flex">
-                            <i class="far fa-edit pr-3"></i> <i class="fas fa-trash text-danger"></i>
                           </div>
                         </div>
                       }) : "You do not have any address"

@@ -41,7 +41,7 @@ function* workerSaga(action) {
     localStorage.setItem("access_token", JSON.stringify(token));
     yield put({ type: "SET_ACCESS_TOKEN", payload: user.token });
     yield put({ type: "DISPLAY_LOADER", payload: payload });
-    history.push('/order')
+     history.push('/order')
 
 
   } catch (e) {

@@ -23,6 +23,10 @@ export default function PickUpStation({ statesV }) {
     const [states, setState] = useState(statesV)
     const [cities, setCity] = useState([])
     const [pickUpStations, setPickUpStations] = useState([])
+
+    var pickUpStation = (e) => {
+        store.dispatch({ type: "PAY_PICK_UP_STATION", payload: e.target.value })
+    }
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('fullName' in fieldValues)
@@ -56,9 +60,9 @@ export default function PickUpStation({ statesV }) {
             request('get', {}, `api/Admin/get-cities-dropdown/${value}`).then(data => {
                 setCity(data)
             })
-        
+
         }
-        if(name=='cityId'){
+        if (name == 'cityId') {
             request('get', {}, `get-pickup-stations?companyId=${companyId}&cityId=${value}`).then(data => {
                 console.log(data)
                 setPickUpStations(data)
@@ -113,9 +117,9 @@ export default function PickUpStation({ statesV }) {
                     type="submit"
                     text="Submit" />
             </div>
-            <br/>
-            <br/>
-            <br/>
+            <br />
+            <br />
+            <br />
 
 
             {
@@ -126,7 +130,9 @@ export default function PickUpStation({ statesV }) {
                                 <input
                                     class="form-check-input"
                                     type="radio"
-                                    name="flexRadioDefault"
+                                    value={add}
+                                    onChange={pickUpStation}
+                                    name="flexRadioDefault77"
                                     id="flexRadioDefault1"
                                 />
                                 <label class="form-check-label" for="flexRadioDefault1"> <strong>{add.pickUpStationAddress}</strong><br />

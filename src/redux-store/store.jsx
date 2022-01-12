@@ -14,7 +14,7 @@ const storeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['UserReducer', 'ProductDetailsReducer', 'cartReducer']
+    whitelist: ['userReducer', 'ProductDetailsReducer', 'cartReducer']
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
