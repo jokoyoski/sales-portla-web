@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 
-const baseUrl = "http://automatadev-001-site1.htempurl.com/"
-// const baseUrl="https://localhost:5001/"
+//const baseUrl = "http://automatadev-001-site1.htempurl.com/"
+ const baseUrl="https://localhost:5001/"
 
 
 
@@ -44,7 +44,6 @@ export function request2(method, body, url) {
             return status >= 200 && status < 400
         }
     }
-    console.log(config)
     return new Promise(function (resolve, reject) {
         axios(config).then(
             function (response) {

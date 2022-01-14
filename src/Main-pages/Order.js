@@ -23,6 +23,7 @@ import ModalPage from "../components/Modal"
 import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
 import AddressModal from "../components/AddressModal";
+import { cacNumber } from "../components/utils/constants";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -37,23 +38,48 @@ import PickUpStation from "../Main-pages/address/PickUpStation";
 import Controls from "../controls/Controls";
 
 
-export function App({ cus_name, address, cus_number, LoadAddress, itemCount, total, states, pickUpStations }) {
+export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, AddPayment, LoadAddress, selected_address, itemCount, total, states, pickUpStations }) {
   const [showBasic, setShowBasic] = useState(false);
   const [openPopup, setOpenPopup] = useState(false)
+  const [pick_up, setPickUp] = useState(false)
+  const [cash, setCash] = useState(0)
   const [addOpenPopup, setAddOpenPopup] = useState(false)
+
+  var _value = false;
   useEffect(() => {
     LoadAddress();
     return () => { };
   }, []);
 
+  var confirm = () => {
+    var payload = {
+      pickupStationId: pickUpStations.pickupStationId,
+      selectedAddressId: selected_address.id,
+      deliveryMethod: pick_up,
+      paymentTypeId: cash,
+      accountId: 0,
+      cardTypeId: 0,
+      cashRecieved: total, //get cash
+      customerId: localStorage.getItem("userId2"),
+      discount: 0,
+      discountcal: 0,
+      cacNumber:cacNumber,
+      referenceNumber: 5555555,
+      salesOrders: cartItems,
 
+    }
+    AddPayment(payload)
+  }
+
+  //SelectedAddress(address[0])
   var is_pick_up = (e) => {
-    store.dispatch({ type: "PAY_IS_PICK_UP_STATION", payload: e })
+    setPickUp(e.target.value)
   }
 
   var is_cash_on_delivery = (e) => {
-    store.dispatch({ type: "IS_CASH_ON_DELIVERY", payload: e })
+    setCash(e.target.value)
   }
+
   return (
     <div>
       <header>
@@ -275,7 +301,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   <hr />
                   <h5 class="card-title">{cus_name}</h5>
                   <p class="card-text">
-                    {address[0]?.address ?? "No saved Address"}<br />
+                    {selected_address.address ?? "No saved Address"}<br />
                     {cus_number}
                   </p>
                 </div>
@@ -300,13 +326,8 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   </h6>
                   {/* <!-- Default radio --> */}
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      onChange={is_pick_up(false)}
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
+                    <input type="radio" onChange={is_pick_up} value={false} name="gender" />
+
                     <label class="form-check-label" for="flexRadioDefault1">
                       {" "}
                       <strong>To my Doorstep</strong>
@@ -320,14 +341,8 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   <hr />
                   {/* <!-- Default checked radio --> */}
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      onChange={is_pick_up(true)}
-                      name="flexRadioDefault"
-                      id="flexRadioDefault2"
-                      checked
-                    />
+                    <input type="radio" onChange={is_pick_up} value={true} name="gender" />
+
                     <label class="form-check-label" for="flexRadioDefault2">
                       {" "}
                       <strong>Pickup Station</strong>{" "}
@@ -368,13 +383,9 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   </h6>
                   {/* <!-- Default radio --> */}
                   <div class="form-check">
-                    <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault8"
-                      onChange={is_cash_on_delivery(true)}
-                      id="flexRadioDefault1"
-                    />
+                    <input type="radio" onChange={is_cash_on_delivery} value={2} name="gender1" />
+
+
                     <label class="form-check-label" for="flexRadioDefault1">
                       {" "}
                       <strong>Cash on Delivery</strong>
@@ -383,13 +394,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   <hr />
                   {/* <!-- Default checked radio --> */}
                   <div class="form-check">
-                  <input
-                      class="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault8"
-                      onChange={is_cash_on_delivery(false)}
-                      id="flexRadioDefault1"
-                    />
+                    <input type="radio" onChange={is_cash_on_delivery} value={1} name="gender1" />
                     <label class="form-check-label" for="flexRadioDefault2">
                       {" "}
                       <strong>Credit/Debit Card</strong>{" "}
@@ -403,6 +408,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   class="btn btn-success"
                   data-mdb-toggle="modal"
                   data-mdb-target="#exampleModal2"
+                  onClick={confirm}
                 >
                   Confirm Order
                 </button>
@@ -446,7 +452,7 @@ export function App({ cus_name, address, cus_number, LoadAddress, itemCount, tot
                   style={{ position: "absolute", right: "2rem" }}
                 >
                   {" "}
-                  <strong>N {total}</strong>
+                  <strong>₦{total}</strong>
                 </h6>
               </div>
 
@@ -518,16 +524,29 @@ const mapToDispatchToProps = (dispatch) => ({
   LoadAddress(payload) {
     dispatch({ type: "GET_ADDRESS", payload });
   },
+
+  AddPayment(payload) {
+    dispatch({ type: "ADD_PAYMENT", payload });
+  },
+
+
+  SelectedAddress(payload) {
+    dispatch({ type: "SELECTED_ADDRESS", payload });
+  },
+
+
 });
 
 function mapStateToProps(state) {
   return {
     total: selectCartTotal(state),
+    selected_address: state.utilityReducer.selected_address,
     itemCount: selectCartItemsCount(state),
-    pickUpStations: state.cartReducer.pickUpStations,
+    pickUpStations: state.userReducer.payPickUpStation,
     cus_name: state.userReducer.cus_name,
     cus_number: state.userReducer.cus_number,
     states: state.utilityReducer.states,
+    cartItems: state.cartReducer.cartItems,
     address: state.utilityReducer.address
   };
 }

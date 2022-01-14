@@ -7,7 +7,7 @@ const initialState = {
     itemsPerPage: 0,
     address: [],
     totalItems: 0,
-  
+    selected_address: "",
     totalPages: 0,
     states: []
 
@@ -37,7 +37,15 @@ function UtilityReducer(state = initialState, action) {
         }
     }
 
-  
+    if (action.type === "SELECTED_ADDRESS") {
+
+        return {
+            ...state,
+            selected_address: action.payload
+        }
+    }
+
+
     if (action.type === "DISPLAY_LOADER") {
         return {
             ...state,

@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { store } from '../redux-store/store';
 
 const AddressModal = ({ address }) => {
-  var deliveryAddress = (e) => {
-    store.dispatch({ type: "PAY_DELIVERY_ADDRESS", payload: e.target.value })
+  var deliveryAddress = (add) => {
+    store.dispatch({ type: "SELECTED_ADDRESS", payload: add })
   }
   return (
     <div>
@@ -60,7 +60,7 @@ const AddressModal = ({ address }) => {
                               class="form-check-input"
                               type="radio"
                               value={add}
-                              onChange={deliveryAddress}
+                              onChange={()=>deliveryAddress(add)}
                               name="flexRadioDefault6"
                               id="flexRadioDefault1"
                             />

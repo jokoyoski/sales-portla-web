@@ -2,11 +2,12 @@ import { takeEvery, put } from "redux-saga/effects";
 import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
+import { companyId } from "../../../components/utils/constants";
 
 export default function* watcherGetProductsSaga() {
     yield takeEvery("LOAD_PRODUCT", workerSaga);
 }
-var companyId=26;
+
 function* workerSaga(action) {
     try {
         yield put({ type: "DISPLAY_LOADER", payload: payload })

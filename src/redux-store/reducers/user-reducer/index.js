@@ -9,7 +9,7 @@ const initialState = {
     customer: [],
     pay_delivery_address: {},
     is_cash_on_delivery: false,
-    pay_is_pick_up: false,
+    pay_is_pick_up: 'false',
     drop: [],
     industries: null,
     companyId: null,

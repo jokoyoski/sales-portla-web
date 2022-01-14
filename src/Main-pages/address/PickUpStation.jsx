@@ -25,7 +25,7 @@ export default function PickUpStation({ statesV }) {
     const [pickUpStations, setPickUpStations] = useState([])
 
     var pickUpStation = (e) => {
-        store.dispatch({ type: "PAY_PICK_UP_STATION", payload: e.target.value })
+        store.dispatch({ type: "PAY_PICK_UP_STATION", payload: e })
     }
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
@@ -131,7 +131,7 @@ export default function PickUpStation({ statesV }) {
                                     class="form-check-input"
                                     type="radio"
                                     value={add}
-                                    onChange={pickUpStation}
+                                    onChange={pickUpStation(add)}
                                     name="flexRadioDefault77"
                                     id="flexRadioDefault1"
                                 />
