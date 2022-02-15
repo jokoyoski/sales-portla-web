@@ -528,14 +528,16 @@ const mapStateToProps = (state) => {
   return {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
-    itemCount: selectCartItemsCount(state)
+    itemCount: selectCartItemsCount(state),
   };
 };
 
 const mapToDispatchToProps = (dispatch) => ({
   clearItem: item => dispatch(ClearItemFromCart(item)),//setting the values
   addItem: item => dispatch(AddItem(item)),
-  removeItem: item => dispatch(RemoveItem(item))
+  removeItem: item => dispatch(RemoveItem(item)),
+
+
 })
 //nu
 

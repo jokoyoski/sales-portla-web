@@ -2,8 +2,6 @@ import { takeEvery, put } from "redux-saga/effects";
 import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
-
-var companyId = 26;
 export default function* watcherAddAddressSaga() {
     yield takeEvery("ADD_ADDRESS", workerSaga);
 }

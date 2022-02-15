@@ -35,7 +35,7 @@ function* workerSaga(action) {
         yield put({ type: "DISPLAY_LOADER", payload: payload })
 
     } catch (e) {
-        alert(88831)
+      
         console.log(e)
         console.log("product-saga", e)
         console.log("product-saga", e.response)

@@ -18,6 +18,9 @@ export const AddItem=item=>({
 })
 
 
+
+
+
 export const AddItems=item=>({
     type: 'ADD_ITEMS_TO_CART',
     payload:  item
