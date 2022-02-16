@@ -8,17 +8,12 @@ import {
   MDBIcon,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-import CarouselPage from "./Cart";
-import Category from "./Category";
-import Modal from "../components/Modal";
-import Modalcheckout from "../components/Modalcheckout";
-import { Link } from "react-router-dom";
-import Classjs from "./Classjs";
-import Promo from "../assets/images/hene.jpeg"
-import Product from "../assets/images/amala.jpeg"
-import Header from "./header/Header";
-// import Classjs from "./Classjs";
 
+
+import { Link } from "react-router-dom";
+import Product from "../../assets/images/jacket.jpeg"
+import Header from "../header/Header";
+import "./category-selected.scss";
 export function Dashboard({
   products,
   productCategories,
@@ -35,11 +30,12 @@ export function Dashboard({
   return (
     <div>
       <header>
-        <div className=" top-nav pt-3 p-0 bg-blue-500">
+        <div className="container top-nav pt-3 p-0 bg-blue-500">
           <Header />
+          <hr />
         </div>
 
-        {/* <!-- Navbar --> */}
+     
         <div style={{ backgroundColor: '#E8E8E8' }} className="second-nav">
           <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
             <div class="container">
@@ -61,52 +57,8 @@ export function Dashboard({
         {/* <!-- Navbar -->
 
         <!-- Jumbotron --> */}
-        <div className="container pt-3 first-section">
-          <div style={{ display: 'flex' }}>
-
-
-            <div>
-              <CarouselPage />
-
-            </div>
-
-
-           <div className="overlay">
-             
-           </div>
-
-            <div style={{
-              paddingTop: '10px',
-              backgroundSize: 'contain',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundImage: `url(${Promo})`, height: '100%'
-            }} className="p-3 first-section-still shadow-2-strong">
-              <div  >
-
-                <h4>
-                  {" "}
-                  <strong style={{ color: 'white' }}>Let's Celebrate this Month Season with you</strong>
-                </h4>
-                <p style={{ color: 'white' }}>
-                  50% Discount on bottle of wine, <br />{" "}
-                  <strong>15 - 30th Aug</strong>
-                </p>
-                <div >
-                  <img
-                    src="https://www.bottledprices.com/wp-content/uploads/2018/08/hennessy_banner.jpg"
-                    alt=""
-                    width="100%"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
       </header>
-
-      <div className="main" >
+      <div className="main-o" >
         <div className="main-cat">
           <span>Food</span>
           
@@ -289,29 +241,10 @@ export function Dashboard({
               </button>
             </div>
           </div>
-
+          
         </div>
 
       </div>
-
-
-
-
-
-      <Modal />
-      <Modalcheckout />
-      <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-3 bg-dark text-white row px-5">
-          <div className="col">Privacy & Cookies</div>
-          <div className="col">
-            © 2020 Copyright:{" "}
-            <a class="text-white" href="#">
-              Bizen Cloud
-            </a>
-          </div>
-          <div className="col">Terms & Condition</div>
-        </div>
-      </footer>
     </div>
   );
 }

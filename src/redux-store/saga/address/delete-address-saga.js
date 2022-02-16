@@ -3,7 +3,7 @@ import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
 
-var companyId = 26;
+
 export default function* watcherDeleteAddressSaga() {
     yield takeEvery("DELETE_ADDRESS", workerSaga);
 }

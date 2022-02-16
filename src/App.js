@@ -19,6 +19,7 @@ import AddLocationForm from "./Main-pages/location/AddLocationForm";
 import Account from "./Main-pages/account/Account";
 import OrderDetails from "./Main-pages/orders/OrderDetails";
 import SavedItems from "./Main-pages/saved-items/SavedItems";
+import CategorySelected from "./Main-pages/category-selected/CategorySelected";
 class App extends Component {
   render() {
     return (
@@ -40,6 +41,7 @@ class App extends Component {
             <Route path="/Profile" exact component={Profile} />
             <Route path="/details" exact component={OrderDetails} />
             <Route path="/select" exact component={Orders} />
+            <Route path="/category-selected" exact component={CategorySelected} />
             <Route path="/select/details" exact component={Orders} />
             <Route path="/user/register" exact component={RegisterComponent} />
             <Route path="/account" exact component={Account} />
