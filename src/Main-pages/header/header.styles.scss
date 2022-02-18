@@ -23,12 +23,17 @@
        display: flex;
        justify-content: space-around;
        overflow-x: auto;
-       overflow-y: auto;
+       overflow-y: hidden;
 
        a{
            min-width:100px;
            display: inline-block;
        }
+    }
+    .bottom::-webkit-scrollbar{
+        background-color: rgba(191, 188, 188, 0.241);
+        height: 5px;
+        border-radius: 10%;
     }
     
 }

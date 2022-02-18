@@ -61,8 +61,8 @@ const Header = ({ itemCount }) => {
                 </a>
             </div>
             <hr/>
-
-            <div className='bottom'>
+            <div className="categories-container">     
+            <div className='bottom font-medium text-blue-500'>
                <a>
                  Food
                </a>
@@ -112,6 +112,7 @@ const Header = ({ itemCount }) => {
                  Clothing
                </a>
             </div>
+          </div>
         </div>
     );
 }

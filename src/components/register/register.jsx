@@ -1,7 +1,7 @@
 
+import React,{useState} from 'react'
 import './register.styles.scss';
 import Logo from '../../assets/images/BizinCLOUD Logo Main.png'
-import React from 'react'
 import { connect } from "react-redux";
 import { Grid, } from '@material-ui/core';
 import { Form } from '../../controls/useForm';
@@ -13,7 +13,10 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Imagesign from '../../assets/images/Rectangle1.png'
 import Button from 'react-bootstrap/Button';
-
+import heroImg from "../../assets/images/Pretty-grouped.png";
+import {Link} from 'react-router-dom'
+import Popup from "../../utilities/Popup";
+import SuccessModal from './RegSuccessModal'
 
 const initialState = {
     password: {
@@ -42,6 +45,7 @@ const initialState = {
     },
 }
 export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, isRegisterSuccessful }) => {
+  const [openPopup, setOpenPopup] = useState(false)
 
     const phoneNumberFormatter = (value) => {
         // if (value === '') return;
@@ -93,22 +97,25 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
 
     }
     return (
-        // <div style={{ display: 'flex' }}>
-        <div className="container-fluid row m-0 p-0 register-all">
-            <div className="col m-0 p-0 image-container">
-                <img src={Imagesign} alt="Img" height="100%" />
-            </div>
-            <div className="col">
-                <div className="text-center mt-2">
-                    <img src={Logo} alt="Logo" width="100px" />
-                    <h4 style={{ weight: "700" }}> <strong>Create Your Account</strong></h4>
-                    <p className="text-primary">Enter your details to continue</p>
+        <div className="w-full grid grid-cols-2 p-20 ">
+         {/* Register Boxes */}
+            <div className="p-3 border-r-2 border-gray-200">
+                <div className="logo-container space-x-2 flex items-center">
+          <img src={Logo} alt={"Logo"} className="w-14" />{" "}
+          <span className="text-2xl text-[#4f6bfe]">
+            <strong>Vendors</strong> Store{" "}
+          </span>
+         
+        </div>
+                <div className="mt-3">
+                   <h1 className="text-3xl font-bold text-[#4f6bfe]">Create Account</h1>
+          <small className="text-gray-300">Kindly Enter your details to create your account</small>
                 </div>
                 <ToastContainer />
                 <Form onSubmit={submitHandler}>
                     <Grid container>
-                        <Input
-                            label="First Name"
+                    <div className="relative w-full">
+                      <Input
                             name="firstname"
                             placeholder="Enter your First Name"
                             id="firstname"
@@ -116,8 +123,12 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
                             onChange={changeHandler}
                             error={errors.firstname}
                         />
-                        <Input
-                            label="Last Name"
+                        <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+</svg></span>
+                    </div>
+                    <div className="relative w-full">
+                     <Input
                             name="lastname"
                             placeholder="Enter your Last Name"
                             id="lastname"
@@ -125,8 +136,12 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
                             onChange={changeHandler}
                             error={errors.lastname}
                         />
-                        <Input
-                            label="Phone Number"
+                        <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+</svg></span>
+                    </div>
+                    <div className="relative w-full">
+                          <Input
                             name="phonenumber"
                             placeholder="Enter your Phone Number"
                             id="phonenumebr"
@@ -134,19 +149,27 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
                             onChange={changeHandler}
                             error={errors.phonenumber}
                         />
-
-                        <Input
-                            label="Email"
+                        <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+</svg></span>
+                        </div>
+                  
+                        <div className="relative w-full">
+                            <Input
                             name="email"
                             placeholder="Enter your Email"
                             id="name"
                             value={formData.email.value}
                             onChange={changeHandler}
                             error={errors.email}
-                        />
-
-                        <Input
-                            label="Password"
+                        /> <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+  <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+</svg></span></div>
+                    
+                        <div className="relative w-full">
+                          <Input
                             name="password"
                             placeholder="Enter your Password"
                             id="password"
@@ -155,8 +178,13 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
                             onChange={changeHandler}
                             error={errors.password}
                         />
-                        <Input
-                            label="Confirm Password"
+                        <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+</svg>
+                        </span>
+                        </div>
+                      <div className="relative w-full">
+                      <Input
                             name="confirmpassword"
                             placeholder="Enter your Confirm Password"
                             id="confirmpassword"
@@ -165,103 +193,30 @@ export const RegisterComponent = ({ RegisterUser, buttonloader, triggerLogging, 
                             onChange={changeHandler}
                             error={errors.confirmpassword}
                         />
-                        <div className="text-center container justify-content-center align-items-center row mt-3 mb-3">
-                            <Button type="submit"> Create Account <i className={buttonloader === true ? "fa fa-spinner fa-spin" : ''}></i></Button>
+                        <span className="absolute text-[#4f6bfe] top-5 right-20"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+</svg></span>
+                      </div>
+                        
+                        <div className="w-full ml-2">
+                         <div className="bg-[rgb(79,107,254)] w-[92%] text-center py-2 rounded-lg text-white w-full" onClick={() => setOpenPopup(true)}>
+                            <button type="submit" className="text-center focus:outline-none"> Create Account <i className={buttonloader === true ? "fa fa-spinner fa-spin" : ''}></i></button>
                         </div>
-                        <div className="container text-center">
-                            Already have an account <a href="/user/login">Login</a>
+                        <div>
+                            Already have an account <Link to="/user/login" className="hover:underline">Login</Link>
+                        </div>
                         </div>
                     </Grid>
                 </Form>
             </div>
-            {/* </div> */}
-            {/* <ImageComponent /> */}
-            {/* <div className='register-section'>
-                <div className='inner-section'>
-                    <div className='inner-inner'>
-                        <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', width: '90%' }}>
-                            <img alt={"logo"} width={'50px'} src={Logo} />
-                        </div>
-                        <p style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', fontWeight: '700', fontSize: '1.5rem', textAlign: 'center', width: '90%', marginTop: '50px' }}>Create your account</p>
-                        <p style={{ fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif', color: 'gray', textAlign: 'center', width: '90%', marginTop: '5px' }}>Enter your details to create your account</p>
-
-                        <div className='real-form'>
-                            <ToastContainer />
-                            <Form onSubmit={submitHandler}>
-
-                                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'flex-start', margin: '0 auto' }}>
-                                    <Input
-                                        label="First Name"
-                                        name="firstname"
-                                        placeholder="Enter your First Name"
-                                        id="firstname"
-                                        value={formData.firstname.value}
-                                        onChange={changeHandler}
-                                        error={errors.firstname}
-                                    />
-                                    <Input
-                                        label="Last Name"
-                                        name="lastname"
-                                        placeholder="Enter your Last Name"
-                                        id="lastname"
-                                        value={formData.lastname.value}
-                                        onChange={changeHandler}
-                                        error={errors.lastname}
-                                    />
-                                    <Input
-                                        label="Phone Number"
-                                        name="phonenumber"
-                                        placeholder="Enter your Phone Number"
-                                        id="phonenumebr"
-                                        value={formData.phonenumber.value}
-                                        onChange={changeHandler}
-                                        error={errors.phonenumber}
-                                    />
-
-
-                                    <Input
-                                        label="Email"
-                                        name="email"
-                                        placeholder="Enter your Email"
-                                        id="name"
-                                        value={formData.email.value}
-                                        onChange={changeHandler}
-                                        error={errors.email}
-                                    />
-
-                                    <Input
-                                        label="Password"
-                                        name="password"
-                                        placeholder="Enter your Password"
-                                        id="password"
-                                        type="password"
-                                        value={formData.password.value}
-                                        onChange={changeHandler}
-                                        error={errors.password}
-                                    />
-                                    <Input
-                                        label="Confirm Password"
-                                        name="confirmpassword"
-                                        placeholder="Enter your Confirm Password"
-                                        id="confirmpassword"
-                                        type="password"
-                                        value={formData.confirmpassword.value}
-                                        onChange={changeHandler}
-                                        error={errors.confirmpassword}
-                                    />
-                                    <button className='final-button'>Register <i className={buttonloader === true ? "fa fa-spinner fa-spin" : ''}></i></button>
-                                </div>
-                                <Grid container>
-                                    <div className='agreement'>
-                                        <p>Already have an account?</p> <a href='/user/login' style={{ color: 'blue', cursor: 'pointer' }}>Login</a>
-                                    </div>
-                                </Grid>
-                            </Form>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-
+            {/* Hero-Img */}
+            <div className="image-container p-3">
+                <img src={heroImg} alt="hero_img"/>
+            </div>
+  <Popup setOpenPopup={setOpenPopup} openPopup={openPopup}>
+<SuccessModal />
+  </Popup>
+           
         </div>
 
     )

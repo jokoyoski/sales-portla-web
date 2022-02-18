@@ -20,6 +20,8 @@ import Account from "./Main-pages/account/Account";
 import OrderDetails from "./Main-pages/orders/OrderDetails";
 import SavedItems from "./Main-pages/saved-items/SavedItems";
 import CategorySelected from "./Main-pages/category-selected/CategorySelected";
+import ResetPassword from './components/Password-Reset/ResetPassword'
+import ResetCode from './components/Password-Reset/RecievedCode'
 class App extends Component {
   render() {
     return (
@@ -47,11 +49,11 @@ class App extends Component {
             <Route path="/account" exact component={Account} />
             <Route path="/saved-items" exact component={SavedItems} />
             <Route path="/user/login" exact component={LoginPageComponent} />
+            <Route path="/user/reset-password" exact component={ResetPassword}/>
+            <Route path="/user/reset-code" exact component={ResetCode} />
           </LoadingOverlay>
         </Switch>
       </Router>
-
-      // <div>cvbnm,</div>
     );
   }
 }

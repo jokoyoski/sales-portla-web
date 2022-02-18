@@ -14,10 +14,10 @@ import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
 import { Link } from "react-router-dom";
 import Classjs from "./Classjs";
-import Promo from "../assets/images/hene.jpeg"
-import Product from "../assets/images/amala.jpeg"
+import Promo from "../assets/images/hene.jpeg";
+import Product from "../assets/images/amala.jpeg";
 import Header from "./header/Header";
-// import Classjs from "./Classjs";
+import SecondPromote from "./SidedPromote";
 
 export function Dashboard({
   products,
@@ -35,12 +35,12 @@ export function Dashboard({
   return (
     <div>
       <header>
-        <div className=" top-nav pt-3 p-0 bg-blue-500">
+        <div className=" top-nav pt-3 p-0 ">
           <Header />
         </div>
 
         {/* <!-- Navbar --> */}
-        <div style={{ backgroundColor: '#E8E8E8' }} className="second-nav">
+        {/* <div style={{ backgroundColor: '#E8E8E8' }} className="second-nav">
           <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
             <div class="container">
               <button
@@ -57,246 +57,304 @@ export function Dashboard({
               <div class="collapse navbar-collapse" id="navbarNav"></div>
             </div>
           </nav>
-        </div>
+        </div> */}
         {/* <!-- Navbar -->
 
         <!-- Jumbotron --> */}
         <div className="container pt-3 first-section">
-          <div style={{ display: 'flex' }}>
-
-
+          <div style={{ display: "flex" }}>
             <div>
               <CarouselPage />
-
             </div>
 
-
-           <div className="overlay">
-             
-           </div>
-
-            <div style={{
-              paddingTop: '10px',
-              backgroundSize: 'contain',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundImage: `url(${Promo})`, height: '100%'
-            }} className="p-3 first-section-still shadow-2-strong">
-              <div  >
-
-                <h4>
-                  {" "}
-                  <strong style={{ color: 'white' }}>Let's Celebrate this Month Season with you</strong>
-                </h4>
-                <p style={{ color: 'white' }}>
-                  50% Discount on bottle of wine, <br />{" "}
-                  <strong>15 - 30th Aug</strong>
-                </p>
-                <div >
-                  <img
-                    src="https://www.bottledprices.com/wp-content/uploads/2018/08/hennessy_banner.jpg"
-                    alt=""
-                    width="100%"
-                  />
-                </div>
-              </div>
+            <div className="overlay"></div>
+            <div>
+              <SecondPromote />
             </div>
           </div>
         </div>
       </header>
 
-      <div className="main" >
+      <div className="main">
         <div className="main-cat">
           <span>Food</span>
-          
         </div>
         <div className="main-card">
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
 
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
           <div className="pro">
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 fav" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-  <path strokeLinecap="round" strokeLinejoin="round"  strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-</svg>
-              <img
-              className="img-att"
-                src={Product}
-                alt=""
-                height={'200px'}
-                width="100%"
-
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 fav"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
               />
-        
+            </svg>
+            <img
+              className="img-att"
+              src={Product}
+              alt=""
+              height={"200px"}
+              width="100%"
+            />
 
-            <h4 style={{ fontSize: '20px' }}>Dettol Soap</h4>
+            <h4 style={{ fontSize: "20px" }}>Dettol Soap</h4>
             <div className="text-bottom">
               #400
-              <button className="button" style={{ backgroundColor: '#1F43D8', color: 'white' }}>
+              <button
+                className="button"
+                style={{ backgroundColor: "#1F43D8", color: "white" }}
+              >
                 Buy Now
               </button>
             </div>
           </div>
-
         </div>
-
       </div>
-
-
-
-
 
       <Modal />
       <Modalcheckout />

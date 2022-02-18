@@ -9,7 +9,10 @@ import "mdbreact/dist/css/mdb.css";
 import './index.css';
 import App from "../src/App";
 import registerServiceWorker from './registerServiceWorker';
+import {faEye, faEyeSlash} from '@fortawesome/free-solid-svg-icons'
+import {library} from "@fortawesome/fontawesome-svg-core"
 
+library.add(faEye, faEyeSlash)
 ReactDOM.render(
    
     <Provider store={store}>
