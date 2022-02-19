@@ -18,7 +18,7 @@ const Header = ({ itemCount }) => {
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
                 type="search"
-                className="border-none w-[30rem] bg-transparent"
+                className="border-none w-[30rem] bg-transparent focus:outline-none"
                 placeholder="Search Item, Brands and filter Names"
                 aria-label="Search"
               />
