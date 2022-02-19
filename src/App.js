@@ -20,8 +20,8 @@ import Account from "./Main-pages/account/Account";
 import OrderDetails from "./Main-pages/orders/OrderDetails";
 import SavedItems from "./Main-pages/saved-items/SavedItems";
 import CategorySelected from "./Main-pages/category-selected/CategorySelected";
-import ResetPassword from './components/Password-Reset/ResetPassword'
-import ResetCode from './components/Password-Reset/RecievedCode'
+import ResetPassword from "./components/Password-Reset/ResetPassword";
+import ResetCode from "./components/Password-Reset/RecievedCode";
 class App extends Component {
   render() {
     return (
@@ -32,7 +32,7 @@ class App extends Component {
             className="overlay-height"
             spinner
           >
-            <Route path="/" exact component={Dashboard} />
+              <Route path="/" exact component={Dashboard} />
             <Route path="/Cart" exact component={Cart} />
             <Route path="/Cartegory" exact component={Category} />
             <Route path="/Allitems" exact component={All} />
@@ -43,13 +43,21 @@ class App extends Component {
             <Route path="/Profile" exact component={Profile} />
             <Route path="/details" exact component={OrderDetails} />
             <Route path="/select" exact component={Orders} />
-            <Route path="/category-selected" exact component={CategorySelected} />
+            <Route
+              path="/category-selected"
+              exact
+              component={CategorySelected}
+            />
             <Route path="/select/details" exact component={Orders} />
             <Route path="/user/register" exact component={RegisterComponent} />
             <Route path="/account" exact component={Account} />
             <Route path="/saved-items" exact component={SavedItems} />
             <Route path="/user/login" exact component={LoginPageComponent} />
-            <Route path="/user/reset-password" exact component={ResetPassword}/>
+            <Route
+              path="/user/reset-password"
+              exact
+              component={ResetPassword}
+            />
             <Route path="/user/reset-code" exact component={ResetCode} />
           </LoadingOverlay>
         </Switch>

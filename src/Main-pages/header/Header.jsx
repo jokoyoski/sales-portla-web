@@ -1,134 +1,91 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import SideBar from '../layout/Sidebar';
 import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/cart.selector";
 import "./header.styles.scss";
-import {
-    MDBContainer,
-    MDBNavbar,
-    MDBNavbarBrand,
-    MDBNavbarToggler,
-    MDBIcon,
-    MDBNavbarNav,
-    MDBNavbarItem,
-    MDBNavbarLink,
-    MDBBtn,
-    MDBDropdown,
-    MDBDropdownToggle,
-    MDBDropdownMenu,
-    MDBDropdownItem,
-    MDBDropdownLink,
-    MDBCollapse,
-} from "mdb-react-ui-kit";
+import { MDBIcon } from "mdb-react-ui-kit";
 
 const Header = ({ itemCount }) => {
-    const [showBasic, setShowBasic] = useState(false);
+  const [showBasic, setShowBasic] = useState(false);
 
-    return (
-        <div className='main-header'>
-            <div className='top'>
-                <img src="./Images/logo2.png" alt="" />
-
-                <form className="d-flex input-group w-auto">
-                    <input
-                        type="search"
-                        className="form-control mt-2"
-                        placeholder="Search Item, Brands and filter Names"
-                        aria-label="Search"
-                        style={{ width: "30rem" }}
-                    />
-                    <MDBIcon
-                        fas
-                        icon="search"
-                        className="pl-2"
-                        style={{ paddingTop: "1.2rem", color: "#bab8b8" }}
-                    />
-                </form>
-
-
-                <Link to="../shoppingCart">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">
-                        {
-                            itemCount
-                        }
-                    </span>
-                </Link>
-
-                <a className='name'>
-                    Hi David
-                </a>
+  return (
+    <div className="main-header px-32 py-4 w-full bg-white shadow-lg">
+      <div className="grid grid-cols-3">
+        <div className="col-span-2 flex space-x-4 items-center">
+          {" "}
+          <img src="./Images/logo2.png" alt="" />
+          <form className="d-flex input-group w-auto">
+            <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
+              <input
+                type="search"
+                className="border-none w-[30rem] bg-transparent"
+                placeholder="Search Item, Brands and filter Names"
+                aria-label="Search"
+              />
+              <MDBIcon fas icon="search" className="pl-1" />
             </div>
-            <hr/>
-            <div className="categories-container">     
-            <div className='bottom font-medium text-blue-500'>
-               <a>
-                 Food
-               </a>
-               <a>
-                 Textile
-               </a>
-               <a>
-                 Vehicle
-               </a>
-               <a>
-                   Drinks
-               </a>
-               <a>
-                 Road
-               </a>
-               <a>
-                 Gadget
-               </a>
-               <a>
-                 Yoghurt
-               </a>
-               <a>
-                 Laptop
-               </a>
-               <a>
-                 Text
-               </a>
-               <a>
-                 Clothing
-               </a>
-               <a>
-                 Road
-               </a>
-               <a>
-                 Gadget
-               </a>
-               <a>
-                 Yoghurt
-               </a>
-               <a>
-                 Laptop
-               </a>
-               <a>
-                 Text
-               </a>
-               <a>
-                 Clothing
-               </a>
+          </form>
+        </div>
+        <div className="grid grid-cols-2 space-x-4 items-center">
+          {" "}
+          <div>
+            <div className="border-r-2 border-gray-300 w-2/5">
+              <Link to="../shoppingCart">
+                <i class="fas fa-shopping-cart fa-lg"></i>
+                <span class="badge rounded-pill badge-notification bg-danger">
+                  {itemCount}
+                </span>
+              </Link>
+            </div>
+          </div>
+          <div className="flex justify-end">
+            <div className="flex space-x-3 items-center">
+              <img
+                src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
+                className="rounded-full h-10 w-10"
+                alt="Profile_img"
+              />
+              <a className="border-b-2 font-semibold border-blue-500">
+                Hi David
+              </a>
             </div>
           </div>
         </div>
-    );
-}
-
-
-const mapStateToProps = (state) => {
-    return {
-        itemCount: selectCartItemsCount(state)
-    };
+      </div>
+      <hr />
+      <div className="categories-container">
+        <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
+          <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
+            Food
+          </a>
+          <a>Textile</a>
+          <a>Vehicle</a>
+          <a>Drinks</a>
+          <a>Road</a>
+          <a>Gadget</a>
+          <a>Yoghurt</a>
+          <a>Laptop</a>
+          <a>Text</a>
+          <a>Clothing</a>
+          <a>Road</a>
+          <a>Gadget</a>
+          <a>Yoghurt</a>
+          <a>Laptop</a>
+          <a>Text</a>
+          <a>Clothing</a>
+        </div>
+      </div>
+    </div>
+  );
 };
 
-const mapToDispatchToProps = (dispatch) => ({
+const mapStateToProps = (state) => {
+  return {
+    itemCount: selectCartItemsCount(state),
+  };
+};
 
-})
+const mapToDispatchToProps = (dispatch) => ({});
 //nu
-
-
 
 export default connect(mapStateToProps, mapToDispatchToProps)(Header);

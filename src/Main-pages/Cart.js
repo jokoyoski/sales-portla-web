@@ -21,7 +21,7 @@ import Banner01 from "../assets/images/Banner-01.png";
 
 const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
   return (
-    <div className="container-fluid">
+    <div className="">
       <MDBContainer className="p-0">
         <MDBCarousel
           activeItem={1}
@@ -39,7 +39,7 @@ const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
             >
               <MDBView>
                 <img
-                  className="block top-slide w-100 rounded-lg"
+                  className="block top-slide w-100 rounded-2xl"
                   src={Banner05}
                   alt="First_slide"
                 />
@@ -48,7 +48,7 @@ const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
             <MDBCarouselItem itemId="2" className="m-0 p-0">
               <MDBView>
                 <img
-                  className="block w-100 rounded-lg"
+                  className="block w-100 rounded-2xl"
                   src={Banner04}
                   alt="Second_slide"
                 />
@@ -58,7 +58,7 @@ const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
             <MDBCarouselItem itemId="3" className="m-0 p-0">
               <MDBView>
                 <img
-                  className="block w-100 rounded-lg"
+                  className="block w-100 rounded-2xl"
                   src={Banner03}
                   alt="Third_slide"
                 />
@@ -67,7 +67,7 @@ const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
             <MDBCarouselItem itemId="4" className="m-0 p-0">
               <MDBView>
                 <img
-                  className="block w-100 rounded-lg"
+                  className="block w-100 rounded-2xl"
                   src={Banner02}
                   alt="Forth_slide"
                 />
@@ -76,7 +76,7 @@ const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
             <MDBCarouselItem itemId="5" className="m-0 p-0">
               <MDBView>
                 <img
-                  className="block w-100 rounded-lg"
+                  className="block w-100 rounded-2xl"
                   src={Banner01}
                   alt="Fifth_slide"
                 />
