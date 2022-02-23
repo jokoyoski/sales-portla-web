@@ -55,7 +55,7 @@ export const LoginPageComponent = ({
   };
 
   return (
-    <div className="grid grid-cols-2 login-continer p-20">
+    <div className="grid bg-white grid-cols-2 login-continer p-20">
       <div className="border-r-2 border-gray-200 p-3">
         <div className="logo-container space-x-2 flex items-center">
           <img src={Logo} alt={"Logo"} className="w-14" />{" "}
@@ -125,7 +125,7 @@ export const LoginPageComponent = ({
 <div className="mt-5 ml-2 w-full">
     <div className="w-[90%] ">
                   <button
-                    className="bg-[rgb(79,107,254)] py-2 rounded-lg text-white w-full"
+                    className="bg-[rgb(103,126,240)] border-none focus:outline-none font-semibold py-2 rounded-lg text-white w-full"
                     type="submit"
                   >
                     {" "}
