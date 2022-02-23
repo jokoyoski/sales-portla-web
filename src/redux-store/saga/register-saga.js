@@ -13,7 +13,7 @@ function* workerSaga(action) {
         yield put({ type: "LOADING_BUTTON_SPINNER" });
         let payload = {}
 
-        yield request("post", { ...action.payload, cacNumber: cacNumber }, "shopper-registration").then(response => {
+        yield request("post", { ...action.payload, cacNumber: cacNumber }, "api/Authentication/sales-portal-user-reg").then(response => {
             payload = response;
         });
         toast.success("Registration Successful!!");
@@ -21,6 +21,9 @@ function* workerSaga(action) {
         yield put({ type: "TRIGGER_REGISTER_SUCCESS" })
         yield put({ type: "LOADING_BUTTON_SPINNER" });
     } catch (e) {
+        if(e?.response.data?.length>0){
+            toast.error(e.response.data[0].description)
+        }
         yield put({ type: "LOADING_BUTTON_SPINNER" });
         console.log(e.response)
         console.log("register-saga", e)

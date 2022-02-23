@@ -13,7 +13,7 @@ function* workerSaga(action) {
   try {
     yield put({ type: "LOGIN_LOADING_BUTTON_SPINNER" });
     let payload = {};
-    yield request("post", action.payload, "api/Authentication/login").then(
+    yield request("post", action.payload, "api/Authentication/sales-portal-login").then(
       (response) => {
         payload = response;
       }
