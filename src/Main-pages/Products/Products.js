@@ -5,15 +5,10 @@ const Products = () => {
     <div className="px-28 space-y-7 mb-7">
       {" "}
       {/* Product Category and Product listings inside */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-2xl  flex flex-col">
+      <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl  flex flex-col">
         <div className="Category-Name p-3 grid grid-cols-2 text-white">
           <div>
-            <h5>Gadgets</h5>
-          </div>
-          <div className="flex justify-end">
-            <h5 className="hover:underline transition duration-500 ease-in-out cursor-pointer">
-              See all
-            </h5>
+            <h5>Hot Sales</h5>
           </div>
         </div>
         <div className="bg-white p-5 rounded-b-2xl w-full">
@@ -260,16 +255,16 @@ const Products = () => {
         </div>
       </div>
       {/* Second Category */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-2xl  flex flex-col">
+      <div className="bg-gradient-to-r from-blue-700 to-orange-500 rounded-2xl  flex flex-col">
         <div className="Category-Name p-3 grid grid-cols-2 text-white">
           <div>
-            <h5>Shoes</h5>
+            <h5>Top Sales</h5>
           </div>
-          <div className="flex justify-end">
+          {/* <div className="flex justify-end">
             <h5 className="hover:underline transition duration-500 ease-in-out cursor-pointer">
               See all
             </h5>
-          </div>
+          </div> */}
         </div>
         <div className="bg-white p-5 rounded-b-2xl w-full">
           {" "}
@@ -518,13 +513,13 @@ const Products = () => {
       <div className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-2xl  flex flex-col">
         <div className="Category-Name p-3 grid grid-cols-2 text-white">
           <div>
-            <h5>Clothings</h5>
+            <h5>Amazing Products</h5>
           </div>
-          <div className="flex justify-end">
+          {/* <div className="flex justify-end">
             <h5 className="hover:underline transition duration-500 ease-in-out cursor-pointer">
               See all
-            </h5>``
-          </div>
+            </h5>
+          </div> */}
         </div>
         <div className="bg-white p-5 rounded-b-2xl w-full">
           {" "}

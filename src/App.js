@@ -7,7 +7,6 @@ import Cart from "./Main-pages/Cart";
 import Category from "./Main-pages/Category";
 import All from "./Main-pages/All";
 import Selected from "./Main-pages/Selected";
-import ShoppingCart from "./Main-pages/ShoppingCart";
 import LoadingOverlay from "react-loading-overlay";
 import { connect } from "react-redux";
 import Order from "./Main-pages/Order";
@@ -22,6 +21,8 @@ import SavedItems from "./Main-pages/saved-items/SavedItems";
 import CategorySelected from "./Main-pages/category-selected/CategorySelected";
 import ResetPassword from "./components/Password-Reset/ResetPassword";
 import ResetCode from "./components/Password-Reset/RecievedCode";
+import MainCart from "./Main-pages/MainCart";
+
 class App extends Component {
   render() {
     return (
@@ -32,17 +33,18 @@ class App extends Component {
             className="overlay-height"
             spinner
           >
-              <Route path="/" exact component={Dashboard} />
+            <Route path="/" exact component={Dashboard} />
             <Route path="/Cart" exact component={Cart} />
             <Route path="/Cartegory" exact component={Category} />
             <Route path="/Allitems" exact component={All} />
             <Route path="/selected" exact component={Selected} />
-            <Route path="/shoppingCart" exact component={ShoppingCart} />
             <Route path="/Order" exact component={Order} />
             <Route path="/location" exact component={AddLocationForm} />
             <Route path="/Profile" exact component={Profile} />
             <Route path="/details" exact component={OrderDetails} />
             <Route path="/select" exact component={Orders} />
+            <Route path="/main/cart" exact component={MainCart} />
+
             <Route
               path="/category-selected"
               exact

@@ -19,7 +19,7 @@ const Header = ({ itemCount }) => {
               <input
                 type="search"
                 className="border-none w-[30rem] bg-transparent focus:outline-none"
-                placeholder="Search Item, Brands and filter Names"
+                placeholder="Search and filter items by product name"
                 aria-label="Search"
               />
               <MDBIcon fas icon="search" className="pl-1" />
