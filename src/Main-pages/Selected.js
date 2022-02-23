@@ -1,546 +1,174 @@
-import React, { useState } from "react";
-import {
-  MDBContainer,
-  MDBNavbar,
-  MDBNavbarBrand,
-  MDBNavbarToggler,
-  MDBIcon,
-  MDBCollapse,
-} from "mdb-react-ui-kit";
-import CarouselPage from "./Cart";
-import history from "../router/browserrouter";
-import Category from "./Category";
-import DropdownPage from "../components/dropdown";
-import Modal from "../components/Modal";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import { store } from '../redux-store/store';
-import {
-  selectCartItems,
-  selectCartTotal,
-} from "../redux-store/reducers/cart-reducer/cart.selector";
-import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
-import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
+import React from "react";
+import Header from "./header/Header";
+import RelatedItems from "./Products/RelatedItems";
 
-
-
-
-export function App({ cartRecords, itemCount, addItem, removeItem, cartItems, total }) {
-  var item = store.getState().productDetailsReducer.productDetails
-  const [showBasic, setShowBasic] = useState(false);
-  if (store.getState().productDetailsReducer.productDetails.categoryId == undefined) {
-    history.push("/")
-  }
-
+const Selected = () => {
   return (
     <div>
-      <header>
-        <div className="container top-nav pt-3 p-0">
-          <MDBNavbar expand="lg" light bgColor="white">
-            <MDBContainer fluid>
-              <MDBNavbarBrand href="#" className="p-0">
-                <img src="./Images/logo2.png" alt="" />
-              </MDBNavbarBrand>
+      <Header />
 
-              <MDBNavbarToggler
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                onClick={() => setShowBasic(!showBasic)}
-              >
-                <MDBIcon icon="bars" fas />
-              </MDBNavbarToggler>
-              <MDBCollapse navbar show={showBasic}>
-                <form className="d-flex input-group w-auto">
-                  <input
-                    type="search"
-                    className="form-control mt-2"
-                    placeholder="Search Item, Brands and filter Names"
-                    aria-label="Search"
-                    style={{ width: "30rem" }}
-                  />
-                  <MDBIcon
-                    fas
-                    icon="search"
-                    className="pl-2"
-                    style={{ paddingTop: "1.2rem", color: "#bab8b8" }}
-                  />
-                </form>
-
-                <div className="cart-container pr-3 p-2">
-                  <Link to="../shoppingCart">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">
-                      {
-                        itemCount
-                      }
-                    </span>
-                  </Link>
-                </div>
-
-                <div className="profile">
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-                    class="rounded-circle"
-                    height="25"
-                    alt=""
-                    loading="lazy"
-                  />
-
-                  <span className="pl-2 pr-2">
-                    <strong>Hi Adeola</strong>
-                  </span>
-                  <a
-                    class="dropdown-toggle align-items-center hidden-arrow d-inline"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false"
-                  ></a>
-
-                  <ul
-                    class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        My profile
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        View Saved Items
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal"
-                      >
-                        Change Password
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </MDBCollapse>
-            </MDBContainer>
-          </MDBNavbar>
-
-          <hr />
-        </div>
-
-        {/* <!-- Navbar --> */}
-        <div className="second-nav">
-          <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
-            <div class="container">
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <i class="fas fa-bars"></i>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="#">
-                      All Categories
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Health and Beauty
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Home and Office
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Phones and Tablets
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Computing
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Electronics
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Fashion
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Gaming
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Others
-                    </a>
-                  </li>
-                </ul>
+      <div className="body px-28 mt-5">
+        <div className="flex space-x-3">
+          <div className="rounded-2xl w-[70%] bg-white p-5 space-y-10 flex flex-col">
+            <div className="grid grid-cols-2 h-64">
+              <div className="p-1 image_container">
+                <img
+                  src="https://sp.yimg.com/ib/th?id=OP.nUBMkxgGmTRq3Q474C474&o=5&pid=21.1"
+                  alt="selected_img"
+                  className="object-fit-contain h-64"
+                />
               </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
-      <div className="container">
-        <div className="row">
-          <div className="col-sm-9">
-            <div className="pt-4 pb-4 mb-3">
-              <div className="row selected-container">
-                <div className="col-sm-5 bg-white p-3">
-                  <img
-                    src={store.getState().productDetailsReducer.productDetails.imageId}
-                    alt=""
-                    width="100%"
-                  />
-                  <div>
-                    Share this product
-                    <div>
-                      <i class="fab fa-facebook pr-2 text-primary"></i>{" "}
-                      <i class="fab fa-twitter text-primary"></i>{" "}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-sm-7 p-3">
-                  <h5>
-                    {" "}
-                    <strong></strong>{" "}
+              <div className="p-1">
+                <div className="flex space-x-3">
+                  {" "}
+                  <h2 className="uppercase font-medium text-gray-500">
+                    Iphone 13
+                  </h2>{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="orange"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+                    />
+                  </svg>
+                </div>{" "}
+                <p>One of the world's smartest Device</p>
+                <hr className="border-gray-200" />
+                <div className="flex space-x-2 items-center">
+                  <h4 className="text-black">$1500</h4>{" "}
+                  <h5 className="line-through text-gray-300 font-medium">
+                    $2000
                   </h5>
-                  <p>{store.getState().productDetailsReducer.productDetails.productName}</p>
-                  <hr />
-                  <h5>
+                  <div className="rounded-full mb-3 bg-[#ef892338] px-3">
                     {" "}
-                    <strong> {store.getState().productDetailsReducer.productDetails.salePrice} </strong>{" "}
-                    <span className="color-grey">
+                    <span className="text-[#EF8923] font-semibold">
+                      -25
                     </span>{" "}
-                  </h5>
-                  <hr />
-                  <div className="p-0">
-                    <button
-                      onClick={() => addItem(store.getState().productDetailsReducer.productDetails)}
-                      type="button"
-
-                    >
-                      <span>+</span>
-                    </button>
-                    <span>1</span>
-                    <button
-                      onClick={() => removeItem(store.getState().productDetailsReducer.productDetails)}
-                      type="button"
-                    >
-                      <span>-</span>
-                    </button>
-                    <span className="color-grey">1 item(s) added</span>
-                    <div className="pt-3">
-                      <Link to="/shoppingCart">
-                        <button
-
-                          type="button" class="btn btn-primary">
-                          Buy Now
-                        </button>
-                      </Link>
-                    </div>
                   </div>
                 </div>
-
-                <ul class="nav nav-tabs mb-3" id="myTab0" role="tablist">
-                  <li class="nav-item" role="presentation">
-                    <button
-                      class="nav-link active"
-                      id="home-tab0"
-                      data-mdb-toggle="tab"
-                      data-mdb-target="#home0"
-                      type="button"
-                      role="tab"
-                      aria-controls="home"
-                      aria-selected="true"
-                    >
-                      Home
-                    </button>
-                  </li>
-                  <li class="nav-item" role="presentation">
-                    <button
-                      class="nav-link"
-                      id="profile-tab0"
-                      data-mdb-toggle="tab"
-                      data-mdb-target="#profile0"
-                      type="button"
-                      role="tab"
-                      aria-controls="profile"
-                      aria-selected="false"
-                    >
-                      Profile
-                    </button>
-                  </li>
-                </ul>
-
-                <div class="tab-content m-3" id="myTabContent0">
-                  <div
-                    class="tab-pane fade show active p-3"
-                    id="home0"
-                    role="tabpanel"
-                    aria-labelledby="home-tab0"
+                <hr className="border-gray-200" />
+                <div className="flex flex-space-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill=""
                   >
-                    {store.getState().productDetailsReducer.productDetails.productDescription}.{" "}
-
-                  </div>
-                  <div
-                    class="tab-pane fade p-3 mt-4"
-                    id="profile0"
-                    role="tabpanel"
-                    aria-labelledby="profile-tab0"
+                    <path
+                      fill-rule="evenodd"
+                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>{" "}
+                  <span>5</span>{" "}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
                   >
-                    <div>
-                      Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                      Eum quam maiores molestiae labore repellat. Provident,
-                      rerum molestias dolor quasi amet nemo exercitationem
-                      tempora nihil facere sit vel tenetur laudantium expedita
-                      deleniti, quibusdam nisi temporibus magni laborum corrupti
-                      enim soluta quia sint. Veniam ab corporis ut quos labore
-                      iste minus quod. <br />
-                      <span className="mt-3 pb-5">
-                        <strong>Customer Reviews (10)</strong>
-                      </span>
-                      <div class="card w-100 mb-3">
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            {" "}
-                            <strong>I like it</strong>
-                          </h5>
-                          <p class="card-text">
-                            <span className="color-grey">13/08/2021</span>
-                            <p>
-                              {" "}
-                              <i class="fas fa-user-circle"></i> Abubarkar
-                              Ibrahim
-                            </p>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="card w-100 mb-3">
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            {" "}
-                            <strong>I like it</strong>
-                          </h5>
-                          <p class="card-text">
-                            <span className="color-grey">13/08/2021</span>
-                            <p>
-                              {" "}
-                              <i class="fas fa-user-circle"></i> Abubarkar
-                              Ibrahim
-                            </p>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="card w-100 mb-3">
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            {" "}
-                            <strong>I like it</strong>
-                          </h5>
-                          <p class="card-text">
-                            <span className="color-grey">13/08/2021</span>
-                            <p>
-                              {" "}
-                              <i class="fas fa-user-circle"></i> Abubarkar
-                              Ibrahim
-                            </p>
-                          </p>
-                        </div>
-                      </div>
-                      <div class="card w-100 mb-3">
-                        <div class="card-body">
-                          <h5 class="card-title">
-                            {" "}
-                            <strong>I like it</strong>
-                          </h5>
-                          <p class="card-text">
-                            <span className="color-grey">13/08/2021</span>
-                            <p>
-                              {" "}
-                              <i class="fas fa-user-circle"></i> Abubarkar
-                              Ibrahim
-                            </p>
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>{" "}
+                  <span>5 item(s) added</span>
                 </div>
-
-
+                <hr className="border-gray-200" />
+                <button className="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+                    />
+                  </svg>
+                  <span className="text-white font-semibold">Add to Cart</span>
+                </button>
               </div>
-              <div className="container bg-white mt-4 selected-container p-3">
-                <div
-                  className="d-flex container-fluid"
-                  style={{ position: "relative" }}
+            </div>
+            <div className="description flex flex-col">
+              <h4 className="underline text-blue-500">Description</h4>
+              <div className="bg-gray-100 text-gray-400 font-medium rounded-xl p-3">
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
+                  unde, amet, officia repudiandae praesentium corrupti nostrum
+                  sequi non omnis nihil assumenda numquam illo, et dignissimos
+                  quidem ducimus aut! Doloremque, modi perferendis! Veritatis,
+                  magnam! Modi, culpa quis cumque cupiditate debitis itaque
+                  voluptatibus sint libero sequi eos aperiam reiciendis beatae
+                  repellat aliquam tempore incidunt aliquid dolore ut
+                  consequuntur ipsum nostrum iste neque quidem sapiente.
+                  Corrupti obcaecati ipsum sint rem, accusamus vitae? Hic quas
+                  aliquid dolores earum accusamus saepe laborum harum corporis
+                  distinctio quidem, deleniti cupiditate iure natus eum ipsa
+                  similique veniam minus ipsum nihil a. Similique pariatur
+                  nostrum velit molestias suscipit ut.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
+            <div className="flex space-x-3">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
+                <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
+              </svg>
+              <h5 className="uppercase">delivery & Return</h5>
+            </div>
+            <hr className="border border-gray-200" />
+            <div className="flex flex-col">
+              <h5>1-7 Days Products Available at Pickup location</h5>
+              <hr className="border border-gray-200" />
+              <h5>7 Days Return Policy</h5>
+              <hr className="border border-gray-200" />
+              <h5 className="uppercase flex space-x-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
                 >
-                  <h6 className="text-dark">
-                    {" "}
-                    <strong>Related Items</strong>
-                  </h6>
-                  <h6
-                    className="text-primary"
-                    style={{ position: "absolute", right: "2rem" }}
-                  >
-                    {" "}
-                    <strong>See all items</strong>
-                  </h6>
-                </div>
-                <hr />
-                <div className="row">
-                  <div class="col-sm-3">
-                    <div class="thumb-wrapper">
-                      <div class="img-box">
-                        <img
-                          src="https://www.drinks.ng/wp-content/uploads/2021/02/61ea6bb31c408e285458395c063656206ce212cf.jpg"
-                          class="img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div class="thumb-content">
-                        <h4>Macbook Air</h4>
-                        <p class="item-price">
-                          <strike>$899.00</strike> <span>$649.00</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-3">
-                    <div class="thumb-wrapper">
-                      <div class="img-box">
-                        <img
-                          src="https://www.drinks.ng/wp-content/uploads/2021/02/61ea6bb31c408e285458395c063656206ce212cf.jpg"
-                          class="img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div class="thumb-content">
-                        <h4>Macbook Air</h4>
-                        <p class="item-price">
-                          <strike>$899.00</strike> <span>$649.00</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-3">
-                    <div class="thumb-wrapper">
-                      <div class="img-box">
-                        <img
-                          src="https://www.drinks.ng/wp-content/uploads/2021/02/61ea6bb31c408e285458395c063656206ce212cf.jpg"
-                          class="img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div class="thumb-content">
-                        <h4>Macbook Air</h4>
-                        <p class="item-price">
-                          <strike>$899.00</strike> <span>$649.00</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="col-sm-3">
-                    <div class="thumb-wrapper">
-                      <div class="img-box">
-                        <img
-                          src="https://www.drinks.ng/wp-content/uploads/2021/02/61ea6bb31c408e285458395c063656206ce212cf.jpg"
-                          class="img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div class="thumb-content">
-                        <h4>Macbook Air</h4>
-                        <p class="item-price">
-                          <strike>$899.00</strike> <span>$649.00</span>
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+                  <path
+                    fill-rule="evenodd"
+                    d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                <span>Warranty</span>
+              </h5>
             </div>
           </div>
-
-          <div className="col-sm-3 pt-4">
-            <div className="bg-white p-3 selected-container">
-              <i class="fas fa-car-side"></i> <strong>DELIVERY & RETURN</strong>
-              <hr />
-              <span>
-                {" "}
-                1-7 Days estimated delivery time <br />
-                7 Days Return Policy <br />
-                <i class="fas fa-stamp"></i> <strong>WARRANTY</strong> <br />
-                <hr />1 Year Warranty
-              </span>
-            </div>
-          </div>
+        </div>
+        {/* Related Products */}
+        <div className="py-5">
+          <RelatedItems />
         </div>
       </div>
-      <Modal />
-
-      <footer class="bg-light text-center text-lg-start">
-        <div class="text-center p-3 bg-dark text-white row px-5">
-          <div className="col">Privacy & Cookies</div>
-          <div className="col">
-            © 2020 Copyright:{" "}
-            <a class="text-white" href="#">
-              Bizen Cloud
-            </a>
-          </div>
-          <div className="col">Terms & Condition</div>
-        </div>
-      </footer>
     </div>
   );
-
-}
-
-const mapStateToProps = (state) => {
-  return {
-    cartItems: selectCartItems(state), // from the selector we pass in the state
-    total: selectCartTotal(state),
-    itemCount: selectCartItemsCount(state),
-  };
 };
 
-const mapToDispatchToProps = (dispatch) => ({
-  clearItem: item => dispatch(ClearItemFromCart(item)),//setting the values
-  addItem: item => dispatch(AddItem(item)),
-  removeItem: item => dispatch(RemoveItem(item)),
-
-
-})
-//nu
-
-
-
-export default connect(mapStateToProps, mapToDispatchToProps)(App);
+export default Selected;
