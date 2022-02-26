@@ -7,6 +7,7 @@ import Header from "./header/Header";
 import SecondPromote from "./SidedPromote";
 import Footer from "./Footer";
 import Products from "./Products/Products";
+
 export function Dashboard({
   products,
   productCategories,
@@ -40,7 +41,7 @@ export function Dashboard({
 
       {/* Products */}
       <div>
-        <Products />
+        <Products products={products} />
       </div>
       {/*Footer  */}
       <div>
@@ -51,9 +52,10 @@ export function Dashboard({
 }
 
 function mapStateToProps(state) {
-  console.log(state);
+  console.log("Here is your state", state);
   return {
     products: state.dashboardReducer.products,
+    productCategories: state.dashboardReducer.categories,
     productDetails: state.productDetailsReducer.productDetails,
     itemCount: state.cartReducer.itemCount,
     cartRecords: state.cartReducer.cartRecords,

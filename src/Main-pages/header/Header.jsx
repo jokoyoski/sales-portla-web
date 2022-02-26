@@ -5,7 +5,8 @@ import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/ca
 import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 
-const Header = ({ itemCount }) => {
+const Header = ({ itemCount, categories }) => {
+  console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
   return (
@@ -53,28 +54,20 @@ const Header = ({ itemCount }) => {
         </div>
       </div>
       <hr />
+      {/* Categories Here */}
+
       <div className="categories-container">
         <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
-          <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
-            Food
-          </a>
-          <a>Textile</a>
-          <a>Vehicle</a>
-          <a>Drinks</a>
-          <a>Road</a>
-          <a>Gadget</a>
-          <a>Yoghurt</a>
-          <a>Laptop</a>
-          <a>Text</a>
-          <a>Clothing</a>
-          <a>Road</a>
-          <a>Gadget</a>
-          <a>Yoghurt</a>
-          <a>Laptop</a>
-          <a>Text</a>
-          <a>Clothing</a>
+          {/* {categories.map((item) => {
+            return (
+              <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
+                {item.categoryName}
+              </a>
+            );
+          })} */}
         </div>
       </div>
+      {/* Categories Ends Here */}
     </div>
   );
 };
@@ -82,6 +75,7 @@ const Header = ({ itemCount }) => {
 const mapStateToProps = (state) => {
   return {
     itemCount: selectCartItemsCount(state),
+    categories: state.dashboardReducer.productCategories,
   };
 };
 
