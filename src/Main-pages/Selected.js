@@ -1,8 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import Header from "./header/Header";
 import RelatedItems from "./Products/RelatedItems";
+import { store } from "../redux-store/store";
 
-const Selected = () => {
+const Selected = ({ Selected }) => {
+  if (Selected == undefined) {
+    history.push("/");
+  }
+  console.log("Here is the Selected Product", Selected);
   return (
     <div>
       <Header />
@@ -13,7 +19,7 @@ const Selected = () => {
             <div className="grid grid-cols-2 h-64">
               <div className="p-1 image_container">
                 <img
-                  src="https://sp.yimg.com/ib/th?id=OP.nUBMkxgGmTRq3Q474C474&o=5&pid=21.1"
+                  src={Selected.imageId}
                   alt="selected_img"
                   className="object-fit-contain h-64"
                 />
@@ -22,7 +28,7 @@ const Selected = () => {
                 <div className="flex space-x-3">
                   {" "}
                   <h2 className="uppercase font-medium text-gray-500">
-                    Iphone 13
+                    {Selected.productName}
                   </h2>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -39,12 +45,12 @@ const Selected = () => {
                     />
                   </svg>
                 </div>{" "}
-                <p>One of the world's smartest Device</p>
+                <p>{Selected.productDescription.substring(0, 10)}</p>
                 <hr className="border-gray-200" />
                 <div className="flex space-x-2 items-center">
-                  <h4 className="text-black">$1500</h4>{" "}
+                  <h4 className="text-black">&#8358;{Selected.basePrice}</h4>{" "}
                   <h5 className="line-through text-gray-300 font-medium">
-                    $2000
+                    {Selected.basePrice}
                   </h5>
                   <div className="rounded-full mb-3 bg-[#ef892338] px-3">
                     {" "}
@@ -107,21 +113,7 @@ const Selected = () => {
             <div className="description flex flex-col">
               <h4 className="underline text-blue-500">Description</h4>
               <div className="bg-gray-100 text-gray-400 font-medium rounded-xl p-3">
-                <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-                  unde, amet, officia repudiandae praesentium corrupti nostrum
-                  sequi non omnis nihil assumenda numquam illo, et dignissimos
-                  quidem ducimus aut! Doloremque, modi perferendis! Veritatis,
-                  magnam! Modi, culpa quis cumque cupiditate debitis itaque
-                  voluptatibus sint libero sequi eos aperiam reiciendis beatae
-                  repellat aliquam tempore incidunt aliquid dolore ut
-                  consequuntur ipsum nostrum iste neque quidem sapiente.
-                  Corrupti obcaecati ipsum sint rem, accusamus vitae? Hic quas
-                  aliquid dolores earum accusamus saepe laborum harum corporis
-                  distinctio quidem, deleniti cupiditate iure natus eum ipsa
-                  similique veniam minus ipsum nihil a. Similique pariatur
-                  nostrum velit molestias suscipit ut.
-                </p>
+                <p>{Selected.productDescription}</p>
               </div>
             </div>
           </div>
@@ -171,4 +163,10 @@ const Selected = () => {
   );
 };
 
-export default Selected;
+const mapStateToProps = (state) => {
+  return {
+    Selected: state.productDetailsReducer.productDetails,
+  };
+};
+
+export default connect(mapStateToProps)(Selected);

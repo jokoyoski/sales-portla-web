@@ -7,6 +7,7 @@ import Header from "./header/Header";
 import SecondPromote from "./SidedPromote";
 import Footer from "./Footer";
 import Products from "./Products/Products";
+import { GET_SELECTED_PRODUCT } from "../redux-store/constants/constants";
 
 export function Dashboard({
   products,
@@ -64,10 +65,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => ({
   LoadProducts(payload) {
     dispatch({ type: "LOAD_PRODUCT", payload });
-  },
-  SetProduct(payload) {
-    dispatch({ type: "SET_PRODUCT_DETAILS", payload });
-  },
+  }, 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

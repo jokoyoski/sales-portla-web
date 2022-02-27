@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Products = ({ products }) => {
+const Products = ({ products, SetProduct }) => {
   return (
     <div className="px-28 space-y-7 mb-7">
       {" "}
@@ -50,11 +51,14 @@ const Products = ({ products }) => {
                       </div>
                     </div>
                     <div className="w-full py-2 flex justify-center">
-                      <img
-                        src={product.imageId}
-                        alt="product_img"
-                        className="w-56 h-56 object-contain"
-                      />
+                      <Link to="/selected">
+                        <img
+                          src={product.imageId}
+                          alt="product_img"
+                          className="w-56 h-56 object-contain"
+                          onClick={() => SetProduct(product)}
+                        />
+                      </Link>
                     </div>
                     <div className="product_info flex flex-col">
                       <div>
@@ -253,10 +257,16 @@ const Products = ({ products }) => {
   );
 };
 
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     products: state.dashboardReducer.products,
   };
 };
 
-export default connect(mapStateToProps)(Products);
+const mapDispatchToProps = (dispatch) => ({
+  SetProduct(payload) {
+    dispatch({ type: "SET_PRODUCT_DETAILS", payload });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products);
