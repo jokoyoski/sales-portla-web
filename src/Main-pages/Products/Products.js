@@ -62,7 +62,7 @@ const Products = ({ products }) => {
                       </span>{" "}
                       <br />
                       <small className="text-gray-300 text-sm">
-                        {product.productDescription}
+                        {product.productDescription.substring(0,10) + '...'}
                       </small>
                     </div>
                     <div className="grid py-2 grid-cols-2">

@@ -58,13 +58,13 @@ const Header = ({ itemCount, categories }) => {
 
       <div className="categories-container">
         <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
-          {/* {categories.map((item) => {
+          {categories.map((item) => {
             return (
               <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
-                {item.categoryName}
+                {item.name}
               </a>
             );
-          })} */}
+          })}
         </div>
       </div>
       {/* Categories Ends Here */}
