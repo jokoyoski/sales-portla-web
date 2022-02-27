@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import TopSlider from "../TopSlider";
 
 const Products = ({ products }) => {
   return (
@@ -13,12 +14,13 @@ const Products = ({ products }) => {
           </div>
         </div>
         {/* Products Listings */}
-        <div className="bg-white p-5 rounded-b-2xl w-full">
+        <div className="bg-white  p-5 rounded-b-2xl w-full">
           {" "}
           <div className="flex space-x-4">
             {" "}
             {/* Edit the plrodiuct Here */}
-            {products.map((product) => {
+            <TopSlider />
+            {/* {products.map((product) => {
               return (
                 <div className="shadow-md p-3 h-[24rem] w-[20rem] flex flex-col">
                   {" "}
@@ -62,7 +64,7 @@ const Products = ({ products }) => {
                       </span>{" "}
                       <br />
                       <small className="text-gray-300 text-sm">
-                        {product.productDescription.substring(0,10) + '...'}
+                        {product.productDescription.substring(0, 10) + "..."}
                       </small>
                     </div>
                     <div className="grid py-2 grid-cols-2">
@@ -81,7 +83,7 @@ const Products = ({ products }) => {
                   </div>
                 </div>
               );
-            })}
+            })} */}
             {/* First Product Ends Here */}
             <div className="shadow-md h-[24rem] w-[20rem] p-3 flex flex-col">
               {" "}
