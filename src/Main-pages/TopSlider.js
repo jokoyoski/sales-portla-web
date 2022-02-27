@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import "./Tryslide.scss";
 
-const TopSlider = ({ products }) => {
+const TopSlider = ({ products, LoadProducts }) => {
   console.log("here are your products 🏆🏆🏆🏆🏆", products);
   const swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
@@ -39,6 +39,11 @@ const TopSlider = ({ products }) => {
       },
     },
   });
+
+  //   useEffect(() => {
+  //     LoadProducts();
+  //   }, []);
+
   return (
     <div>
       <section className="product-slider">
@@ -51,59 +56,63 @@ const TopSlider = ({ products }) => {
           {/* Swiper */}
           <div className="swiper mySwiper">
             <div className="swiper-wrapper">
-              {products.map((product) => {
-                return (
-                  <>
-                    <div
-                      className="swiper-slide"
-                      onClick={() => setProductDetails(product)}
-                    >
-                      {/*box---------------------*/}
-                      <div className="product-box">
-                        <div className="product-img-container">
-                          {/*img=============*/}
-                          <div className="product-img">
-                            <Link to="/selected">
-                              <img
-                                className="product-img-front"
-                                src={product.imageId}
-                                alt
-                              />
-                            </Link>
-                          </div>
-                        </div>
-                        <div className="product-box-text">
-                          {/*category*/}
-                          <div className="product-category">
-                            <span>{product.categoryName}</span>
-                          </div>
-                          {/*tile-*/}
-                          <h4>{product.productName}</h4>
-                          {/*Price-*/}
-                          <div className="price-buy">
-                            <span className="p-price">{product.salePrice}</span>
-                            <a href="" className="p-buy-btn">
-                              Buy Now
-                            </a>
-                          </div>
-                        </div>
-                      </div>
+              <div className="swiper-slide">
+                {/*box---------------------*/}
+                {/* Product-1 */}
+                <div className="product-box">
+                  <div className="product-img-container">
+                    {/*img=============*/}
+                    <div className="product-img">
+                      <Link to="/selected">
+                        <img
+                          className="product-img-front"
+                          src="https://tse1.mm.bing.net/th?id=OIP.nA4D3w0u6MboOadvJ5rYzQHaJ4&pid=Api&P=0&w=124&h=165"
+                          alt="product_img"
+                        />
+                      </Link>
                     </div>
-                  </>
-                );
-              })}
+                  </div>
+                  <div className="product-box-text">
+                    {/*category*/}
+                    <div className="product-category">
+                      <span>Fashion</span>
+                    </div>
+                    {/*tile-*/}
+                    <h4>New Clothes</h4>
+                    {/*Price-*/}
+                    <div className="price-buy">
+                      <span className="p-price">$10,000</span>
+                      <a href="" className="p-buy-btn">
+                        Buy Now
+                      </a>
+                    </div>
+                  </div>
+                </div>
+                {/* Product-2 */}
+             
+              </div>
             </div>
           </div>
         </div>
+
+        
       </section>
     </div>
   );
 };
 
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     products: state.dashboardReducer.products,
   };
 };
+const mapDispatchToProps = (dispatch) => ({
+  LoadProducts(payload) {
+    dispatch({ type: "LOAD_PRODUCT", payload });
+  },
+  SetProduct(payload) {
+    dispatch({ type: "SET_PRODUCT_DETAILS", payload });
+  },
+});
 
-export default connect(mapStateToProps)(TopSlider);
+export default connect(mapStateToProps, mapDispatchToProps)(TopSlider);

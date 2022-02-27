@@ -22,6 +22,7 @@ import CategorySelected from "./Main-pages/category-selected/CategorySelected";
 import ResetPassword from "./components/Password-Reset/ResetPassword";
 import ResetCode from "./components/Password-Reset/RecievedCode";
 import MainCart from "./Main-pages/MainCart";
+import TopSlider from "./Main-pages/TopSlider";
 
 class App extends Component {
   render() {
@@ -44,6 +45,7 @@ class App extends Component {
             <Route path="/details" exact component={OrderDetails} />
             <Route path="/select" exact component={Orders} />
             <Route path="/main/cart" exact component={MainCart} />
+            <Route path="/main/slider" exact component={TopSlider} />
 
             <Route
               path="/category-selected"
