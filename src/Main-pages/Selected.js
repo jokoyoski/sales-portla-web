@@ -3,12 +3,21 @@ import { connect } from "react-redux";
 import Header from "./header/Header";
 import RelatedItems from "./Products/RelatedItems";
 import { store } from "../redux-store/store";
+import { Link } from "react-router-dom";
+import {
+  selectCartItems,
+  selectCartTotal,
+} from "../redux-store/reducers/cart-reducer/cart.selector";
+import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
+import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
 
-const Selected = ({ Selected }) => {
+const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartItems, total }) => {
+  var item = store.getState().productDetailsReducer.productDetails
+  console.log(store.getState().productDetailsReducer.productDetails)
   if (Selected == undefined) {
     history.push("/");
   }
-  console.log("Here is the Selected Product", Selected);
+ 
   return (
     <div>
       <Header />
@@ -19,7 +28,7 @@ const Selected = ({ Selected }) => {
             <div className="grid grid-cols-2 h-64">
               <div className="p-1 image_container">
                 <img
-                  src={Selected.imageId}
+                  src={store.getState().productDetailsReducer.productDetails.imageId}
                   alt="selected_img"
                   className="object-fit-contain h-64"
                 />
@@ -28,7 +37,7 @@ const Selected = ({ Selected }) => {
                 <div className="flex space-x-3">
                   {" "}
                   <h2 className="uppercase font-medium text-gray-500">
-                    {Selected.productName}
+                    {store.getState().productDetailsReducer.productDetails.productName}
                   </h2>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +54,7 @@ const Selected = ({ Selected }) => {
                     />
                   </svg>
                 </div>{" "}
-                <p>{Selected.productDescription.substring(0, 10)}</p>
+                <p>{store.getState().productDetailsReducer.productDetails.productDescription}</p>
                 <hr className="border-gray-200" />
                 <div className="flex space-x-2 items-center">
                   <h4 className="text-black">&#8358;{Selected.basePrice}</h4>{" "}
@@ -61,34 +70,30 @@ const Selected = ({ Selected }) => {
                 </div>
                 <hr className="border-gray-200" />
                 <div className="flex flex-space-1">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill=""
-                  >
-                    <path
-                      fill-rule="evenodd"
-                      d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z"
-                      clip-rule="evenodd"
-                    />
-                  </svg>{" "}
-                  <span>5</span>{" "}
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
-                    />
-                  </svg>{" "}
-                  <span>5 item(s) added</span>
+                <button
+                      onClick={() => addItem(store.getState().productDetailsReducer.productDetails)}
+                      type="button"
+
+                    >
+                      <span>+</span>
+                    </button>
+                    <span>1</span>
+                    <button
+                      onClick={() => removeItem(store.getState().productDetailsReducer.productDetails)}
+                      type="button"
+                    >
+                      <span>-</span>
+                    </button>
+                    <span className="color-grey">1 item(s) added</span>
+                    <div className="pt-3">
+                      <Link to="/shoppingCart">
+                        <button
+
+                          type="button" class="btn btn-primary">
+                          Buy Now
+                        </button>
+                      </Link>
+                    </div>
                 </div>
                 <hr className="border-gray-200" />
                 <button className="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500">
@@ -113,7 +118,7 @@ const Selected = ({ Selected }) => {
             <div className="description flex flex-col">
               <h4 className="underline text-blue-500">Description</h4>
               <div className="bg-gray-100 text-gray-400 font-medium rounded-xl p-3">
-                <p>{Selected.productDescription}</p>
+                <p>{store.getState().productDetailsReducer.productDetails.productDescription}.{" "}</p>
               </div>
             </div>
           </div>
@@ -163,10 +168,20 @@ const Selected = ({ Selected }) => {
   );
 };
 
+const mapToDispatchToProps = (dispatch) => ({
+  clearItem: item => dispatch(ClearItemFromCart(item)),//setting the values
+  addItem: item => dispatch(AddItem(item)),
+  removeItem: item => dispatch(RemoveItem(item)),
+
+
+})
 const mapStateToProps = (state) => {
   return {
     Selected: state.productDetailsReducer.productDetails,
+    cartItems: selectCartItems(state), // from the selector we pass in the state
+    total: selectCartTotal(state),
+    itemCount: selectCartItemsCount(state),
   };
 };
 
-export default connect(mapStateToProps)(Selected);
+export default connect(mapStateToProps,mapToDispatchToProps)(Selected);
