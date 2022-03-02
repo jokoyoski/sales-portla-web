@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import { connect } from "react-redux";
 import Header from "./header/Header";
 import RelatedItems from "./Products/RelatedItems";
@@ -18,6 +18,17 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
     history.push("/");
   }
  
+import {LOAD_RELATED_ITEMS} from '../redux-store/constants/constants'
+const Selected = ({ Selected, LoadRelatedItems, items }) => {
+  console.log('This are the main related items', items)
+  if (Selected == undefined) {
+    history.push("/");
+  }
+  console.log("Here is the Selected Product", Selected);
+
+   useEffect(() => {
+    LoadRelatedItems(Selected.categoryId);
+  }, []);
   return (
     <div>
       <Header />
@@ -161,7 +172,7 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
         </div>
         {/* Related Products */}
         <div className="py-5">
-          <RelatedItems />
+          <RelatedItems items={items}/>
         </div>
       </div>
     </div>
@@ -184,4 +195,12 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps,mapToDispatchToProps)(Selected);
+
+const mapDispatchToProps = (dispatch) => ({
+  LoadRelatedItems(payload){
+    dispatch({type:LOAD_RELATED_ITEMS, payload})
+  }
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Selected);
+}
