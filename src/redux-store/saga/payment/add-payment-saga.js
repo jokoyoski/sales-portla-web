@@ -18,7 +18,7 @@ function* workerSaga(action) {
     });
     yield put({ type: "CLEAR_CART", payload: payload });
     alert(payload.status)
-    //  history.push("/")
+    history.push("/")
   } catch (e) {
     console.log(e);
     console.log("product-saga", e);
