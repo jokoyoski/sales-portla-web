@@ -24,9 +24,7 @@ export default function PickUpStation({ statesV }) {
     const [cities, setCity] = useState([])
     const [pickUpStations, setPickUpStations] = useState([])
 
-    var pickUpStation = (e) => {
-        store.dispatch({ type: "PAY_PICK_UP_STATION", payload: e })
-    }
+
     const validate = (fieldValues = values) => {
         let temp = { ...errors }
         if ('fullName' in fieldValues)
@@ -49,6 +47,7 @@ export default function PickUpStation({ statesV }) {
             return Object.values(temp).every(x => x === "")
     }
 
+    var updated_location = [];
     const handleSelectChange = e => {
         const { name, value } = e.target
         setValues({
@@ -57,17 +56,17 @@ export default function PickUpStation({ statesV }) {
         })
         validate({ [name]: value })
         if (name == 'stateId') {
-            request('get', {}, `api/Admin/get-cities-dropdown/${value}`).then(data => {
-                setCity(data)
+            request('get', {}, `api/Admin/get-Locations/${companyId}`).then(data => {
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].stateId == value) {
+                        updated_location.push(data[i]);
+                    }
+                }
+                setPickUpStations(updated_location)
             })
 
         }
-        if (name == 'cityId') {
-            request('get', {}, `get-pickup-stations?companyId=${companyId}&cityId=${value}`).then(data => {
-                console.log(data)
-                setPickUpStations(data)
-            })
-        }
+
     }
 
     const {
@@ -83,7 +82,7 @@ export default function PickUpStation({ statesV }) {
         e.preventDefault()
         if (validate()) {
             var payload = { ...values, firstName: values.fullName, lastName: values.fullName }
-            store.dispatch({ type: "ADD_ADDRESS", payload });
+            store.dispatch({ type: "GET_PICK_UP_STATION", payload });
         }
     }
 
@@ -102,14 +101,6 @@ export default function PickUpStation({ statesV }) {
                     onChange={handleSelectChange}
                     options={states}
                     error={errors.stateId}
-                />
-                <Controls.Select
-                    label="City*"
-                    name="cityId"
-                    value={values.cityId || ''}
-                    onChange={handleSelectChange}
-                    options={cities}
-                    error={errors.cityId}
                 />
             </Grid>
             <div>
@@ -130,12 +121,12 @@ export default function PickUpStation({ statesV }) {
                                 <input
                                     class="form-check-input"
                                     type="radio"
-                                    value={add}
-                                    onChange={pickUpStation(add)}
+                                    value={add.id}
+                                    onChange={() => localStorage.setItem("pick_up", add.id)}
                                     name="flexRadioDefault77"
                                     id="flexRadioDefault1"
                                 />
-                                <label class="form-check-label" for="flexRadioDefault1"> <strong>{add.pickUpStationAddress}</strong><br />
+                                <label class="form-check-label" for="flexRadioDefault1"> <strong>{add.locationName}</strong><br />
 
                                 </label>
                             </div>

@@ -10,7 +10,7 @@ import {
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
 
-const MainCart = ({ cartItems,total,clearItem }) => {
+const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
   return (
     <div>
       <Header />{" "}
@@ -69,7 +69,7 @@ const MainCart = ({ cartItems,total,clearItem }) => {
                                 clip-rule="evenodd"
                               />
                             </svg>
-                            <span style={{cursor:'pointer'}} onClick={() =>
+                            <span style={{ cursor: 'pointer' }} onClick={() =>
 
                               clearItem(product)
                             } className="font-semibold">Remove Item</span>
@@ -77,7 +77,7 @@ const MainCart = ({ cartItems,total,clearItem }) => {
                         </div>
                       </div>
                       <div className="space-x-5 flex ">
-                        
+
                         <div className="price">
                           {" "}
                           <div>
@@ -98,7 +98,7 @@ const MainCart = ({ cartItems,total,clearItem }) => {
                 );
               })}
             </tbody>
-              <h5><strong>N {total}</strong></h5>
+            <h5><strong>N {total}</strong></h5>
           </div>
           <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
             <div className="flex space-x-3">
@@ -134,6 +134,18 @@ const MainCart = ({ cartItems,total,clearItem }) => {
                 </svg>
                 <span>Warranty</span>
               </h5>
+              <div>
+
+                {
+                  cus_name === 'Anonymous' ? (<a href="/user/login" class="button">Proceed To Check Out</a>) : (<a href="/order" class="button">Proceed To Check Out</a>)
+                }
+
+
+              </div>
+              <div style={{ marginTop: '30px' }}>
+                <a href="#" class="button">Continue Shopping</a>
+              </div>
+
             </div>
           </div>
           {/* Related Items */}

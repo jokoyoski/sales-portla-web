@@ -12,7 +12,7 @@ function* workerSaga(action) {
   try {
     yield put({ type: "DISPLAY_LOADER", payload: payload });
     var payload = {};
-    var formatUrl = "online-order-payment";
+    var formatUrl = "api/SalesTransactionV2/order-payment-online";
     yield request("post", action.payload, formatUrl).then((response) => {
       payload = response;
     });

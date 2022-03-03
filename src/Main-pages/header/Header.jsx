@@ -5,7 +5,7 @@ import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/ca
 import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 
-const Header = ({ itemCount, categories }) => {
+const Header = ({ itemCount, categories,cus_name }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
@@ -14,7 +14,7 @@ const Header = ({ itemCount, categories }) => {
       <div className="grid grid-cols-3">
         <div className="col-span-2 flex space-x-4 items-center">
           {" "}
-          <img src="./Images/logo2.png" alt="" />
+          <img  src="./Images/logo2.png" alt="" />
           <form className="d-flex input-group w-auto">
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
@@ -31,7 +31,7 @@ const Header = ({ itemCount, categories }) => {
           {" "}
           <div>
             <div className="border-r-2 border-gray-300 w-2/5">
-              <Link to="../shoppingCart">
+              <Link to="/main/cart">
                 <i class="fas fa-shopping-cart fa-lg"></i>
                 <span class="badge rounded-pill badge-notification bg-danger">
                   {itemCount}
@@ -47,7 +47,7 @@ const Header = ({ itemCount, categories }) => {
                 alt="Profile_img"
               />
               <a className="border-b-2 font-semibold border-blue-500">
-                Hi David
+                Hi {cus_name}
               </a>
             </div>
           </div>
@@ -75,6 +75,7 @@ const Header = ({ itemCount, categories }) => {
 const mapStateToProps = (state) => {
   return {
     itemCount: selectCartItemsCount(state),
+    cus_name: state.userReducer.cus_name,
     categories: state.dashboardReducer.productCategories,
   };
 };

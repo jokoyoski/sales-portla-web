@@ -15,7 +15,7 @@ const initialState = {
     companyId: null,
     access: null,
     payPickUpStation: {},
-    cus_name: null,
+    cus_name: "Anonymous",
     cus_id: null,
     cus_number: null,
     cacNumber: null

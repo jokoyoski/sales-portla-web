@@ -4,6 +4,7 @@ import Controls from "../../controls/Controls";
 import { useForm, Form } from '../../controls/useForm';
 import { request } from '../../api/Service'
 import { store } from '../../redux-store/store';
+import { companyId } from '../../components/utils/constants';
 
 
 const initialFValues = {
@@ -75,7 +76,7 @@ export default function AddLocationForm(props) {
     const handleSubmit = e => {
         e.preventDefault()
         if (validate()) {
-            var payload={...values, firstName: values.fullName, lastName: values.fullName}
+            var payload={...values, firstName: values.fullName, lastName: values.fullName,companyId:companyId}
             store.dispatch({ type: "ADD_ADDRESS", payload });
         }
     }

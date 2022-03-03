@@ -9,13 +9,19 @@ export default function* watcherGetPickUpStationSaga() {
 
 function* workerSaga(action) {
     try {
+        var updated_location = [];
         yield put({ type: "DISPLAY_LOADER", payload: payload });
         var payload = {};
-        var formatUrl = `get-pickup-stations?companyId=${26}&cityId=${action.payload.cityId}`;
+        var formatUrl = `api/Admin/get-Locations/${companyId}`;
         yield request("get", payload, formatUrl).then((response) => {
             payload = response;
         });
-        yield put({ type: "PICK_UP_STATION", payload: payload });
+        for (var i = 0; i < payload.length; i++) {
+            if (payload[i].stateId == action.payload.stateId) {
+                updated_location.push(payload[i]);
+            }
+        }
+        yield put({ type: "PICK_UP_STATION", payload: updated_location });
         yield put({ type: "DISPLAY_LOADER", payload: payload });
     } catch (e) {
         console.log(e);
