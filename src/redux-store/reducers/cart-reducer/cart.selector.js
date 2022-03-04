@@ -32,7 +32,7 @@ export const selectCartTotal=createSelector(
     [selectCartItems],  //refencing this means we are trying to get the cartItems from selectCartItems
      cartItems=>cartItems.reduce(
 
-  (accumulatedQuantity,cartItem)=>accumulatedQuantity+cartItem.quantityToAdd * cartItem.salesPrice,0
+  (accumulatedQuantity,cartItem)=>accumulatedQuantity+cartItem.quantityToAdd * cartItem.basePrice,0
 
      )
   );

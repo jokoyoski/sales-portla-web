@@ -19,10 +19,6 @@ function ProductDetailsReducer(state = initialState, action) {
     }
 
 
-
-   
-
-
     if (action.type === "ALL_ITEM_PRODUCTS") {
         var inventoryDetails = {
             ...state,
