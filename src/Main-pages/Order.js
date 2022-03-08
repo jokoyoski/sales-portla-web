@@ -49,6 +49,7 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
   var _value = false;
   useEffect(() => {
     LoadAddress();
+    localStorage.setItem("pick_up", 0)
     return () => { };
   }, []);
 
@@ -62,19 +63,29 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
       cardTypeId: 0,
       cashRecieved: total, //get cash
       customerId: localStorage.getItem("userId2"),
-      userId:localStorage.getItem("userId2"),
+      userId: localStorage.getItem("userId2"),
       discount: 0,
       discountcal: 0,
-      sendBy:localStorage.getItem("userId2"),
-      companyId:companyId,
-      cacNumber:cacNumber,
+      sendBy: localStorage.getItem("userId2"),
+      companyId: companyId,
+      cacNumber: cacNumber,
       referenceNumber: 5555555,
-      isOnlineTransaction:true,
+      isOnlineTransaction: true,
       salesOrders: cartItems,
 
     }
-    
-   AddPayment(payload)
+    if (!pick_up && payload.pickupStationId > 0) {
+      payload.pickupStationId = 0;
+    }
+    if (pick_up && payload.pickupStationId == 0) {
+      alert("Please select a pick up station")
+    } else {
+      AddPayment(payload)
+    }
+
+
+
+
   }
 
   //SelectedAddress(address[0])
@@ -88,7 +99,7 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
 
   return (
     <div>
-     <Header />{" "}
+      <Header />{" "}
       <div className="container">
         <div className="row">
           <div className="col-sm-9">
