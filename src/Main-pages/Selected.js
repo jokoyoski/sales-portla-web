@@ -12,24 +12,17 @@ import {
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
 
-const Selected = ({ Selected, LoadRelatedItems, items }) => {
-  console.log('This are the main related items', items)
-  if (Selected == undefined) {
-    history.push("/");
-  }
-  console.log("Here is the Selected Product", Selected);
 
-   useEffect(() => {
-    LoadRelatedItems(Selected.categoryId);
-  }, []);
-
-
-const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartItems, total }) => {
+const Selected = ({cartRecords, itemCount, addItem, removeItem, cartItems, total,Selected, LoadRelatedItems, items  }) => {
   var item = store.getState().productDetailsReducer.productDetails
   console.log(store.getState().productDetailsReducer.productDetails)
   if (Selected == undefined) {
     history.push("/");
   }
+
+     useEffect(() => {
+    LoadRelatedItems(Selected.categoryId);
+  }, []);
  
   return (
     <div>
@@ -190,7 +183,10 @@ const mapToDispatchToProps = (dispatch) => ({
 const mapStateToProps = (state) => {
   return {
     Selected: state.productDetailsReducer.productDetails,
-    items: state.dashboardReducer.relatedItems
+    items: state.dashboardReducer.relatedItems,
+    cartItems: selectCartItems(state), // from the selector we pass in the state
+    total: selectCartTotal(state),
+    itemCount: selectCartItemsCount(state),
   };
 };
 
@@ -201,9 +197,3 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(Selected);
-    cartItems: selectCartItems(state), // from the selector we pass in the state
-    total: selectCartTotal(state),
-    itemCount: selectCartItemsCount(state),
-  };
-};
-
