@@ -2,8 +2,8 @@ import { takeEvery, put } from "redux-saga/effects";
 import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
+import { companyId } from "../../../components/utils/constants";
 
-var companyId=26;
 export default function* watcherSaveSalesPortalOrderSaga() {
     yield takeEvery("SAVE_SALES_PORTAL_ORDERS", workerSaga);
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import "./Prodcuts.scss";
 
 const Products = ({ products, SetProduct }) => {
   return (
@@ -16,13 +17,13 @@ const Products = ({ products, SetProduct }) => {
         {/* Products Listings */}
         <div className="bg-white p-5 rounded-b-2xl w-full ">
           {" "}
-          <div className="flex overflow-auto gap-4">
+          <div className="flex overflow-auto product-container gap-4">
             {" "}
             {/* Edit the plrodiuct Here */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem] w-1/4">
-                  <div className="shadow-md p-3 w-full">
+                <div className="h-[24rem]">
+                  <div className="shadow-md p-3 w-[15rem]">
                     {" "}
                     <div className="grid grid-cols-2">
                       <span>
@@ -55,7 +56,7 @@ const Products = ({ products, SetProduct }) => {
                         <img
                           src={product.imageId}
                           alt="product_img"
-                          className="w-56 h-56 object-contain"
+                          className="w-[12rem] h-[12rem] object-contain"
                           onClick={() => SetProduct(product)}
                         />
                       </Link>
@@ -67,18 +68,18 @@ const Products = ({ products, SetProduct }) => {
                         </span>{" "}
                         <br />
                         <small className="text-gray-300 text-sm">
-                          {product.productDescription.substring(0, 10) + "..."}
+                          {product.productDescription.substring(0, 20) + "..."}
                         </small>
                       </div>
                       <div className="grid py-2 grid-cols-2">
                         <div>
                           {" "}
                           <h3 className="product_price text-gray-700">
-                            {product.basePrice}
+                            &#8358;{product.basePrice}
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-3 py-1 text-white font-semibold hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
                             Buy Now
                           </button>
                         </div>
@@ -102,12 +103,12 @@ const Products = ({ products, SetProduct }) => {
         </div>
         <div className="bg-white p-5 rounded-b-2xl w-full">
           {" "}
-          <div className="flex overflow-auto space-x-4">
+          <div className="flex overflow-auto product-container space-x-4">
             {/* Image Here *4 */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem] w-1/4">
-                  <div className="shadow-md p-3 w-full">
+                <div className="h-[24rem]">
+                  <div className="shadow-md p-3 w-[15rem]">
                     {" "}
                     <div className="grid grid-cols-2">
                       <span>
@@ -139,7 +140,7 @@ const Products = ({ products, SetProduct }) => {
                       <img
                         src={product.imageId}
                         alt="product_img"
-                        className="w-56 h-56 object-contain"
+                        className="w-[12rem] h-[12rem] object-contain"
                       />
                     </div>
                     <div className="product_info flex flex-col">
@@ -149,18 +150,18 @@ const Products = ({ products, SetProduct }) => {
                         </span>{" "}
                         <br />
                         <small className="text-gray-300 text-sm">
-                          {product.productDescription.substring(0, 10) + "..."}
+                          {product.productDescription.substring(0, 20) + "..."}
                         </small>
                       </div>
                       <div className="grid py-2 grid-cols-2">
                         <div>
                           {" "}
                           <h3 className="product_price text-gray-700">
-                            {product.basePrice}
+                            &#8358;{product.basePrice}
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-3 py-1 text-white font-semibold hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
                             Buy Now
                           </button>
                         </div>
@@ -182,12 +183,12 @@ const Products = ({ products, SetProduct }) => {
         </div>
         <div className="bg-white p-5 rounded-b-2xl w-full">
           {" "}
-          <div className="flex overflow-auto space-x-4">
+          <div className="flex overflow-auto product-container space-x-4">
             {/* Image Here *4 */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem] w-1/4">
-                  <div className="shadow-md p-3 w-full">
+                <div className="h-[24rem]">
+                  <div className="shadow-md p-3 w-[15rem]">
                     {" "}
                     <div className="grid grid-cols-2">
                       <span>
@@ -219,7 +220,7 @@ const Products = ({ products, SetProduct }) => {
                       <img
                         src={product.imageId}
                         alt="product_img"
-                        className="w-56 h-56 object-contain"
+                        className="w-[12rem] h-[12rem] object-contain"
                       />
                     </div>
                     <div className="product_info flex flex-col">
@@ -229,7 +230,7 @@ const Products = ({ products, SetProduct }) => {
                         </span>{" "}
                         <br />
                         <small className="text-gray-300 text-sm">
-                          {product.productDescription.substring(0, 10) + "..."}
+                          {product.productDescription.substring(0, 20) + "..."}
                         </small>
                       </div>
                       <div className="grid py-2 grid-cols-2">
@@ -240,7 +241,7 @@ const Products = ({ products, SetProduct }) => {
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-3 py-1 text-white font-semibold hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
                             Buy Now
                           </button>
                         </div>

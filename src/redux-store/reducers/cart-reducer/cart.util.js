@@ -2,7 +2,6 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
     const existingCartItem = cartItems.find(cartItem => cartItem.sku === cartItemToAdd.sku);
 
     if (existingCartItem) {
-        console.log(77777)
         return cartItems.map(cartItem => cartItem.sku === cartItemToAdd.sku ? { ...cartItem, quantityToAdd: cartItem.quantityToAdd + 1 } : cartItem)
     }
     return [...cartItems, { ...cartItemToAdd, quantityToAdd: 1 }]

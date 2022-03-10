@@ -1,4 +1,16 @@
-@import './styles/dashboard.scss';
-@import './styles/selected.scss';
-@import './styles/profile.scss';
+@import "./styles/dashboard.scss";
+@import "./styles/selected.scss";
+@import "./styles/profile.scss";
+
+.button {
+  background-color: #4d69ff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
 

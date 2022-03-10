@@ -12,13 +12,13 @@ function* workerSaga(action) {
   try {
     yield put({ type: "DISPLAY_LOADER", payload: payload });
     var payload = {};
-    var formatUrl = "online-order-payment";
+    var formatUrl = "api/SalesTransactionV2/order-payment-online";
     yield request("post", action.payload, formatUrl).then((response) => {
       payload = response;
     });
     yield put({ type: "CLEAR_CART", payload: payload });
     alert(payload.status)
-    //  history.push("/")
+    history.push("/")
   } catch (e) {
     console.log(e);
     console.log("product-saga", e);

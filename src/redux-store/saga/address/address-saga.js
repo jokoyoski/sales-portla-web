@@ -2,6 +2,7 @@ import { takeEvery, put } from "redux-saga/effects";
 import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
+import { companyId } from "../../../components/utils/constants";
 
 export default function* watcherGetAddressSaga() {
     yield takeEvery("GET_ADDRESS", workerSaga);
@@ -11,7 +12,7 @@ function* workerSaga(action) {
     try {
         yield put({ type: "DISPLAY_LOADER", payload: payload });
         var payload = {};
-        var formatUrl = `get-delivery-addresses`;
+        var formatUrl = `get-user-delivery-addresses?companyId=${companyId}`;
         yield request("get", payload, formatUrl).then((response) => {
             payload = response;
         });

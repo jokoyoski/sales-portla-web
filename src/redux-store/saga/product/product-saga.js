@@ -24,28 +24,7 @@ function* workerSaga(action) {
     });
     yield put({ type: PRODUCT_LIST, payload: payload });
 
-    // Get Product Categories
-    formatUrl = `/api/Admin/get-product-category/${companyId}`;
-    yield request("get", action.payload, formatUrl).then((response) => {
-      payload = response;
-      console.log("Here are your products categories", response);
-    });
-    yield put({ type: PRODUCTS_CATEGORIES_LIST, payload: payload });
-
-    yield put({ type: "ALL_ITEM_PRODUCTS", payload: payload });
-    formatUrl = `/get-product-category?companyId=${companyId}`;
-    yield request("get", payload, formatUrl).then((response) => {
-      payload = response;
-    });
-
-    yield put({ type: "PRODUCT_CATEGORY_LIST", payload: payload });
-
-    formatUrl = `/get-all-products-by-companyId-and-categoryId?companyId=${companyId}&{}`;
-    yield request("get", payload, formatUrl).then((response) => {
-      payload = response;
-    });
-    yield put({ type: "PRODUCT_CATEGORY_LIST", payload: payload });
-
+    
     yield put({ type: "DISPLAY_LOADER", payload: payload });
   } catch (e) {
     console.log(e);

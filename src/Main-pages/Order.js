@@ -17,13 +17,14 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import CarouselPage from "./Cart";
+import Header from "./header/Header";
 import Category from "./Category";
 import DropdownPage from "../components/dropdown";
 import ModalPage from "../components/Modal"
 import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
 import AddressModal from "../components/AddressModal";
-import { cacNumber } from "../components/utils/constants";
+import { cacNumber, companyId } from "../components/utils/constants";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
@@ -48,12 +49,13 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
   var _value = false;
   useEffect(() => {
     LoadAddress();
+    localStorage.setItem("pick_up", 0)
     return () => { };
   }, []);
 
   var confirm = () => {
     var payload = {
-      pickupStationId: pickUpStations.pickupStationId,
+      pickupStationId: localStorage.getItem("pick_up"),
       selectedAddressId: selected_address.id,
       deliveryMethod: pick_up,
       paymentTypeId: cash,
@@ -61,14 +63,29 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
       cardTypeId: 0,
       cashRecieved: total, //get cash
       customerId: localStorage.getItem("userId2"),
+      userId: localStorage.getItem("userId2"),
       discount: 0,
       discountcal: 0,
-      cacNumber:cacNumber,
+      sendBy: localStorage.getItem("userId2"),
+      companyId: companyId,
+      cacNumber: cacNumber,
       referenceNumber: 5555555,
+      isOnlineTransaction: true,
       salesOrders: cartItems,
 
     }
-    AddPayment(payload)
+    if (!pick_up && payload.pickupStationId > 0) {
+      payload.pickupStationId = 0;
+    }
+    if (pick_up && payload.pickupStationId == 0) {
+      alert("Please select a pick up station")
+    } else {
+      AddPayment(payload)
+    }
+
+
+
+
   }
 
   //SelectedAddress(address[0])
@@ -82,176 +99,7 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
 
   return (
     <div>
-      <header>
-        <div className="container top-nav pt-3 p-0">
-          <MDBNavbar expand="lg" light bgColor="white">
-            <MDBContainer fluid>
-              <MDBNavbarBrand href="#" className="p-0">
-                <img src="./Images/logo2.png" alt="" />
-              </MDBNavbarBrand>
-
-              <MDBNavbarToggler
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                onClick={() => setShowBasic(!showBasic)}
-              >
-                <MDBIcon icon="bars" fas />
-              </MDBNavbarToggler>
-              <MDBCollapse navbar show={showBasic}>
-                <form className="d-flex input-group w-auto">
-                  <input
-                    type="search"
-                    className="form-control mt-2"
-                    placeholder="Search Item, Brands and filter Names"
-                    aria-label="Search"
-                    style={{ width: "30rem" }}
-                  />
-                  <MDBIcon
-                    fas
-                    icon="search"
-                    className="pl-2"
-                    style={{ paddingTop: "1.2rem", color: "#bab8b8" }}
-                  />
-                </form>
-
-                <div className="cart-container pr-3 p-2">
-                  <a href="">
-                    <i class="fas fa-shopping-cart fa-lg"></i>
-                    <span class="badge rounded-pill badge-notification bg-danger">
-                      12
-                    </span>
-                  </a>
-                </div>
-
-                <div className="profile">
-                  <img
-                    src="https://mdbootstrap.com/img/new/avatars/2.jpg"
-                    class="rounded-circle"
-                    height="25"
-                    alt=""
-                    loading="lazy"
-                  />
-
-                  <span className="pl-2 pr-2">
-                    <strong>Hi {cus_name ?? 'Anonymous'}</strong>
-                  </span>
-                  <a
-                    class="dropdown-toggle align-items-center hidden-arrow d-inline"
-                    href="#"
-                    id="navbarDropdownMenuLink"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false"
-                  ></a>
-
-                  <ul
-                    class="dropdown-menu dropdown-menu-end"
-                    aria-labelledby="navbarDropdownMenuLink"
-                  >
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        My profile
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        View Saved Items
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        class="dropdown-item"
-                        href="#"
-                        data-mdb-toggle="modal"
-                        data-mdb-target="#exampleModal3"
-                      >
-                        Change Password
-                      </a>
-                    </li>
-                    <li>
-                      <a class="dropdown-item" href="#">
-                        Logout
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </MDBCollapse>
-            </MDBContainer>
-          </MDBNavbar>
-
-          <hr />
-        </div>
-
-        {/* <!-- Navbar --> */}
-        <div className="second-nav">
-          <nav class="navbar navbar-expand-lg navbar-light bg-white container-fluid">
-            <div class="container">
-              <button
-                class="navbar-toggler"
-                type="button"
-                data-mdb-toggle="collapse"
-                data-mdb-target="#navbarNav"
-                aria-controls="navbarNav"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <i class="fas fa-bars"></i>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                  <li class="nav-item ">
-                    <a class="nav-link active" aria-current="page" href="#">
-                      All Categories
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Health and Beauty
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Home and Office
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Phones and Tablets
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Computing
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Electronics
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Fashion
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Gaming
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">
-                      Others
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </nav>
-        </div>
-      </header>
-
+      <Header />{" "}
       <div className="container">
         <div className="row">
           <div className="col-sm-9">

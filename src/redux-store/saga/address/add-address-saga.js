@@ -13,7 +13,7 @@ function* workerSaga(action) {
         yield request("post", action.payload, '/add-delivery-address').then((response) => {
             payload = response;
         });
-        var formatUrl = `get-delivery-addresses`;
+        var formatUrl = `get-user-delivery-addresses?companyId=${companyId}`;
         yield request("get", payload, formatUrl).then((response) => {
             payload = response;
         });
