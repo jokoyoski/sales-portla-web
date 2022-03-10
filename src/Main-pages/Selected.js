@@ -1,23 +1,41 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import Header from "./header/Header";
 import RelatedItems from "./Products/RelatedItems";
 import { store } from "../redux-store/store";
+import { LOAD_RELATED_ITEMS } from "../redux-store/constants/constants";
 import { Link } from "react-router-dom";
 import {
   selectCartItems,
   selectCartTotal,
 } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
-import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
+import {
+  ClearItemFromCart,
+  AddItem,
+  RemoveItem,
+} from "../redux-store/reducers/cart-reducer/cart.action";
 
-const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartItems, total }) => {
-  var item = store.getState().productDetailsReducer.productDetails
-  console.log(store.getState().productDetailsReducer.productDetails)
+const Selected = ({
+  cartRecords,
+  itemCount,
+  addItem,
+  removeItem,
+  cartItems,
+  total,
+  Selected,
+  LoadRelatedItems,
+  items,
+}) => {
+  var item = store.getState().productDetailsReducer.productDetails;
+  console.log(store.getState().productDetailsReducer.productDetails);
   if (Selected == undefined) {
     history.push("/");
   }
- 
+  useEffect(() => {
+    LoadRelatedItems(Selected.categoryId);
+  }, []);
+
   return (
     <div>
       <Header />
@@ -28,7 +46,10 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
             <div className="grid grid-cols-2 h-64">
               <div className="p-1 image_container">
                 <img
-                  src={store.getState().productDetailsReducer.productDetails.imageId}
+                  src={
+                    store.getState().productDetailsReducer.productDetails
+                      .imageId
+                  }
                   alt="selected_img"
                   className="object-fit-contain h-64"
                 />
@@ -37,7 +58,10 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
                 <div className="flex space-x-3">
                   {" "}
                   <h2 className="uppercase font-medium text-gray-500">
-                    {store.getState().productDetailsReducer.productDetails.productName}
+                    {
+                      store.getState().productDetailsReducer.productDetails
+                        .productName
+                    }
                   </h2>{" "}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +78,12 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
                     />
                   </svg>
                 </div>{" "}
-                <p>{store.getState().productDetailsReducer.productDetails.productDescription}</p>
+                <p>
+                  {
+                    store.getState().productDetailsReducer.productDetails
+                      .productDescription
+                  }
+                </p>
                 <hr className="border-gray-200" />
                 <div className="flex space-x-2 items-center">
                   <h4 className="text-black">&#8358;{Selected.basePrice}</h4>{" "}
@@ -70,55 +99,52 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
                 </div>
                 <hr className="border-gray-200" />
                 <div className="flex flex-space-1">
-                <button
-                      onClick={() => addItem(store.getState().productDetailsReducer.productDetails)}
-                      type="button"
-
-                    >
-                      <span>+</span>
-                    </button>
-                    <span>1</span>
-                    <button
-                      onClick={() => removeItem(store.getState().productDetailsReducer.productDetails)}
-                      type="button"
-                    >
-                      <span>-</span>
-                    </button>
-                    <span className="color-grey">1 item(s) added</span>
-                    <div className="pt-3">
-                      <Link to="/main/cart">
-                        <button
-
-                          type="button" class="btn btn-primary">
-                          Buy Now
-                        </button>
-                      </Link>
-                    </div>
+                  <button
+                    onClick={() =>
+                      addItem(
+                        store.getState().productDetailsReducer.productDetails,
+                      )
+                    }
+                    type="button"
+                  >
+                    <span>+</span>
+                  </button>
+                  <span>1</span>
+                  <button
+                    onClick={() =>
+                      removeItem(
+                        store.getState().productDetailsReducer.productDetails,
+                      )
+                    }
+                    type="button"
+                  >
+                    <span>-</span>
+                  </button>
+                  <span className="color-grey">1 item(s) added</span>
                 </div>
                 <hr className="border-gray-200" />
-                <button className="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="white"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                  </svg>
-                  <span className="text-white font-semibold">Add to Cart</span>
-                </button>
+                <div className="py-2">
+                  <Link to="/main/cart">
+                    <button
+                      type="button"
+                      class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
+                    >
+                      Buy Now
+                    </button>
+                  </Link>
+                </div>
               </div>
             </div>
             <div className="description flex flex-col">
               <h4 className="underline text-blue-500">Description</h4>
               <div className="bg-gray-100 text-gray-400 font-medium rounded-xl p-3">
-                <p>{store.getState().productDetailsReducer.productDetails.productDescription}.{" "}</p>
+                <p>
+                  {
+                    store.getState().productDetailsReducer.productDetails
+                      .productDescription
+                  }
+                  .{" "}
+                </p>
               </div>
             </div>
           </div>
@@ -133,7 +159,7 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
                 <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                 <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
               </svg>
-              <h5 className="uppercase">delivery & Return</h5>
+              <h5 className="uppercase">Delivery & Return</h5>
             </div>
             <hr className="border border-gray-200" />
             <div className="flex flex-col">
@@ -161,7 +187,7 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
         </div>
         {/* Related Products */}
         <div className="py-5">
-          <RelatedItems />
+          <RelatedItems items={items} />
         </div>
       </div>
     </div>
@@ -169,19 +195,24 @@ const Selected = ({ Selected ,cartRecords, itemCount, addItem, removeItem, cartI
 };
 
 const mapToDispatchToProps = (dispatch) => ({
-  clearItem: item => dispatch(ClearItemFromCart(item)),//setting the values
-  addItem: item => dispatch(AddItem(item)),
-  removeItem: item => dispatch(RemoveItem(item)),
-
-
-})
+  clearItem: (item) => dispatch(ClearItemFromCart(item)), //setting the values
+  addItem: (item) => dispatch(AddItem(item)),
+  removeItem: (item) => dispatch(RemoveItem(item)),
+});
 const mapStateToProps = (state) => {
   return {
     Selected: state.productDetailsReducer.productDetails,
+    items: state.dashboardReducer.relatedItems,
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
     itemCount: selectCartItemsCount(state),
   };
 };
 
-export default connect(mapStateToProps,mapToDispatchToProps)(Selected);
+const mapDispatchToProps = (dispatch) => ({
+  LoadRelatedItems(payload) {
+    dispatch({ type: LOAD_RELATED_ITEMS, payload });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Selected);
