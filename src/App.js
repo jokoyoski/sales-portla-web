@@ -23,6 +23,9 @@ import ResetPassword from "./components/Password-Reset/ResetPassword";
 import ResetCode from "./components/Password-Reset/RecievedCode";
 import MainCart from "./Main-pages/MainCart";
 import TopSlider from "./Main-pages/TopSlider";
+import AllOrders from "./Main-pages/Others/Orders";
+import FulfilledOrders from "./Main-pages/Others/FulfilledOrders";
+import UnFulfilledOrders from "./Main-pages/Others/UnfufilledOrders";
 
 class App extends Component {
   render() {
@@ -42,6 +45,13 @@ class App extends Component {
             <Route path="/Order" exact component={Order} />
             <Route path="/location" exact component={AddLocationForm} />
             <Route path="/Profile" exact component={Profile} />
+            <Route path="/AllOrders" exact component={AllOrders} />
+            <Route path="/FulfilledOrders" exact component={FulfilledOrders} />
+            <Route
+              path="/UnFulfilledOrders"
+              exact
+              component={UnFulfilledOrders}
+            />
             <Route path="/details" exact component={OrderDetails} />
             <Route path="/select" exact component={Orders} />
             <Route path="/main/cart" exact component={MainCart} />

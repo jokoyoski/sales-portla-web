@@ -20,12 +20,12 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
           <div className="flex w-[70%] bg-white rounded-2xl flex-col">
             <div className="grid grid-cols-2 p-3 font-black text-white rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
               <div className="flex items-center ">
-                <h5 className="uppercase">items</h5>
+                <h6 className="uppercase">items</h6>
               </div>
               <div className="flex space-x-5 justify-end items-center">
-                <h5 className="uppercase">quantity</h5>
-                <h5 className="uppercase">unit price</h5>
-                <h5 className="uppercase">subtotal</h5>
+                <h6 className="uppercase">quantity</h6>
+                <h6 className="uppercase">unit price</h6>
+                <h6 className="uppercase">subtotal</h6>
               </div>
             </div>
 

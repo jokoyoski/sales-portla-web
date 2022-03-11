@@ -8,35 +8,35 @@ const Orders = () => {
       <Header />{" "}
       <div className="flex space-x-5 px-28 my-10">
         <div className="side_nav h-full w-[30%] p-4 bg-white rounded-2xl flex flex-col">
-          <div className="flex px-3 py-2 items-center text-white rounded-lg space-x-2 w-full ">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-8 w-8"
-              viewBox="0 0 20 20"
-              fill="currentColor"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            <h5 className="mt-2">My Profile</h5>
-          </div>
-
-          <Link to="/orders">
-            <div className="flex text-gray-500 items-center rounded-lg transition duration-500 ease-in-out py-2 px-3 bg-gradient-to-r from-blue-500 to-blue-700 space-x-2">
+          <Link to="/profile">
+            <div className="flex text-gray-500 px-3 py-2 items-center rounded-lg space-x-2 w-full hover:bg-blue-200 transition duration-500 ease-in-out">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                class="h-8 w-8"
                 viewBox="0 0 20 20"
                 fill="currentColor"
               >
-                <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                <path
+                  fill-rule="evenodd"
+                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                  clip-rule="evenodd"
+                />
               </svg>
-              <h5 className="mt-2">Orders</h5>
+              <h5 className="mt-2">My Profile</h5>
             </div>
           </Link>
+
+          <div className="flex text-white items-center rounded-lg transition duration-500 ease-in-out py-2 px-3 bg-gradient-to-r from-blue-500 to-blue-700 space-x-2">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-5 w-5"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+            </svg>
+            <h5 className="mt-2">Orders</h5>
+          </div>
 
           <hr className="border border-gray-200 m-0 p-0" />
           <Link to="/savedItems">
@@ -108,11 +108,9 @@ const Orders = () => {
       nav-link
       w-full
       block
-      font-medium
-      text-xs
+      text-lg
       leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
+      border-x-0 border-t-0 border-b-2 border-transparent font-semibold
       px-6
       py-3
       my-2
@@ -127,7 +125,7 @@ const Orders = () => {
                 aria-controls="tabs-home3"
                 aria-selected="true"
               >
-                Home
+                Fulfilled Orders
               </a>
             </li>
             <li class="nav-item" role="presentation">
@@ -137,16 +135,14 @@ const Orders = () => {
       nav-link
       w-full
       block
-      font-medium
-      text-xs
+      text-lg
       leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
+      border-x-0 border-t-0 border-b-2 border-transparent font-semibold
       px-6
       py-3
       my-2
       hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
+      focus:border-transparent 
     "
                 id="tabs-profile-tab3"
                 data-bs-toggle="pill"
@@ -155,46 +151,156 @@ const Orders = () => {
                 aria-controls="tabs-profile3"
                 aria-selected="false"
               >
-                Profile
-              </a>
-            </li>
-            <li class="nav-item" role="presentation">
-              <a
-                href="#tabs-messages3"
-                class="
-      nav-link
-      w-full
-      block
-      font-medium
-      text-xs
-      leading-tight
-      uppercase
-      border-x-0 border-t-0 border-b-2 border-transparent
-      px-6
-      py-3
-      my-2
-      hover:border-transparent hover:bg-gray-100
-      focus:border-transparent
-    "
-                id="tabs-messages-tab3"
-                data-bs-toggle="pill"
-                data-bs-target="#tabs-messages3"
-                role="tab"
-                aria-controls="tabs-messages3"
-                aria-selected="false"
-              >
-                Messages
+                UnFulfilled Orders
               </a>
             </li>
           </ul>
           <div class="tab-content" id="tabs-tabContent3">
             <div
-              class="tab-pane fade show active"
+              class="tab-pane fade show active bg-white"
               id="tabs-home3"
               role="tabpanel"
               aria-labelledby="tabs-home-tab3"
             >
-              Tab 1 content button version
+              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex space-x-2">
+                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                      >
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black">Order 1</span>
+                      <span>Order 34567829GGFG</span>
+                    </div>
+                  </div>
+                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                    Delivered
+                  </div>
+                  <div className="font-semibold">
+                    On <span className="text-blue-500">21-03-2022</span>{" "}
+                  </div>
+                </div>
+                <div className="flex items-center justify-end">
+                  {" "}
+                  <Link to="./FulfilledOrders">
+                    <span className="underline text-blue-500">
+                      See More Details
+                    </span>
+                  </Link>{" "}
+                </div>
+              </div>
+              {/* Order -2 */}
+              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex space-x-2">
+                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                      >
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black">Order 1</span>
+                      <span>Order 34567829GGFG</span>
+                    </div>
+                  </div>
+                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                    Delivered
+                  </div>
+                  <div className="font-semibold">
+                    On <span className="text-blue-500">21-03-2022</span>{" "}
+                  </div>
+                </div>
+                <div className="flex items-center justify-end">
+                  {" "}
+                  <Link to="./FulfilledOrders">
+                    <span className="underline text-blue-500">
+                      See More Details
+                    </span>
+                  </Link>{" "}
+                </div>
+              </div>
+              {/* Order -3 */}
+              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex space-x-2">
+                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                      >
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black">Order 1</span>
+                      <span>Order 34567829GGFG</span>
+                    </div>
+                  </div>
+                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                    Delivered
+                  </div>
+                  <div className="font-semibold">
+                    On <span className="text-blue-500">21-03-2022</span>{" "}
+                  </div>
+                </div>
+                <div className="flex items-center justify-end">
+                  {" "}
+                  <Link to="./FulfilledOrders">
+                    <span className="underline text-blue-500">
+                      See More Details
+                    </span>
+                  </Link>{" "}
+                </div>
+              </div>
+              {/* Order -4 */}
+              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex space-x-2">
+                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                      >
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black">Order 1</span>
+                      <span>Order 34567829GGFG</span>
+                    </div>
+                  </div>
+                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                    Delivered
+                  </div>
+                  <div className="font-semibold">
+                    On <span className="text-blue-500">21-03-2022</span>{" "}
+                  </div>
+                </div>
+                <div className="flex items-center justify-end">
+                  {" "}
+                  <Link to="./FulfilledOrders">
+                    <span className="underline text-blue-500">
+                      See More Details
+                    </span>
+                  </Link>{" "}
+                </div>
+              </div>
             </div>
             <div
               class="tab-pane fade"
@@ -202,15 +308,40 @@ const Orders = () => {
               role="tabpanel"
               aria-labelledby="tabs-profile-tab3"
             >
-              Tab 2 content button version
-            </div>
-            <div
-              class="tab-pane fade"
-              id="tabs-messages3"
-              role="tabpanel"
-              aria-labelledby="tabs-profile-tab3"
-            >
-              Tab 3 content button version
+              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex flex-col">
+                  <div className="flex space-x-2">
+                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="white"
+                      >
+                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                      </svg>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="font-semibold text-black">Order 1</span>
+                      <span>Order 34567829GGFG</span>
+                    </div>
+                  </div>
+                  <div className="bg-red-300 my-3 rounded-lg w-1/4 px-2 py-1 text-red-800 font-semibold">
+                    Cancelled
+                  </div>
+                  <div className="font-semibold">
+                    On <span className="text-blue-500">21-03-2022</span>{" "}
+                  </div>
+                </div>
+                <div className="flex items-center justify-end">
+                  {" "}
+                  <Link to="./FulfilledOrders">
+                    <span className="underline text-blue-500">
+                      See More Details
+                    </span>
+                  </Link>{" "}
+                </div>
+              </div>
             </div>
           </div>
           {/* End of Tabbed Container */}
