@@ -194,7 +194,10 @@ const Selected = ({
   );
 };
 
-const mapToDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
+  LoadRelatedItems(payload) {
+    dispatch({ type: LOAD_RELATED_ITEMS, payload });
+  },
   clearItem: (item) => dispatch(ClearItemFromCart(item)), //setting the values
   addItem: (item) => dispatch(AddItem(item)),
   removeItem: (item) => dispatch(RemoveItem(item)),
@@ -208,11 +211,5 @@ const mapStateToProps = (state) => {
     itemCount: selectCartItemsCount(state),
   };
 };
-
-const mapDispatchToProps = (dispatch) => ({
-  LoadRelatedItems(payload) {
-    dispatch({ type: LOAD_RELATED_ITEMS, payload });
-  },
-});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Selected);
