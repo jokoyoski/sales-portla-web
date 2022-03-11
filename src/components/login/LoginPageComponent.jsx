@@ -164,10 +164,10 @@ export const LoginPageComponent = ({
 
 function mapStateToProps(state) {
   return {
-    loading: state.userReducer.loader,
-    user: state.userReducer.user,
-    triggerLogging: state.userReducer.triggerLogging,
-    loginbuttonloader: state.utilityReducer.loginbuttonloader,
+    loading: state.userReducerSales.loader,
+    user: state.userReducerSales.user,
+    triggerLogging: state.userReducerSales.triggerLogging,
+    loginbuttonloader: state.utilityReducerSales.loginbuttonloader,
   };
 }
 const mapDispatchToProps = (dispatch) => ({

@@ -3,8 +3,8 @@ import axios from 'axios';
 
 
 
-const baseUrl = "http://automatadev-001-site1.htempurl.com/"
-//   const baseUrl="https://localhost:5001/"
+//const baseUrl = "http://automatadev-001-site1.htempurl.com/"
+const baseUrl="https://localhost:5001/"
 
 
 

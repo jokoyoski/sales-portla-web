@@ -42,7 +42,7 @@ import Controls from "../controls/Controls";
 export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, AddPayment, LoadAddress, selected_address, itemCount, total, states, pickUpStations }) {
   const [showBasic, setShowBasic] = useState(false);
   const [openPopup, setOpenPopup] = useState(false)
-  const [pick_up, setPickUp] = useState(false)
+  const [pick_up, setPickUp] = useState('')
   const [cash, setCash] = useState(0)
   const [addOpenPopup, setAddOpenPopup] = useState(false)
 
@@ -74,16 +74,24 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
       salesOrders: cartItems,
 
     }
-    if (!pick_up && payload.pickupStationId > 0) {
+    console.log(pick_up)
+    console.log(cash)
+    console.log(payload.selectedAddressId)
+    if (pick_up === '') {
+      alert("Please select the delivery  mode")
+    }
+    else if (pick_up=='false' && payload.pickupStationId > 0) {
       payload.pickupStationId = 0;
-    }
-    if (pick_up && payload.pickupStationId == 0) {
+    } else if (cash == 0) {
+      alert("Please select method mode")
+    } else if (pick_up=='true' && payload.pickupStationId == 0) {
       alert("Please select a pick up station")
-    } else {
-      AddPayment(payload)
+    } else if (payload.selectedAddressId == undefined && pick_up =='false') {
+      alert("Please select address to deliver product")
     }
-
-
+    else {
+     AddPayment(payload)
+    }
 
 
   }
@@ -254,8 +262,6 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                 <button
                   type="button"
                   class="btn btn-success"
-                  data-mdb-toggle="modal"
-                  data-mdb-target="#exampleModal2"
                   onClick={confirm}
                 >
                   Confirm Order
@@ -388,14 +394,14 @@ const mapToDispatchToProps = (dispatch) => ({
 function mapStateToProps(state) {
   return {
     total: selectCartTotal(state),
-    selected_address: state.utilityReducer.selected_address,
+    selected_address: state.utilityReducerSales.selected_address,
     itemCount: selectCartItemsCount(state),
-    pickUpStations: state.userReducer.payPickUpStation,
-    cus_name: state.userReducer.cus_name,
-    cus_number: state.userReducer.cus_number,
-    states: state.utilityReducer.states,
-    cartItems: state.cartReducer.cartItems,
-    address: state.utilityReducer.address
+    pickUpStations: state.userReducerSales.payPickUpStation,
+    cus_name: state.userReducerSales.cus_name,
+    cus_number: state.userReducerSales.cus_number,
+    states: state.utilityReducerSales.states,
+    cartItems: state.cartReducerSales.cartItems,
+    address: state.utilityReducerSales.address
   };
 }
 

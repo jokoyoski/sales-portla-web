@@ -205,9 +205,9 @@ export function Locations({ locations, states, countries, UpdateLocation, LoadLo
                             <AddLocationForm
                                 recordForEdit={recordForEdit}
                                 addLocation={addLocation}
-                                companyLocations={store.getState().userReducer.companyLocations}
-                                userLocations={store.getState().userReducer.userLocations}
-                                cacNumber={store.getState().userReducer.cacNumber}
+                                companyLocations={store.getState().userReducerSales.companyLocations}
+                                userLocations={store.getState().userReducerSales.userLocations}
+                                cacNumber={store.getState().userReducerSales.cacNumber}
                                 states={states}
                                 countries={store.getState().locationReducer.countries}
                                 locationTypes={store.getState().locationReducer.locationTypes} />

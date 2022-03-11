@@ -58,8 +58,8 @@ function mapStateToProps(state) {
     products: state.dashboardReducer.products,
     productCategories: state.dashboardReducer.categories,
     productDetails: state.productDetailsReducer.productDetails,
-    itemCount: state.cartReducer.itemCount,
-    cartRecords: state.cartReducer.cartRecords,
+    itemCount: state.cartReducerSales.itemCount,
+    cartRecords: state.cartReducerSales.cartRecords,
   };
 }
 const mapDispatchToProps = (dispatch) => ({

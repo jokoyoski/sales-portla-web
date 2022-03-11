@@ -167,7 +167,7 @@ function mapStateToProps(state) {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
     itemCount: selectCartItemsCount(state),
-    cus_name: state.userReducer.cus_name
+    cus_name: state.userReducerSales.cus_name
   };
 }
 

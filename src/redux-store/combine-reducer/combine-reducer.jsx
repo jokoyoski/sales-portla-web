@@ -8,10 +8,10 @@ import UserReducer from '../reducers/user-reducer';
 
 const rootReducer = combineReducers({
     dashboardReducer: DashBoardReducer,
-    utilityReducer:UtilityReducer,
+    utilityReducerSales:UtilityReducer,
     productDetailsReducer: ProductDetailsReducer,
-    cartReducer: cartReducer,
-    userReducer:UserReducer
+    cartReducerSales: cartReducer,
+    userReducerSales:UserReducer
 })
 
 export default rootReducer
