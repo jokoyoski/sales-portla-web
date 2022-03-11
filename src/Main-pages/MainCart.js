@@ -5,12 +5,17 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { store } from "../redux-store/store";
 import {
-  selectCartItems, selectCartTotal
+  selectCartItems,
+  selectCartTotal,
 } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
-import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
+import {
+  ClearItemFromCart,
+  AddItem,
+  RemoveItem,
+} from "../redux-store/reducers/cart-reducer/cart.action";
 
-const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
+const MainCart = ({ cartItems, total, clearItem, cus_name, items }) => {
   return (
     <div>
       <Header />{" "}
@@ -18,14 +23,14 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
         {" "}
         <div className="my-10 flex space-x-5">
           <div className="flex w-[70%] bg-white rounded-2xl flex-col">
-            <div className="grid grid-cols-2 p-3 font-black text-white rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
+            <div className="grid grid-cols-2 uppercase p-3 font-black text-white rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
               <div className="flex items-center ">
-                <h6 className="uppercase">items</h6>
+                <h6>items</h6>
               </div>
-              <div className="flex space-x-5 justify-end items-center">
-                <h6 className="uppercase">quantity</h6>
-                <h6 className="uppercase">unit price</h6>
-                <h6 className="uppercase">subtotal</h6>
+              <div className="flex justify-around items-center">
+                <h6>quantity</h6>
+                <h6>unit price</h6>
+                <h6>subtotal</h6>
               </div>
             </div>
 
@@ -33,13 +38,13 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
               {cartItems.map((product) => {
                 return (
                   <div className="table_content p-3 flex flex-col">
-                    <div className="flex ">
-                      <div className="flex space-x-4">
+                    <div className="grid grid-cols-2 ">
+                      <div className="flex space-x-3">
                         <div className="cart_img p-2">
                           <img
                             src={product.imageId}
                             alt="cart_img"
-                            className="h-56"
+                            className="h-40 w-40"
                           />
                         </div>
                         <div className="flex flex-col">
@@ -48,14 +53,13 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
                             {" "}
                             <div className="rounded-full w-14 bg-[#ef892338] px-3">
                               {" "}
-                              <span className="text-[#EF8923] font-semibold">
-                                -25
+                              <span className="text-[#EF8923] font-bold">
+                                <small>-25</small>
                               </span>{" "}
                             </div>
                           </div>
-                          <h2>{product.productName}</h2>
+                          <h4>{product.productName}</h4>
                           <p>{product.productDescription}</p>
-                          <p>{product.quantityToAdd}</p>
                           <div className="flex text-red-500">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -69,36 +73,44 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
                                 clip-rule="evenodd"
                               />
                             </svg>
-                            <span style={{ cursor: 'pointer' }} onClick={() =>
-
-                              clearItem(product)
-                            } className="font-semibold">Remove Item</span>
+                            <span
+                              style={{ cursor: "pointer" }}
+                              onClick={() => clearItem(product)}
+                              className="font-semibold"
+                            >
+                              Remove Item
+                            </span>
                           </div>
                         </div>
                       </div>
-                      <div className="space-x-5 flex ">
-
-                        <div className="price">
-                          {" "}
-                          <div>
-                            <h4 className="font-semibold">{product.basePrice}</h4>
-                          </div>{" "}
-                        </div>
-                        <div className="total text-orange-500">
-                          {" "}
-                          <div>
-                            {" "}
-                            <h4 className="font-semibold">{product.basePrice * product.quantityToAdd}</h4>
-                          </div>
-                        </div>
+                      {/* Second Column */}
+                      <div className="flex items-center justify-around">
+                        {" "}
+                        <h5 className="font-semibold">
+                          {product.quantityToAdd}
+                        </h5>{" "}
+                        <h5 className="font-semibold">
+                          &#8358;{product.basePrice}
+                        </h5>{" "}
+                        <h5 className="font-semibold">
+                          &#8358;{product.basePrice * product.quantityToAdd}
+                        </h5>
                       </div>
                     </div>
+                    {/* End of cart details */}
                     <hr className="border border-gray-200" />
                   </div>
                 );
               })}
             </tbody>
-            <h5><strong>N {total}</strong></h5>
+            <div className="flex font-bold justify-end items-center px-3">
+              <h4>
+                Total:{" "}
+                <span className="text-blue-500">
+                  <strong>&#8358;{total}</strong>
+                </span>
+              </h4>
+            </div>
           </div>
           <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
             <div className="flex space-x-3">
@@ -135,22 +147,26 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
                 <span>Warranty</span>
               </h5>
               <div>
-
-                {
-                  cus_name === 'Anonymous' ? (<a href="/user/login" class="button">Proceed To Check Out</a>) : (<a href="/order" class="button">Proceed To Check Out</a>)
-                }
-
-
+                {cus_name === "Anonymous" ? (
+                  <a href="/user/login" class="button">
+                    Proceed To Check Out
+                  </a>
+                ) : (
+                  <a href="/order" class="button">
+                    Proceed To Check Out
+                  </a>
+                )}
               </div>
-              <div style={{ marginTop: '30px' }}>
-                <a href="#" class="button">Continue Shopping</a>
+              <div style={{ marginTop: "30px" }}>
+                <a href="#" class="button">
+                  Continue Shopping
+                </a>
               </div>
-
             </div>
           </div>
           {/* Related Items */}
         </div>
-        <RelatedItems />
+        <RelatedItems items={items} />
       </div>
     </div>
   );
@@ -167,9 +183,9 @@ function mapStateToProps(state) {
     cartItems: selectCartItems(state), // from the selector we pass in the state
     total: selectCartTotal(state),
     itemCount: selectCartItemsCount(state),
-    cus_name: state.userReducer.cus_name
+    items: state.dashboardReducer.relatedItems,
+    cus_name: state.userReducer.cus_name,
   };
 }
 
 export default connect(mapStateToProps, mapToDispatchToProps)(MainCart);
-
