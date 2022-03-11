@@ -100,6 +100,7 @@ const Selected = ({
                 <hr className="border-gray-200" />
                 <div className="flex flex-space-1">
                   <button
+                    className="h-7 w-7 text-2xl flex justify-center items-center rounded-full bg-blue-700 text-white font-medium focus:outline-none"
                     onClick={() =>
                       addItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -109,8 +110,11 @@ const Selected = ({
                   >
                     <span>+</span>
                   </button>
-                  <span>1</span>
+                  <span className="text-2xl font-semibold px-3">
+                    {itemCount}
+                  </span>
                   <button
+                    className="h-7 w-7 rounded-full text-2xl bg-blue-300 text-white font-medium flex justify-center items-center focus:outline-none"
                     onClick={() =>
                       removeItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -120,7 +124,9 @@ const Selected = ({
                   >
                     <span>-</span>
                   </button>
-                  <span className="color-grey">1 item(s) added</span>
+                  <span className="color-grey text-lg font-semibold px-2">
+                    {itemCount} item(s) added
+                  </span>
                 </div>
                 <hr className="border-gray-200" />
                 <div className="py-2">
