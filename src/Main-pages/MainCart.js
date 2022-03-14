@@ -1,9 +1,8 @@
 import React from "react";
 import Header from "./header/Header";
 import RelatedItems from "./Products/RelatedItems";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { store } from "../redux-store/store";
+import "../styles/cart.scss";
 import {
   selectCartItems, selectCartTotal
 } from "../redux-store/reducers/cart-reducer/cart.selector";
@@ -76,7 +75,7 @@ const MainCart = ({ cartItems, total, clearItem,cus_name }) => {
                           </div>
                         </div>
                       </div>
-                      <div className="space-x-5 flex ">
+                      <div className="space-x-5 flex table-cont">
 
                         <div className="price">
                           {" "}

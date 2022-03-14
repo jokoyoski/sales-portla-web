@@ -100,6 +100,8 @@ const Selected = ({
                 <hr className="border-gray-200" />
                 <div className="flex flex-space-1">
                   <button
+                  style={{cursor :'pointer'}}
+                   class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       addItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -107,10 +109,12 @@ const Selected = ({
                     }
                     type="button"
                   >
+                    
                     <span>+</span>
                   </button>
-                  <span>1</span>
+                 &nbsp;
                   <button
+                   class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       removeItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -120,7 +124,7 @@ const Selected = ({
                   >
                     <span>-</span>
                   </button>
-                  <span className="color-grey">1 item(s) added</span>
+                
                 </div>
                 <hr className="border-gray-200" />
                 <div className="py-2">
