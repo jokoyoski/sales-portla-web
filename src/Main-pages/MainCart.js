@@ -158,7 +158,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name, items }) => {
                 )}
               </div>
               <div style={{ marginTop: "30px" }}>
-                <a href="#" class="button">
+                <a href="/" class="button">
                   Continue Shopping
                 </a>
               </div>

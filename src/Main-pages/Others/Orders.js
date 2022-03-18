@@ -1,30 +1,38 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../header/Header";
-
-const Orders = () => {
+import { connect } from "react-redux";
+const Orders = ({ orders, SetOrders, SetOrderDetails, SetOrderValue }) => {
+  useEffect(() => {
+    var payload = {
+      isFulfied: true
+    }
+    SetOrders(payload);
+  }, []);
   return (
     <div>
       <Header />{" "}
       <div className="flex space-x-5 px-28 my-10">
         <div className="side_nav h-full w-[30%] p-4 bg-white rounded-2xl flex flex-col">
-          <Link to="/profile">
-            <div className="flex text-gray-500 px-3 py-2 items-center rounded-lg space-x-2 w-full hover:bg-blue-200 transition duration-500 ease-in-out">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-8 w-8"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-              <h5 className="mt-2">My Profile</h5>
-            </div>
-          </Link>
+          {
+            /*<Link to="/profile">
+                     <div className="flex text-gray-500 px-3 py-2 items-center rounded-lg space-x-2 w-full hover:bg-blue-200 transition duration-500 ease-in-out">
+                       <svg
+                         xmlns="http://www.w3.org/2000/svg"
+                         class="h-8 w-8"
+                         viewBox="0 0 20 20"
+                         fill="currentColor"
+                       >
+                         <path
+                           fill-rule="evenodd"
+                           d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                           clip-rule="evenodd"
+                         />
+                       </svg>
+                       <h5 className="mt-2">My Profile</h5>
+                     </div>
+                   </Link>*/
+          }
 
           <div className="flex text-white items-center rounded-lg transition duration-500 ease-in-out py-2 px-3 bg-gradient-to-r from-blue-500 to-blue-700 space-x-2">
             <svg
@@ -39,22 +47,8 @@ const Orders = () => {
           </div>
 
           <hr className="border border-gray-200 m-0 p-0" />
-          <Link to="/savedItems">
-            <div className="flex text-gray-500 items-center rounded transition duration-500 ease-in-out py-2 px-3 hover:bg-blue-200 space-x-2">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z" />
-              </svg>
-              <h5 className="mt-2">Saved items</h5>
-            </div>
-          </Link>
-          <hr className="border border-gray-200 m-0 p-0" />
 
-          <Link to="/changePassword">
+          {/*<Link to="/changePassword">
             <div className="flex text-gray-500 items-center rounded-lg py-2 px-3 transition duration-500 ease-in-out hover:bg-blue-200 space-x-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -70,7 +64,7 @@ const Orders = () => {
               </svg>
               <h5 className="mt-2">Change Password</h5>
             </div>
-          </Link>
+          </Link>*/}
 
           <hr className="border border-gray-200 m-0 p-0" />
           <Link to="/logOut">
@@ -124,6 +118,12 @@ const Orders = () => {
                 role="tab"
                 aria-controls="tabs-home3"
                 aria-selected="true"
+                onClick={() => {
+                  var payload = {
+                    isFulfied: true
+                  }
+                  SetOrders(payload)
+                }}
               >
                 Fulfilled Orders
               </a>
@@ -150,6 +150,12 @@ const Orders = () => {
                 role="tab"
                 aria-controls="tabs-profile3"
                 aria-selected="false"
+                onClick={() => {
+                  var payload = {
+                    isFulfied: false
+                  }
+                  SetOrders(payload)
+                }}
               >
                 UnFulfilled Orders
               </a>
@@ -162,145 +168,46 @@ const Orders = () => {
               role="tabpanel"
               aria-labelledby="tabs-home-tab3"
             >
-              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-                <div className="flex flex-col">
-                  <div className="flex space-x-2">
-                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                      >
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                    </div>
+              {
+                orders.map((order) => {
+                  return <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
                     <div className="flex flex-col">
-                      <span className="font-semibold text-black">Order 1</span>
-                      <span>Order 34567829GGFG</span>
+                      <div className="flex space-x-2">
+                        <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="white"
+                          >
+                            <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                          </svg>
+                        </div>
+                        <div className="flex flex-col">
+
+                          <span>{order.transactionReference}</span>
+                        </div>
+                      </div>
+                      <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                        Fulfilled
+                      </div>
+                      <div className="font-semibold">
+                        {order.address}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      {" "}
+                      <Link to="./FulfilledOrders">
+                        <span className="underline text-blue-500">
+                          See More Details
+                        </span>
+                      </Link>{" "}
                     </div>
                   </div>
-                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
-                    Delivered
-                  </div>
-                  <div className="font-semibold">
-                    On <span className="text-blue-500">21-03-2022</span>{" "}
-                  </div>
-                </div>
-                <div className="flex items-center justify-end">
-                  {" "}
-                  <Link to="./FulfilledOrders">
-                    <span className="underline text-blue-500">
-                      See More Details
-                    </span>
-                  </Link>{" "}
-                </div>
-              </div>
-              {/* Order -2 */}
-              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-                <div className="flex flex-col">
-                  <div className="flex space-x-2">
-                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                      >
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-black">Order 1</span>
-                      <span>Order 34567829GGFG</span>
-                    </div>
-                  </div>
-                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
-                    Delivered
-                  </div>
-                  <div className="font-semibold">
-                    On <span className="text-blue-500">21-03-2022</span>{" "}
-                  </div>
-                </div>
-                <div className="flex items-center justify-end">
-                  {" "}
-                  <Link to="./FulfilledOrders">
-                    <span className="underline text-blue-500">
-                      See More Details
-                    </span>
-                  </Link>{" "}
-                </div>
-              </div>
-              {/* Order -3 */}
-              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-                <div className="flex flex-col">
-                  <div className="flex space-x-2">
-                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                      >
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-black">Order 1</span>
-                      <span>Order 34567829GGFG</span>
-                    </div>
-                  </div>
-                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
-                    Delivered
-                  </div>
-                  <div className="font-semibold">
-                    On <span className="text-blue-500">21-03-2022</span>{" "}
-                  </div>
-                </div>
-                <div className="flex items-center justify-end">
-                  {" "}
-                  <Link to="./FulfilledOrders">
-                    <span className="underline text-blue-500">
-                      See More Details
-                    </span>
-                  </Link>{" "}
-                </div>
-              </div>
-              {/* Order -4 */}
-              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-                <div className="flex flex-col">
-                  <div className="flex space-x-2">
-                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                      >
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-semibold text-black">Order 1</span>
-                      <span>Order 34567829GGFG</span>
-                    </div>
-                  </div>
-                  <div className="bg-green-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
-                    Delivered
-                  </div>
-                  <div className="font-semibold">
-                    On <span className="text-blue-500">21-03-2022</span>{" "}
-                  </div>
-                </div>
-                <div className="flex items-center justify-end">
-                  {" "}
-                  <Link to="./FulfilledOrders">
-                    <span className="underline text-blue-500">
-                      See More Details
-                    </span>
-                  </Link>{" "}
-                </div>
-              </div>
+
+                })
+              }
+
             </div>
             <div
               class="tab-pane fade"
@@ -308,40 +215,51 @@ const Orders = () => {
               role="tabpanel"
               aria-labelledby="tabs-profile-tab3"
             >
-              <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-                <div className="flex flex-col">
-                  <div className="flex space-x-2">
-                    <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="h-5 w-5"
-                        viewBox="0 0 20 20"
-                        fill="white"
-                      >
-                        <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                      </svg>
-                    </div>
+              {
+                orders.map((order) => {
+                  return <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
                     <div className="flex flex-col">
-                      <span className="font-semibold text-black">Order 1</span>
-                      <span>Order 34567829GGFG</span>
+                      <div className="flex space-x-2">
+                        <div className="bg-gray-300 rounded-lg h-8 w-8 flex justify-center items-center">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="white"
+                          >
+                            <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
+                          </svg>
+                        </div>
+                        <div className="flex flex-col">
+
+                          <span>{order.transactionReference}</span>
+                        </div>
+                      </div>
+                      <div className="bg-red-300 my-3 rounded-lg w-1/4 px-2 py-1 text-green-800 font-semibold">
+                        UnFulfilled
+                      </div>
+                      <div className="font-semibold">
+                        {order.address}
+                      </div>
+                    </div>
+                    <div className="flex items-center justify-end">
+                      {" "}
+
+                      <span style={{ cursor: 'pointer' }} onClick={() => {
+                        var payload = {
+                          transactionReference: order.transactionReference
+                        }
+                        SetOrderValue(order)
+                        SetOrderDetails(payload)
+                      }} className="underline text-blue-500">
+                        See More Details
+                      </span>
                     </div>
                   </div>
-                  <div className="bg-red-300 my-3 rounded-lg w-1/4 px-2 py-1 text-red-800 font-semibold">
-                    Cancelled
-                  </div>
-                  <div className="font-semibold">
-                    On <span className="text-blue-500">21-03-2022</span>{" "}
-                  </div>
-                </div>
-                <div className="flex items-center justify-end">
-                  {" "}
-                  <Link to="./FulfilledOrders">
-                    <span className="underline text-blue-500">
-                      See More Details
-                    </span>
-                  </Link>{" "}
-                </div>
-              </div>
+
+                })
+              }
+
             </div>
           </div>
           {/* End of Tabbed Container */}
@@ -351,4 +269,24 @@ const Orders = () => {
   );
 };
 
-export default Orders;
+
+const mapStateToProps = (state) => {
+
+  return {
+    orders: state.orderReducer.orders,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  SetOrders(payload) {
+    dispatch({ type: "LOAD_ORDERS", payload });
+  },
+  SetOrderDetails(payload) {
+    dispatch({ type: "LOAD_ORDER_DETAILS", payload });
+  },
+  SetOrderValue(payload) {
+    dispatch({ type: "SET_ORDER_VALUE", payload });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders);

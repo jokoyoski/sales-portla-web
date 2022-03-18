@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Header from "../header/Header";
-
-const FulfilledOrders = () => {
+import { connect } from "react-redux";
+const FulfilledOrders = ({ orderDetails, orderValue }) => {
+  var getAmount = (order) => {
+    var total_amount = 0;
+    for (var i = 0; i < order.length; i++) {
+      total_amount += order[i].amount * order[i].quantity;
+    }
+    return total_amount
+  }
   return (
     <div>
       <Header />{" "}
@@ -125,95 +132,55 @@ const FulfilledOrders = () => {
               <h5>Total</h5>
             </div>
           </div>
-          {/* End of order Details Headings */}
-          {/* Order Details Individual Products */}
-          <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-            <div className="flex space-x-2 items-center">
-              <div className="img">
-                <img
-                  src="https://images.heb.com/is/image/HEBGrocery/001285816"
-                  alt="order_img"
-                  className="w-32"
-                />
+          {
+            orderDetails.map((orderDetails) => {
+              return <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
+                <div className="flex space-x-2 items-center">
+                  <div className="img">
+                    <img
+                      src={orderDetails.imageId}
+                      alt="order_img"
+                      className="w-32"
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <h5 className="text-blue-500">{orderDetails.productName}</h5>{" "}
+                  </div>
+
+
+                </div>
+
+
+                <div className="flex items-center justify-around font-semibold">
+                  <p>&#8358;{orderDetails.amount}</p>
+                  <p>{orderDetails.quantity}</p>
+                  <p>&#8358;{orderDetails.amount * orderDetails.quantity}</p>
+                </div>
               </div>
-              <div className="flex flex-col">
-                <h5 className="text-blue-500">Dettol Soap</h5>{" "}
-                <span>Antisceptic Dettol soap</span>
-              </div>
-            </div>
-            <div className="flex items-center justify-around font-semibold">
-              <p>&#8358;300</p>
-              <p>5</p>
-              <p>&#8358;1500</p>
-            </div>
-          </div>
-          {/* Order - 2 */}
-          <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-            <div className="flex space-x-2 items-center">
-              <div className="img">
-                <img
-                  src="https://images.heb.com/is/image/HEBGrocery/001285816"
-                  alt="order_img"
-                  className="w-32"
-                />
-              </div>
-              <div className="flex flex-col">
-                <h5 className="text-blue-500">Dettol Soap</h5>{" "}
-                <span>Antisceptic Dettol soap</span>
-              </div>
-            </div>
-            <div className="flex items-center justify-around font-semibold">
-              <p>&#8358;300</p>
-              <p>5</p>
-              <p>&#8358;1500</p>
-            </div>
-          </div>
-          {/* Order -3  */}
-          <div className="shadow-md my-2 border-gray-200 border-2 p-3 bg-white rounded-lg grid grid-cols-2">
-            <div className="flex space-x-2 items-center">
-              <div className="img">
-                <img
-                  src="https://images.heb.com/is/image/HEBGrocery/001285816"
-                  alt="order_img"
-                  className="w-32"
-                />
-              </div>
-              <div className="flex flex-col">
-                <h5 className="text-blue-500">Dettol Soap</h5>{" "}
-                <span>Antisceptic Dettol soap</span>
-              </div>
-            </div>
-            <div className="flex items-center justify-around font-semibold">
-              <p>&#8358;300</p>
-              <p>5</p>
-              <p>&#8358;1500</p>
-            </div>
-          </div>
-          {/* End of Individual Order details */}
-          {/* Round Off of Products */}
+            })
+          }
+
+
           <hr className="border border-gray-200" />
           <div className="grid grid-cols-2">
             <div className="flex flex-col">
               <h5>
-                Order No <span className="text-blue-500">3457GGHBDH3</span>
+                Order No <span className="text-blue-500">{orderValue.transactionReference}</span>
               </h5>
-              <span className="font-semibold">3 item(s)</span>
+              <span className="font-semibold">{orderDetails.length} item(s)</span>
               <span className="font-semibold">
-                placed on <span className="text-blue-500">21-03-2020</span>
+                placed on <span className="text-blue-500">{orderValue.dateCreated}</span>
               </span>
-              <span className="font-semibold">
-                Total: <span className="text-blue-500">&#8358;4000</span>
-              </span>
-            </div>
-            <div className="flex space-x-3 justify-end items-center">
-              <div className="bg-green-300 text-green-800 font-semibold rounded-lg px-2">
-                Fulfilled Order
+              {
+                orderValue.deliveryMethod === "0" ? <h5 className="text-blue-500">Home delivery</h5> : <h5 className="text-blue-500">Pick Up</h5>
+
+              }
+              <div className="flex flex-col">
+                <h5 className="text-blue-500">{orderValue.address}</h5>{" "}
               </div>
-              <Link>
-                <div className="border-2 border-blue-500 hover:bg-blue-500 transition hover:text-white duration-500 ease-in-out text-blue-500 font-semibold rounded-lg px-2">
-                  Purchase Again
-                </div>
-              </Link>
+              <span className="font-semibold">
+                Total: <span className="text-blue-500">&#8358;{getAmount(orderDetails)}</span>
+              </span>
             </div>
           </div>
         </div>
@@ -222,4 +189,19 @@ const FulfilledOrders = () => {
   );
 };
 
-export default FulfilledOrders;
+
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    orderDetails: state.orderReducer.orderDetails,
+    orderValue: state.orderReducer.orderValue
+  };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+  SetOrderDetails(payload) {
+    dispatch({ type: "LOAD_ORDER_DETAILS", payload });
+  },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(FulfilledOrders);

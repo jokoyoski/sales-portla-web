@@ -8,10 +8,12 @@ import watcherRegisterSaga from "./saga/register-saga";
 import watcherGetPickUpStationSaga from "./saga/address/pickupstation";
 import watcherAddPaymentSaga from "../redux-store/saga/payment/add-payment-saga";
 import watchRelatedItems from '../redux-store/saga/product/relatedItems-saga';
-
+import watcherGetOrdersSaga from "./saga/orders/order-saga";
+import watcherGetOrderDetailsSaga from "./saga/orders/order-details";
 export const UiSagas = [
     watcherGetProductsSaga(),
     watcherSaveSalesPortalOrderSaga(),
+    watcherGetOrderDetailsSaga(),
     watcherLoginSaga(),
     watcherAddPaymentSaga(),
     watcherRegisterSaga(),
@@ -19,5 +21,6 @@ export const UiSagas = [
     watcherDeleteAddressSaga(),
     watcherGetPickUpStationSaga(),
     watcherGetAddressSaga(),
-    watchRelatedItems()
+    watchRelatedItems(),
+    watcherGetOrdersSaga()
 ];

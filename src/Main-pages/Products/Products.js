@@ -160,11 +160,6 @@ const Products = ({ products, SetProduct }) => {
                             &#8358;{product.basePrice}
                           </h3>
                         </div>
-                        <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
-                            Buy Now
-                          </button>
-                        </div>
                       </div>
                     </div>
                   </div>

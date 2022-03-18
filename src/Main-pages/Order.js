@@ -74,13 +74,19 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
       salesOrders: cartItems,
 
     }
+
+   
+    if (payload.selectedAddressId === undefined && payload.deliveryMethod === "false") {
+      alert("You didnt select an address")
+    }
     if (!pick_up && payload.pickupStationId > 0) {
       payload.pickupStationId = 0;
     }
-    if (pick_up && payload.pickupStationId == 0) {
+
+    if (pick_up == 'true' && payload.pickupStationId == 0) {
       alert("Please select a pick up station")
     } else {
-      AddPayment(payload)
+       AddPayment(payload)
     }
 
 
@@ -254,8 +260,7 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                 <button
                   type="button"
                   class="btn btn-success"
-                  data-mdb-toggle="modal"
-                  data-mdb-target="#exampleModal2"
+
                   onClick={confirm}
                 >
                   Confirm Order

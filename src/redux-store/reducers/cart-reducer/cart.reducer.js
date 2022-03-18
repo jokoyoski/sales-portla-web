@@ -3,6 +3,8 @@ import { RemoveItemFromCart } from "../cart-reducer/cart.util";
 const INITIAL_STATE = {
   hidden: true,
   cartItems: [],
+  orderDetails:{},
+  orderValue:{},
   pickUpStations: [],
 };
 
@@ -13,6 +15,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         hidden: !state.hidden,
       };
+      
     case "SET_ITEM":
       return {
         ...state,
@@ -47,6 +50,20 @@ const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cartItems: state.cartItems.filter((x) => x.sku !== action.payload.sku),
       };
+
+    case "SET_ORDER_DETAILS":
+      var orderDetailsObj = {
+        ...state,
+        orderDetails: action.payload
+    };
+    return orderDetailsObj;
+  
+    case "SET_ORDER_VALUE":
+      var orderDetails = {
+        ...state,
+        orderValue: action.payload
+    };
+    return orderDetails;
 
     case "REMOVE_ITEM":
       return {

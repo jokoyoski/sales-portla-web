@@ -2,6 +2,7 @@ import { takeEvery, put } from "redux-saga/effects";
 import { request } from '../../../api/Service';
 import { getErrorMessage } from '../../../redux-store/reducers/utils/errorHandler';
 import { toast } from 'react-toastify';
+import { companyId } from "../../../components/utils/constants";
 export default function* watcherAddAddressSaga() {
     yield takeEvery("ADD_ADDRESS", workerSaga);
 }
@@ -18,7 +19,7 @@ function* workerSaga(action) {
             payload = response;
         });
         yield put({ type: "ADDRESS_LIST", payload: payload });
-        alert("Address addedd Successfully!!")
+        alert("Address added Successfully!!")
         yield put({ type: "DISPLAY_LOADER", payload: payload });
     } catch (e) {
         console.log(e);

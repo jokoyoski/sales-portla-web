@@ -73,7 +73,7 @@ const Orders = ({ match }) => {
 
     }
     return (
-        <div class="main">
+        <div class="main-order">
             <Header />
             <div className='flex-v'>
                 <div style={{ marginRight: '20px' }} className='side'>
