@@ -25,4 +25,56 @@
     }
 }
 
+.sub-menu-parent { position: relative; }
 
+.sub-menu{
+    height:250px;
+    visibility: hidden;
+    width: 150px;
+    position: fixed;
+    right: 4%;
+    top:8%;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 4;
+
+   ul{
+       li{
+          text-align: center;
+          height: 30px;
+       }
+   }
+
+}
+
+.sub-menu-parent:hover  {
+    .sub-menu{
+    visibility: visible;
+    height:250px;
+    width: 150px;
+    position: fixed;
+    right: 4%;
+    top:8%;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    z-index: 4;
+    transition: visibility 1s ease;
+    
+    ul{
+        li:hover{
+            background-color: #3b82f6;
+            width: 80%;
+            margin: 0 auto;
+            border-radius: 5px;
+            a{
+                color: white;
+            }
+           
+        }
+    }
+
+    }
+    
+}

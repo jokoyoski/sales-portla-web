@@ -5,7 +5,7 @@ import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/ca
 import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 
-const Header = ({ itemCount, categories,cus_name }) => {
+const Header = ({ itemCount, categories, cus_name }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
@@ -14,7 +14,10 @@ const Header = ({ itemCount, categories,cus_name }) => {
       <div className="grid grid-cols-3">
         <div className="col-span-2 flex space-x-4 items-center">
           {" "}
-          <img  src="./Images/logo2.png" alt="" />
+          <a href="/">
+          <img src="./Images/logo2.png" alt="" />
+          </a>
+        
           <form className="d-flex input-group w-auto">
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
@@ -40,29 +43,46 @@ const Header = ({ itemCount, categories,cus_name }) => {
             </div>
           </div>
           <div className="flex justify-end">
-            <div className="flex space-x-3 items-center">
+            <div style={{ position: 'relative' }} className="flex space-x-3 items-center">
               <img
                 src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHBvcnRyYWl0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
                 className="rounded-full h-10 w-10"
                 alt="Profile_img"
               />
-              <a className="border-b-2 font-semibold border-blue-500">
-                Hi {cus_name}
-              </a>
+
+              <p className="sub-menu-parent">
+                <a className="border-b-2 font-semibold border-blue-500">
+                  Hi {cus_name}
+                </a>
+                <div className="sub-menu">
+                  <ul>
+                    <li>
+                      <Link to="/allOrders">My Orders</Link>
+                    </li>
+                    <li>
+                      <Link to="/allOrders">Log Out</Link>
+                    </li>
+                  </ul>
+                </div>
+
+              </p>
+
             </div>
           </div>
         </div>
       </div>
       <hr />
+
       {/* Categories Here */}
 
       <div className="categories-container">
-        <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
+        <div style={{ position: 'relative' }} className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
           {categories.map((item) => {
             return (
               <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
                 {item.name}
               </a>
+
             );
           })}
         </div>
