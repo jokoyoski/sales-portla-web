@@ -89,7 +89,7 @@ const FulfilledOrders = ({ orderDetails, orderValue }) => {
                 placed on <span className="text-blue-500">{orderValue.dateCreated}</span>
               </span>
               {
-                orderValue.deliveryMethod === "0" ? <h5 className="text-blue-500">Home delivery</h5> : <h5 className="text-blue-500">Pick Up at Store</h5>
+                orderValue.deliveryMethod === "0" ? <h5 className="text-blue-500">Home delivery Order</h5> : <h5 className="text-blue-500">Pick Up at Store</h5>
 
               }
 
