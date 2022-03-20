@@ -3,11 +3,11 @@ import { request } from '../../api/Service';
 import { getErrorMessage } from '../../components/utils/errorHandler';
 import { toast } from 'react-toastify';
 import history from '../../router/browserrouter';
-
+import { cacNumber } from "../../components/utils/constants";
 export default function* watcherRegisterSaga() {
     yield takeEvery("REGISTER_USER", workerSaga);
 }
-var cacNumber = "SE186668";
+
 function* workerSaga(action) {
     try {
         yield put({ type: "LOADING_BUTTON_SPINNER" });
