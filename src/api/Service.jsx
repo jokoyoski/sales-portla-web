@@ -17,7 +17,7 @@ export function request2(method, body, url) {
   bodyFormData.append("formFile", body.formFile);
   bodyFormData.append("companyId", localStorage.getItem("companyId"));
   //bodyFormData.append('price', body.price);
-  //bodyFormData.append('price', body.price);
+  //bodyFormData.append('price', body.price);`
   var accessToken = null;
   var token = localStorage.getItem("access_token");
   if (token != "undefined") {

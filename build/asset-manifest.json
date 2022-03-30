@@ -1,25 +1,36 @@
 {
   "files": {
-    "main.css": "/static/css/main.bab0b925.chunk.css",
-    "main.js": "/static/js/main.cee1c3e3.chunk.js",
-    "main.js.map": "/static/js/main.cee1c3e3.chunk.js.map",
+    "main.css": "/static/css/main.f667c234.chunk.css",
+    "main.js": "/static/js/main.f04c209e.chunk.js",
+    "main.js.map": "/static/js/main.f04c209e.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.254d69f6.js",
     "runtime-main.js.map": "/static/js/runtime-main.254d69f6.js.map",
-    "static/css/2.5fed5293.chunk.css": "/static/css/2.5fed5293.chunk.css",
-    "static/js/2.4ab958b6.chunk.js": "/static/js/2.4ab958b6.chunk.js",
-    "static/js/2.4ab958b6.chunk.js.map": "/static/js/2.4ab958b6.chunk.js.map",
+    "static/css/2.539a4d28.chunk.css": "/static/css/2.539a4d28.chunk.css",
+    "static/js/2.ee0ba4dd.chunk.js": "/static/js/2.ee0ba4dd.chunk.js",
+    "static/js/2.ee0ba4dd.chunk.js.map": "/static/js/2.ee0ba4dd.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/2.5fed5293.chunk.css.map": "/static/css/2.5fed5293.chunk.css.map",
-    "static/css/main.bab0b925.chunk.css.map": "/static/css/main.bab0b925.chunk.css.map",
-    "static/js/2.4ab958b6.chunk.js.LICENSE.txt": "/static/js/2.4ab958b6.chunk.js.LICENSE.txt",
+    "static/css/2.539a4d28.chunk.css.map": "/static/css/2.539a4d28.chunk.css.map",
+    "static/css/main.f667c234.chunk.css.map": "/static/css/main.f667c234.chunk.css.map",
+    "static/js/2.ee0ba4dd.chunk.js.LICENSE.txt": "/static/js/2.ee0ba4dd.chunk.js.LICENSE.txt",
+    "static/media/Banner-01.49e66d12.png": "/static/media/Banner-01.49e66d12.png",
+    "static/media/Banner-02.db24d054.png": "/static/media/Banner-02.db24d054.png",
+    "static/media/Banner-03.9021bb10.png": "/static/media/Banner-03.9021bb10.png",
+    "static/media/Banner-04.b2ffb663.png": "/static/media/Banner-04.b2ffb663.png",
+    "static/media/Banner-05.6036e0aa.png": "/static/media/Banner-05.6036e0aa.png",
+    "static/media/BizinCLOUD Logo Main.786db1dc.png": "/static/media/BizinCLOUD Logo Main.786db1dc.png",
+    "static/media/Password-Illustration.108c59fa.svg": "/static/media/Password-Illustration.108c59fa.svg",
+    "static/media/Pretty-grouped.d34811d6.png": "/static/media/Pretty-grouped.d34811d6.png",
+    "static/media/Rectangle1.e123d778.png": "/static/media/Rectangle1.e123d778.png",
+    "static/media/Shopping-illustration.aa21511f.svg": "/static/media/Shopping-illustration.aa21511f.svg",
     "static/media/mdb.css": "/static/media/arrow_right.f7c6ac6d.svg",
-    "static/media/all.min.css": "/static/media/fa-solid-900.eeccf4f6.woff"
+    "static/media/all.min.css": "/static/media/fa-solid-900.eeccf4f6.woff",
+    "static/media/jacket.addadd46.jpeg": "/static/media/jacket.addadd46.jpeg"
   },
   "entrypoints": [
     "static/js/runtime-main.254d69f6.js",
-    "static/css/2.5fed5293.chunk.css",
-    "static/js/2.4ab958b6.chunk.js",
-    "static/css/main.bab0b925.chunk.css",
-    "static/js/main.cee1c3e3.chunk.js"
+    "static/css/2.539a4d28.chunk.css",
+    "static/js/2.ee0ba4dd.chunk.js",
+    "static/css/main.f667c234.chunk.css",
+    "static/js/main.f04c209e.chunk.js"
   ]
 }
