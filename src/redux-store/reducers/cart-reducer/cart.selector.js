@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-const selectCart=state=>state.cartReducer;   //root reducers
+const selectCart=state=>state.cartReducerSales;   //root reducers
 
 
 

@@ -82,7 +82,7 @@ class App extends Component {
 
 function mapStateToProps(state) {
   return {
-    spinner: state.utilityReducer.spinner,
+    spinner: state.utilityReducerSales.spinner,
   };
 }
 const mapDispatchToProps = (dispatch) => ({

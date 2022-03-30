@@ -75,7 +75,7 @@ const Header = ({ itemCount, categories,cus_name }) => {
 const mapStateToProps = (state) => {
   return {
     itemCount: selectCartItemsCount(state),
-    cus_name: state.userReducer.cus_name,
+    cus_name: state.userReducerSales.cus_name,
     categories: state.dashboardReducer.productCategories,
   };
 };

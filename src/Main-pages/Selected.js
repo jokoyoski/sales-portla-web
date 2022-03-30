@@ -101,6 +101,8 @@ const Selected = ({
                 <div className="flex flex-space-1">
                   <button
                     className="h-7 w-7 text-2xl flex justify-center items-center rounded-full bg-blue-700 text-white font-medium focus:outline-none"
+                    style={{ cursor: "pointer" }}
+                    class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       addItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -110,11 +112,12 @@ const Selected = ({
                   >
                     <span>+</span>
                   </button>
+
                   <span className="text-2xl font-semibold px-3">
                     {itemCount}
                   </span>
                   <button
-                    className="h-7 w-7 rounded-full text-2xl bg-blue-300 text-white font-medium flex justify-center items-center focus:outline-none"
+                    class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       removeItem(
                         store.getState().productDetailsReducer.productDetails,
@@ -207,6 +210,9 @@ const mapDispatchToProps = (dispatch) => ({
   clearItem: (item) => dispatch(ClearItemFromCart(item)), //setting the values
   addItem: (item) => dispatch(AddItem(item)),
   removeItem: (item) => dispatch(RemoveItem(item)),
+  LoadRelatedItems(payload) {
+    dispatch({ type: LOAD_RELATED_ITEMS, payload });
+  },
 });
 const mapStateToProps = (state) => {
   return {
@@ -217,5 +223,4 @@ const mapStateToProps = (state) => {
     itemCount: selectCartItemsCount(state),
   };
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(Selected);
