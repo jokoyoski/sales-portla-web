@@ -6,7 +6,7 @@ import { companyId } from "../../../components/utils/constants";
 import {
   PRODUCTS_CATEGORIES_LIST,
   PRODUCT_LIST, LOAD_RELATED_ITEMS,SET_RELATED_ITEMS
-} from "../../constants/constants";
+} from "../../constants/constants";``
 
 export default function* watchRelatedItems() {
   yield takeEvery(LOAD_RELATED_ITEMS, workerSaga);

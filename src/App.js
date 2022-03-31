@@ -26,6 +26,7 @@ import TopSlider from "./Main-pages/TopSlider";
 import AllOrders from "./Main-pages/Others/Orders";
 import FulfilledOrders from "./Main-pages/Others/FulfilledOrders";
 import UnFulfilledOrders from "./Main-pages/Others/UnfufilledOrders";
+import SelectedCategory from "./Main-pages/SelectedCategory";
 
 class App extends Component {
   render() {
@@ -47,6 +48,11 @@ class App extends Component {
             <Route path="/Profile" exact component={Profile} />
             <Route path="/AllOrders" exact component={AllOrders} />
             <Route path="/FulfilledOrders" exact component={FulfilledOrders} />
+            <Route
+              path="/SelectedCategory"
+              exact
+              component={SelectedCategory}
+            />
             <Route
               path="/UnFulfilledOrders"
               exact

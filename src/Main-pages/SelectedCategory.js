@@ -1,9 +1,22 @@
-import React from 'react'
+import React from "react";
+import { connect } from "react-redux";
+import Header from "./header/Header";
 
-const SelectedCategory = () => {
+const SelectedCategory = ({ items }) => {
   return (
-    <div>SelectedCategory</div>
-  )
-}
+    <>
+      <Header />
+      {items.map((item) => {
+        console.log("product is on fire", item);
+        return <h1>{item.name}hello</h1>;
+      })}
+    </>
+  );
+};
 
-export default SelectedCategory
+const mapStateToProps = (state) => {
+  return {
+    items: state.dashboardReducer.relatedItems,
+  };
+};
+export default connect(mapStateToProps)(SelectedCategory);

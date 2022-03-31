@@ -19,9 +19,7 @@ function* workerSaga(action) {
     var payload = {};
     var formatUrl = `/api/Admin/get-products?companyId=${companyId}`;
     yield request("get", action.payload, formatUrl).then((response) => {
-      payload = response;
-      console.log("Here are the Products", response);
-    });
+      payload = response;    });
     yield put({ type: PRODUCT_LIST, payload: payload });
     // Get Product Categories
     formatUrl = `/api/Admin/get-product-category/${companyId}`;

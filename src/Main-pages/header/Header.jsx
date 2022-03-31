@@ -4,8 +4,10 @@ import { connect } from "react-redux";
 import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/cart.selector";
 import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
+import { LOAD_RELATED_ITEMS } from "../../redux-store/constants/constants";
 
-const Header = ({ itemCount, categories, cus_name }) => {
+
+const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
@@ -62,9 +64,14 @@ const Header = ({ itemCount, categories, cus_name }) => {
         <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
           {categories.map((item) => {
             return (
-              <a className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out">
-                {item.name}
-              </a>
+              <Link to="/SelectedCategory">
+                <a
+                  className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out"
+                  onClick={() => LoadCatproducts(item.id)}
+                >
+                  {item.name}
+                </a>
+              </Link>
             );
           })}
         </div>
@@ -82,7 +89,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapToDispatchToProps = (dispatch) => ({});
+const mapToDispatchToProps = (dispatch) => ({
+  LoadCatproducts(payload) {
+    dispatch({ type: LOAD_RELATED_ITEMS, payload });
+  },
+});
 //nu
 
 export default connect(mapStateToProps, mapToDispatchToProps)(Header);
