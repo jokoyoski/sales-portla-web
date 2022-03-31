@@ -5,7 +5,7 @@ import { selectCartItemsCount } from "../../redux-store/reducers/cart-reducer/ca
 import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 
-const Header = ({ itemCount, categories,cus_name }) => {
+const Header = ({ itemCount, categories, cus_name }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
@@ -14,7 +14,9 @@ const Header = ({ itemCount, categories,cus_name }) => {
       <div className="grid grid-cols-3">
         <div className="col-span-2 flex space-x-4 items-center">
           {" "}
-          <img  src="./Images/logo2.png" alt="" />
+          <Link to="/">
+            <img src="./Images/logo2.png" alt="bizinCloud_logo" />
+          </Link>
           <form className="d-flex input-group w-auto">
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
