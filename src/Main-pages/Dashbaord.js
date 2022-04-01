@@ -30,9 +30,11 @@ export function Dashboard({
         </div>
 
         {/* Promotion Slides */}
-        <div className="flex px-28 space-x-3">
-          <CarouselPage />
-          <SecondPromote />
+        <div className="w-full flex justify-center">
+          <div className="flex w-[80%] space-x-3">
+            <CarouselPage />
+            <SecondPromote />
+          </div>
         </div>
       </header>
 
@@ -65,7 +67,7 @@ function mapStateToProps(state) {
 const mapDispatchToProps = (dispatch) => ({
   LoadProducts(payload) {
     dispatch({ type: "LOAD_PRODUCT", payload });
-  }, 
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

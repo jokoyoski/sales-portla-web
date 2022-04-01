@@ -12,7 +12,7 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
   const [showBasic, setShowBasic] = useState(false);
 
   return (
-    <div className="main-header px-32 py-4 w-full bg-white shadow-lg">
+    <div className="main-header lg:px-32 md:px-10 px-5 py-4 w-full bg-white shadow-lg">
       <div className="grid grid-cols-3">
         <div className="col-span-2 flex space-x-4 items-center">
           {" "}
