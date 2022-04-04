@@ -18,7 +18,7 @@ import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import usePasswordToggle from "./usePasswordToggle";
 import heroImg from "../../assets/images/Pretty-grouped.png";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const initialState = {
   passwords: {
@@ -49,14 +49,14 @@ export const LoginPageComponent = ({
     const userDetails = {
       email: formData.email.value,
       password: formData.passwords.value,
-      cacNumber:cacNumber
+      cacNumber: cacNumber,
     };
     LoginUser(userDetails);
   };
 
   return (
-    <div className="grid bg-white grid-cols-2 login-continer p-20">
-      <div className="border-r-2 border-gray-200 p-3">
+    <div className="sm:grid sm:grid-cols-2 bg-white login-continer  p-10 lg:gap-5 md:items-center">
+      <div className="md:border-r-2 md:border-gray-200">
         <div className="logo-container space-x-2 flex items-center">
           <img src={Logo} alt={"Logo"} className="w-14" />{" "}
           <span className="text-2xl text-[#4f6bfe]">
@@ -65,7 +65,7 @@ export const LoginPageComponent = ({
         </div>
         <div className="mt-3">
           <h1 className="text-[#4f6bfe] font-bold">Welcome Back</h1>
-          <small className="text-gray-300">
+          <small className="text-gray-400">
             continue with unbeatable fun shopping at{" "}
             <strong>Vendor'sStore</strong>
           </small>
@@ -120,10 +120,16 @@ export const LoginPageComponent = ({
                 >
                   {ToggleIcon}
                 </span>
-                <small className="ml-2"> <span className="text-gray-300">Forgot Password? </span> <span className="font-bold text-[#4f6bfe] hover:underline cursor-pointer">ResetPassword</span></small>
+                <small className="ml-2">
+                  {" "}
+                  <span className="text-gray-300">Forgot Password? </span>{" "}
+                  <span className="font-bold text-[#4f6bfe] hover:underline cursor-pointer">
+                    ResetPassword
+                  </span>
+                </small>
               </div>
-<div className="mt-5 ml-2 w-full">
-    <div className="w-[90%] ">
+              <div className="mt-5 ml-2 w-full">
+                <div className="w-[90%] ">
                   <button
                     className="bg-[rgb(103,126,240)] border-none focus:outline-none font-semibold py-2 rounded-lg text-white w-full"
                     type="submit"
@@ -139,21 +145,23 @@ export const LoginPageComponent = ({
                     ></i>
                   </button>
                 </div>
-              <div className="">
-                    <span>Dont have an account </span>{" "}
-                    <Link to="/user/register" className="hover:underline text-[#4f6bfe]">
-                      {" "}
-                      Sign Up{" "}
-                    </Link>
+                <div className="">
+                  <span>Dont have an account </span>{" "}
+                  <Link
+                    to="/user/register"
+                    className="hover:underline text-[#4f6bfe]"
+                  >
+                    {" "}
+                    Sign Up{" "}
+                  </Link>
+                </div>
               </div>
-</div>
-     
             </Grid>
           </Form>
         </div>
       </div>
 
-      <div className="p-3">
+      <div className="">
         <div>
           <img src={heroImg} alt="hero_img" />
         </div>
