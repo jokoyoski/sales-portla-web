@@ -6,15 +6,20 @@ import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { LOAD_RELATED_ITEMS } from "../../redux-store/constants/constants";
 
-
 const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
+  const [mobile, setMobile] = useState(false);
+
+  const changeMobile = () => {
+    console.log("Mobile Called");
+    mobile === false ? setMobile(true) : setMobile(false);
+  };
 
   return (
     <div className="main-header lg:px-32 md:px-10 px-5 py-4 w-full bg-white shadow-lg">
-      <div className="grid grid-cols-3">
-        <div className="col-span-2 flex space-x-4 items-center">
+      <div className="grid lg:grid-cols-3 lg:grid-rows-1 md:grid-rows-2">
+        <div className="lg:col-span-2 flex space-x-4 items-center">
           {" "}
           <Link to="/">
             <img src="./Images/logo2.png" alt="bizinCloud_logo" />
@@ -23,7 +28,7 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
                 type="search"
-                className="border-none w-[30rem] bg-transparent focus:outline-none"
+                className="border-none md:w-[30rem] sm:w-[20rem] w-[10rem] bg-transparent focus:outline-none"
                 placeholder="Search and filter items by product name"
                 aria-label="Search"
               />
@@ -59,9 +64,51 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
       </div>
       <hr />
       {/* Categories Here */}
+      {/* Toggler */}
+      <div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          className="h-6 w-6 text-blue-500 md:hidden block"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+          onClick={() => changeMobile()}
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4 6h16M4 12h8m-8 6h16"
+          />
+        </svg>
+      </div>
+      {/* End Toggler */}
 
+      {/* Mobile Navigation */}
+      {mobile ? (
+        <div className="mobile-view-container">
+          <div className="bottom flex flex-col space-y-4 font-bold text-gray-500 overflow-scroll">
+            {categories.map((item) => {
+              return (
+                <Link to="/SelectedCategory">
+                  <a
+                    className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out"
+                    onClick={() => LoadCatproducts(item.id)}
+                  >
+                    {item.name}
+                  </a>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      ) : (
+        ""
+      )}
+
+      {/* End Mobile Navigation */}
       <div className="categories-container">
-        <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
+        <div className="bottom hidden md:flex space-x-14 font-bold text-gray-500 overflow-scroll">
           {categories.map((item) => {
             return (
               <Link to="/SelectedCategory">

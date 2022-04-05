@@ -5,31 +5,31 @@ import "./Prodcuts.scss";
 
 const Products = ({ products, SetProduct }) => {
   return (
-    <div className="px-28 space-y-7 mb-7">
+    <div className="md:px-28 sm:px-5 xm:px-3 space-y-7 my-7">
       {" "}
       {/* Product Category and Product listings inside */}
       <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-2xl  flex flex-col">
-        <div className="Category-Name p-3 grid grid-cols-2 text-white">
+        <div className="Category-Name md:p-3 p-2 grid grid-cols-2 text-white">
           <div>
-            <h5>Hot Sales</h5>
+            <h5 className="md:text-lg  font-semibold text-sm">Hot Sales</h5>
           </div>
         </div>
         {/* Products Listings */}
-        <div className="bg-white p-5 rounded-b-2xl w-full ">
+        <div className="bg-white md:p-5 rounded-b-2xl w-full ">
           {" "}
           <div className="flex overflow-auto product-container gap-4">
             {" "}
             {/* Edit the plrodiuct Here */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem]">
-                  <div className="shadow-md p-3 w-[15rem]">
+                <div className="md:h-[24rem]">
+                  <div className="shadow-md p-3 md:w-[15rem] w-24">
                     {" "}
-                    <div className="grid grid-cols-2">
+                    <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
+                          class="md:h-6 md:w-6 w-3"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="#EF8923"
@@ -43,44 +43,49 @@ const Products = ({ products, SetProduct }) => {
                         </svg>
                       </span>
                       <div className="flex justify-end">
-                        <div className="rounded-full bg-[#ef892338] px-3">
+                        <div className="rounded-full bg-[#ef892338]  px-2">
                           {" "}
-                          <span className="text-[#EF8923] font-semibold">
+                          <small className="text-[#EF8923] md:font-semibold md:text-lg text-sm">
                             -25
-                          </span>{" "}
+                          </small>{" "}
                         </div>
                       </div>
                     </div>
-                    <div className="w-full py-2 flex justify-center">
+                    <div className="w-full md:py-2 flex justify-center">
                       <Link to="/selected">
                         <img
                           src={product.imageId}
                           alt="product_img"
-                          className="w-[12rem] h-[12rem] object-contain"
+                          className="md:w-[12rem] md:h-[12rem] w-[6rem] h-[6rem] object-contain"
                           onClick={() => SetProduct(product)}
                         />
                       </Link>
                     </div>
                     <div className="product_info flex flex-col">
                       <div>
-                        <span className="product_name font-bold text-xl">
+                        <span className="product_name font-bold md:text-xl text-small">
                           {product.productName}
                         </span>{" "}
                         <br />
-                        <small className="text-gray-300 text-sm">
+                        <small className="text-gray-300 text-sm hidden md:flex">
                           {product.productDescription.substring(0, 20) + "..."}
                         </small>
+                        {/* Description to show up on small screens */}
+                        <small className="text-gray-300 text-sm md:hidden">
+                          {product.productDescription.substring(0, 10) + "..."}
+                        </small>
+                        {/* End of Description to show on small screens */}
                       </div>
-                      <div className="grid py-2 grid-cols-2">
+                      <div className="md:grid md:py-2  md:grid-cols-2 flex flex-col">
                         <div>
                           {" "}
-                          <h3 className="product_price text-gray-700">
+                          <h3 className="product_price text-gray-700 md:font-semibold md:text-lg text-sm">
                             &#8358;{product.basePrice}
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
-                            Buy Now
+                          <button className="bg-blue-500 md:px-2 px-1 py-1 text-white md:font-medium md:text-lg text-sm hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                            <small>Buy Now</small>
                           </button>
                         </div>
                       </div>
@@ -96,25 +101,29 @@ const Products = ({ products, SetProduct }) => {
       </div>
       {/* Second Category */}
       <div className="bg-gradient-to-r from-blue-700 to-orange-500 rounded-2xl  flex flex-col">
-        <div className="Category-Name p-3 grid grid-cols-2 text-white">
+        <div className="Category-Name md:p-3 p-2 grid grid-cols-2 text-white">
           <div>
-            <h5>Top Sales</h5>
+            <h5 className="md:text-lg  font-semibold text-sm">
+              Trending Sales
+            </h5>
           </div>
         </div>
-        <div className="bg-white p-5 rounded-b-2xl w-full">
+        {/* Products Listings */}
+        <div className="bg-white md:p-5 rounded-b-2xl w-full ">
           {" "}
-          <div className="flex overflow-auto product-container space-x-4">
-            {/* Image Here *4 */}
+          <div className="flex overflow-auto product-container gap-4">
+            {" "}
+            {/* Edit the plrodiuct Here */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem]">
-                  <div className="shadow-md p-3 w-[15rem]">
+                <div className="md:h-[24rem]">
+                  <div className="shadow-md p-3 md:w-[15rem] w-24">
                     {" "}
-                    <div className="grid grid-cols-2">
+                    <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
+                          class="md:h-6 md:w-6 w-3"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="#EF8923"
@@ -128,41 +137,49 @@ const Products = ({ products, SetProduct }) => {
                         </svg>
                       </span>
                       <div className="flex justify-end">
-                        <div className="rounded-full bg-[#ef892338] px-3">
+                        <div className="rounded-full bg-[#ef892338]  px-2">
                           {" "}
-                          <span className="text-[#EF8923] font-semibold">
+                          <small className="text-[#EF8923] md:font-semibold md:text-lg text-sm">
                             -25
-                          </span>{" "}
+                          </small>{" "}
                         </div>
                       </div>
                     </div>
-                    <div className="w-full py-2 flex justify-center">
-                      <img
-                        src={product.imageId}
-                        alt="product_img"
-                        className="w-[12rem] h-[12rem] object-contain"
-                      />
+                    <div className="w-full md:py-2 flex justify-center">
+                      <Link to="/selected">
+                        <img
+                          src={product.imageId}
+                          alt="product_img"
+                          className="md:w-[12rem] md:h-[12rem] w-[6rem] h-[6rem] object-contain"
+                          onClick={() => SetProduct(product)}
+                        />
+                      </Link>
                     </div>
                     <div className="product_info flex flex-col">
                       <div>
-                        <span className="product_name font-bold text-xl">
+                        <span className="product_name font-bold md:text-xl text-small">
                           {product.productName}
                         </span>{" "}
                         <br />
-                        <small className="text-gray-300 text-sm">
+                        <small className="text-gray-300 text-sm hidden md:flex">
                           {product.productDescription.substring(0, 20) + "..."}
                         </small>
+                        {/* Description to show up on small screens */}
+                        <small className="text-gray-300 text-sm md:hidden">
+                          {product.productDescription.substring(0, 10) + "..."}
+                        </small>
+                        {/* End of Description to show on small screens */}
                       </div>
-                      <div className="grid py-2 grid-cols-2">
+                      <div className="md:grid md:py-2  md:grid-cols-2 flex flex-col">
                         <div>
                           {" "}
-                          <h3 className="product_price text-gray-700">
+                          <h3 className="product_price text-gray-700 md:font-semibold md:text-lg text-sm">
                             &#8358;{product.basePrice}
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
-                            Buy Now
+                          <button className="bg-blue-500 md:px-2 px-1 py-1 text-white md:font-medium md:text-lg text-sm hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                            <small>Buy Now</small>
                           </button>
                         </div>
                       </div>
@@ -173,28 +190,32 @@ const Products = ({ products, SetProduct }) => {
             })}
           </div>
         </div>
+
+        {/* Amazing Deals Sales Category */}
       </div>
       {/* Third Category */}
-      <div className="bg-gradient-to-r from-blue-700 to-blue-500 rounded-2xl  flex flex-col">
-        <div className="Category-Name p-3 grid grid-cols-2 text-white">
+      <div className="bg-gradient-to-r from-blue-700 to-blue-400 rounded-2xl  flex flex-col">
+        <div className="Category-Name md:p-3 p-2 grid grid-cols-2 text-white">
           <div>
-            <h5>Amazing Products</h5>
+            <h5 className="md:text-lg  font-semibold text-sm">Amazind Deals</h5>
           </div>
         </div>
-        <div className="bg-white p-5 rounded-b-2xl w-full">
+        {/* Products Listings */}
+        <div className="bg-white md:p-5 rounded-b-2xl w-full ">
           {" "}
-          <div className="flex overflow-auto product-container space-x-4">
-            {/* Image Here *4 */}
+          <div className="flex overflow-auto product-container gap-4">
+            {" "}
+            {/* Edit the plrodiuct Here */}
             {products.map((product) => {
               return (
-                <div className="h-[24rem]">
-                  <div className="shadow-md p-3 w-[15rem]">
+                <div className="md:h-[24rem]">
+                  <div className="shadow-md p-3 md:w-[15rem] w-24">
                     {" "}
-                    <div className="grid grid-cols-2">
+                    <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
-                          class="h-6 w-6"
+                          class="md:h-6 md:w-6 w-3"
                           fill="none"
                           viewBox="0 0 24 24"
                           stroke="#EF8923"
@@ -208,41 +229,49 @@ const Products = ({ products, SetProduct }) => {
                         </svg>
                       </span>
                       <div className="flex justify-end">
-                        <div className="rounded-full bg-[#ef892338] px-3">
+                        <div className="rounded-full bg-[#ef892338]  px-2">
                           {" "}
-                          <span className="text-[#EF8923] font-semibold">
+                          <small className="text-[#EF8923] md:font-semibold md:text-lg text-sm">
                             -25
-                          </span>{" "}
+                          </small>{" "}
                         </div>
                       </div>
                     </div>
-                    <div className="w-full py-2 flex justify-center">
-                      <img
-                        src={product.imageId}
-                        alt="product_img"
-                        className="w-[12rem] h-[12rem] object-contain"
-                      />
+                    <div className="w-full md:py-2 flex justify-center">
+                      <Link to="/selected">
+                        <img
+                          src={product.imageId}
+                          alt="product_img"
+                          className="md:w-[12rem] md:h-[12rem] w-[6rem] h-[6rem] object-contain"
+                          onClick={() => SetProduct(product)}
+                        />
+                      </Link>
                     </div>
                     <div className="product_info flex flex-col">
                       <div>
-                        <span className="product_name font-bold text-xl">
+                        <span className="product_name font-bold md:text-xl text-small">
                           {product.productName}
                         </span>{" "}
                         <br />
-                        <small className="text-gray-300 text-sm">
+                        <small className="text-gray-300 text-sm hidden md:flex">
                           {product.productDescription.substring(0, 20) + "..."}
                         </small>
+                        {/* Description to show up on small screens */}
+                        <small className="text-gray-300 text-sm md:hidden">
+                          {product.productDescription.substring(0, 10) + "..."}
+                        </small>
+                        {/* End of Description to show on small screens */}
                       </div>
-                      <div className="grid py-2 grid-cols-2">
+                      <div className="md:grid md:py-2  md:grid-cols-2 flex flex-col">
                         <div>
                           {" "}
-                          <h3 className="product_price text-gray-700">
-                            {product.basePrice}
+                          <h3 className="product_price text-gray-700 md:font-semibold md:text-lg text-sm">
+                            &#8358;{product.basePrice}
                           </h3>
                         </div>
                         <div className="flex pb-2 justify-end">
-                          <button className="bg-blue-500 px-2 py-1 text-white font-medium hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
-                            Buy Now
+                          <button className="bg-blue-500 md:px-2 px-1 py-1 text-white md:font-medium md:text-lg text-sm hover:bg-blue-700 transition duration-500 ease-in-out rounded-lg">
+                            <small>Buy Now</small>
                           </button>
                         </div>
                       </div>
@@ -253,6 +282,8 @@ const Products = ({ products, SetProduct }) => {
             })}
           </div>
         </div>
+
+        {/* Top Sales Category */}
       </div>
     </div>
   );
