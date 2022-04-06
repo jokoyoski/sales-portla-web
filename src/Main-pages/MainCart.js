@@ -23,14 +23,14 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
         {" "}
         <div className="my-10 flex space-x-5">
           <div className="flex w-[70%] bg-white rounded-2xl flex-col">
-            <div className="grid grid-cols-2 p-3 font-black text-white rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
+            <div className="grid grid-cols-2 p-3  text-white  rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
               <div className="flex items-center ">
-                <h5 className="uppercase">items</h5>
+                <h5 className="uppercase font-semibold">items</h5>
               </div>
               <div className="flex space-x-5 justify-end items-center">
-                <h5 className="uppercase">quantity</h5>
-                <h5 className="uppercase">unit price</h5>
-                <h5 className="uppercase">subtotal</h5>
+                <h5 className="uppercase font-semibold">quantity</h5>
+                <h5 className="uppercase font-semibold">unit price</h5>
+                <h5 className="uppercase font-semibold">subtotal</h5>
               </div>
             </div>
 
@@ -38,29 +38,25 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
               {cartItems.map((product) => {
                 return (
                   <div className="table_content p-3 flex flex-col">
-                    <div className="flex ">
-                      <div className="flex space-x-4">
+                    <div className="grid grid-cols-2">
+                      {/* Product Description Starts Here */}
+                      <div className="flex space-x-2">
                         <div className="cart_img p-2">
                           <img
                             src={product.imageId}
                             alt="cart_img"
-                            className="h-56"
+                            className="h-56  object-fill"
                           />
                         </div>
-                        <div className="flex flex-col">
-                          {" "}
-                          <div className="">
+                        <div className="flex flex-col mt-2">
+                          <div className="rounded-full w-14 bg-[#ef892338] px-3">
                             {" "}
-                            <div className="rounded-full w-14 bg-[#ef892338] px-3">
-                              {" "}
-                              <span className="text-[#EF8923] font-semibold">
-                                -25
-                              </span>{" "}
-                            </div>
+                            <span className="text-[#EF8923] font-semibold">
+                              -25
+                            </span>{" "}
                           </div>
                           <h2>{product.productName}</h2>
                           <p>{product.productDescription}</p>
-                          <p>{product.quantityToAdd}</p>
                           <div className="flex text-red-500">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -77,30 +73,42 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                             <span
                               style={{ cursor: "pointer" }}
                               onClick={() => clearItem(product)}
-                              className="font-semibold"
+                              className="font-semibold text-sm"
                             >
                               Remove Item
                             </span>
                           </div>
                         </div>
                       </div>
-                      <div className="space-x-5 flex ">
+                      {/* Image and roduct Description Ends Here */}
+                      <div className="space-x-5 flex justify-around">
                         <div className="price">
                           {" "}
-                          <div>
+                          <div className="flex flex-col">
+                            <h2 className="text-sm font-semibold hidden">
+                              Qty
+                            </h2>
                             <h4 className="font-semibold">
-                              {product.basePrice}
+                              {product.quantityToAdd}
                             </h4>
                           </div>{" "}
                         </div>
-                        <div className="total text-orange-500">
+                        <div className="price flex flex-col">
                           {" "}
-                          <div>
-                            {" "}
-                            <h4 className="font-semibold">
-                              {product.basePrice * product.quantityToAdd}
-                            </h4>
-                          </div>
+                          <h2 className="text-sm font-semibold hidden">
+                            Price
+                          </h2>
+                          <h4 className="font-semibold">
+                            &#8358;{product.basePrice}
+                          </h4>
+                        </div>
+                        <div className="total text-orange-500 flex flex-col">
+                          <h2 className="text-sm font-semibold hidden">
+                            Sub.Total
+                          </h2>
+                          <h4 className="font-semibold">
+                            &#8358;{product.basePrice * product.quantityToAdd}
+                          </h4>
                         </div>
                       </div>
                     </div>
@@ -109,9 +117,12 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                 );
               })}
             </tbody>
-            <h5>
-              <strong>N {total}</strong>
-            </h5>
+            <div className="flex space-x-4 justify-end px-4 pb-3">
+              <h5 className="font-semibold text-3xl">Total:</h5>
+              <h5 className="font-bold text-3xl text-orange-500">
+                &#8358;{total}
+              </h5>
+            </div>
           </div>
           <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
             <div className="flex space-x-3">
@@ -124,13 +135,15 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                 <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                 <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
               </svg>
-              <h5 className="uppercase">delivery & Return</h5>
+              <h5 className="uppercase font-semibold">delivery & Return</h5>
             </div>
             <hr className="border border-gray-200" />
             <div className="flex flex-col">
-              <h5>1-7 Days Products Available at Pickup location</h5>
+              <h5 className="font-semibold">
+                1-7 Days Products Available at Pickup location
+              </h5>
               <hr className="border border-gray-200" />
-              <h5>7 Days Return Policy</h5>
+              <h5 className="font-semibold">7 Days Return Policy</h5>
               <hr className="border border-gray-200" />
               <h5 className="uppercase flex space-x-2">
                 <svg
@@ -145,22 +158,28 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span>Warranty</span>
+                <span className="font-semibold">Warranty</span>
               </h5>
               <div>
                 {cus_name === "Anonymous" ? (
-                  <a href="/user/login" class="button">
+                  <a
+                    href="/user/login"
+                    class="w-full bg-blue-500 rounded-lg font-semibold"
+                  >
                     Proceed To Check Out
                   </a>
                 ) : (
-                  <a href="/order" class="button">
+                  <a href="/order" class="button w-full font-semibold">
                     Proceed To Check Out
                   </a>
                 )}
               </div>
-              <div style={{ marginTop: "30px" }}>
-                <a href="#" class="button">
-                  Continue Shopping
+              <div>
+                <a
+                  href="#"
+                  class="button mt-2 w-full bg-white border-2 border-blue-500 font-semibold"
+                >
+                  <span className="text-blue-500">Continue Shopping</span>
                 </a>
               </div>
             </div>

@@ -40,11 +40,11 @@ const Selected = ({
     <div>
       <Header />
 
-      <div className="body px-28 mt-5">
-        <div className="flex space-x-3">
-          <div className="rounded-2xl w-[70%] bg-white p-5 space-y-10 flex flex-col">
-            <div className="grid grid-cols-2 h-64">
-              <div className="p-1 image_container">
+      <div className="body md:px-28 sm:px-5 xm:px-3 mt-5">
+        <div className="flex space-x-3 xm:flex-col-reverse xm:gap-5 xm:space-x-0">
+          <div className="rounded-2xl md:w-[70%] bg-white p-5 flex flex-col">
+            <div className="grid md:grid-cols-2 mb-5 md:gap-0 grid-rows-2 md:h-64 h-full">
+              <div className="p-1 image_container flex xm:justify-center">
                 <img
                   src={
                     store.getState().productDetailsReducer.productDetails
@@ -55,7 +55,7 @@ const Selected = ({
                 />
               </div>
               <div className="p-1">
-                <div className="flex space-x-3">
+                <div className="flex space-x-3 xm:justify-center ">
                   {" "}
                   <h2 className="uppercase font-medium text-gray-500">
                     {
@@ -78,14 +78,15 @@ const Selected = ({
                     />
                   </svg>
                 </div>{" "}
-                <p>
+                <p className="xm:text-center">
                   {
                     store.getState().productDetailsReducer.productDetails
                       .productDescription
                   }
                 </p>
                 <hr className="border-gray-200" />
-                <div className="flex space-x-2 items-center">
+                {/* Second Row */}
+                <div className="flex xm:justify-center space-x-2 items-center">
                   <h4 className="text-black">&#8358;{Selected.basePrice}</h4>{" "}
                   <h5 className="line-through text-gray-300 font-medium">
                     {Selected.basePrice}
@@ -98,14 +99,14 @@ const Selected = ({
                   </div>
                 </div>
                 <hr className="border-gray-200" />
-                <div className="flex flex-space-1">
+                <div className="flex flex-space-1 xm:justify-center items-center">
                   <button
-                    className="h-7 w-7 text-2xl flex justify-center items-center rounded-full bg-blue-700 text-white font-medium focus:outline-none"
+                    className="md:h-7 h-5 w-5  md:w-7 text-2xl flex justify-center items-center md:rounded-full rounded-lg bg-blue-700 text-white font-medium focus:outline-none"
                     style={{ cursor: "pointer" }}
                     class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       addItem(
-                        store.getState().productDetailsReducer.productDetails,
+                        store.getState().productDetailsReducer.productDetails
                       )
                     }
                     type="button"
@@ -117,10 +118,10 @@ const Selected = ({
                     {itemCount}
                   </span>
                   <button
-                    class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
+                    class="sm:px-3 px-2 py-1 sm:py-2 h-5 w-5 md:h-7 md:w-7 rounded-lg sm:text-lg flex justify-center items-center space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       removeItem(
-                        store.getState().productDetailsReducer.productDetails,
+                        store.getState().productDetailsReducer.productDetails
                       )
                     }
                     type="button"
@@ -131,12 +132,13 @@ const Selected = ({
                     {itemCount} item(s) added
                   </span>
                 </div>
+                {/* Differenciate Buttons Increament */}
                 <hr className="border-gray-200" />
-                <div className="py-2">
+                <div className="py-2 flex xm:justify-center">
                   <Link to="/main/cart">
                     <button
                       type="button"
-                      class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
+                      class="px-10 xm:px-10 py-2 rounded-lg xm:w-full flex space-x-2 bg-blue-500 text-white font-bold"
                     >
                       Buy Now
                     </button>
@@ -157,7 +159,8 @@ const Selected = ({
               </div>
             </div>
           </div>
-          <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
+          {/* Delivery Shipment */}
+          <div className="md:w-[30%] h-full bg-white rounded-2xl   p-4 delivery_info flex flex-col">
             <div className="flex space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -168,13 +171,19 @@ const Selected = ({
                 <path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z" />
                 <path d="M3 4a1 1 0 00-1 1v10a1 1 0 001 1h1.05a2.5 2.5 0 014.9 0H10a1 1 0 001-1V5a1 1 0 00-1-1H3zM14 7a1 1 0 00-1 1v6.05A2.5 2.5 0 0115.95 16H17a1 1 0 001-1v-5a1 1 0 00-.293-.707l-2-2A1 1 0 0015 7h-1z" />
               </svg>
-              <h5 className="uppercase">Delivery & Return</h5>
+              <h5 className="uppercase font-semibold text-lg xm:text-sm">
+                Delivery & Return
+              </h5>
             </div>
             <hr className="border border-gray-200" />
             <div className="flex flex-col">
-              <h5>1-7 Days Products Available at Pickup location</h5>
+              <h5 className="font-semibold text-lg xm:text-sm">
+                1-7 Days Products Available at Pickup location
+              </h5>
               <hr className="border border-gray-200" />
-              <h5>7 Days Return Policy</h5>
+              <h5 className="font-semibold text-lg xm:text-sm">
+                7 Days Return Policy
+              </h5>
               <hr className="border border-gray-200" />
               <h5 className="uppercase flex space-x-2">
                 <svg
@@ -189,10 +198,13 @@ const Selected = ({
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span>Warranty</span>
+                <span className="font-semibold text-lg xm:text-sm">
+                  Warranty
+                </span>
               </h5>
             </div>
           </div>
+          {/* End Delivery Shipmnent */}
         </div>
         {/* Related Products */}
         <div className="py-5">
