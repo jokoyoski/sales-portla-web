@@ -14,10 +14,12 @@
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;1,100;1,200;1,300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;1,100;1,200;1,300&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <!--Links for the sliding category  -->
     <!-- Slider Css  -->
@@ -25,11 +27,20 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/7.4.1/swiper-bundle.css"
     />
-
-    <!-- End CSS Slider -->
-
-    <!-- End of Helper slider -->
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind style Customization -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            screens: {
+              xm: { max: "639px" },
+            },
+          },
+        },
+      };
+    </script>
+    <!-- Tailwind style Customization Ends Here-->
     <!-- End of Js slider -->
     <!--  -->
     <!--

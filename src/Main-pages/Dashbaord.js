@@ -31,7 +31,7 @@ export function Dashboard({
 
         {/* Promotion Slides */}
         <div className="w-full flex justify-center">
-          <div className="flex w-[80%] space-x-3">
+          <div className="flex w-[80%] space-x-4 my-5">
             <CarouselPage />
             <SecondPromote />
           </div>

@@ -10,8 +10,8 @@ import BannerGif from "../assets/images/Home-Display.gif";
 const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
   return (
     <div className="w-[70%]">
-      <div className="bg-red-500">
-        <img src={BannerGif} alt="hero-img" />
+      <div className="">
+        <img src={BannerGif} alt="hero-img" className="rounded-2xl" />
       </div>
     </div>
   );

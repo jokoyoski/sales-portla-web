@@ -6,24 +6,29 @@ import "./header.styles.scss";
 import { MDBIcon } from "mdb-react-ui-kit";
 import { LOAD_RELATED_ITEMS } from "../../redux-store/constants/constants";
 
-
 const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
   console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
 
+  const [switchMobile, setSwitchMobile] = useState(false);
+
+  const removeMenu = () => {
+    setSwitchMobile(true);
+  };
+
   return (
     <div className="main-header lg:px-32 md:px-10 px-5 py-4 w-full bg-white shadow-lg">
-      <div className="grid grid-cols-3">
-        <div className="col-span-2 flex space-x-4 items-center">
+      <div className="grid lg:grid-cols-3 lg:grid-rows-1 md:grid-rows-2">
+        <div className="lg:col-span-2 w-full flex space-x-4 items-center">
           {" "}
           <Link to="/">
-            <img src="./Images/logo2.png" alt="bizinCloud_logo" />
+            <img src="./Images/logo2.png" alt="bizinCloud_logo" className="" />
           </Link>
-          <form className="d-flex input-group w-auto">
+          <form className=" input-group">
             <div className="flex space-x-4 items-center rounded-lg p-3 bg-gray-100">
               <input
                 type="search"
-                className="border-none w-[30rem] bg-transparent focus:outline-none"
+                className="border-none md:w-[30rem] sm:w-[15rem] w-[10rem] bg-transparent focus:outline-none"
                 placeholder="Search and filter items by product name"
                 aria-label="Search"
               />
@@ -34,7 +39,7 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
         <div className="grid grid-cols-2 space-x-4 items-center">
           {" "}
           <div>
-            <div className="border-r-2 border-gray-300 w-2/5">
+            <div className="border-r-2 border-gray-300 md:w-2/5 w-full">
               <Link to="/main/cart">
                 <i class="fas fa-shopping-cart fa-lg"></i>
                 <span class="badge rounded-pill badge-notification bg-danger">
@@ -61,7 +66,24 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
       {/* Categories Here */}
 
       <div className="categories-container">
-        <div className="bottom flex space-x-14 font-bold text-gray-500 overflow-scroll">
+        <div>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+            onClick={() => removeMenu}
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M4 6h16M4 12h8m-8 6h16"
+            />
+          </svg>
+        </div>
+        <div className="bottom md:flex hidden space-x-14 font-bold text-gray-500 overflow-scroll">
           {categories.map((item) => {
             return (
               <Link to="/SelectedCategory">
@@ -77,6 +99,25 @@ const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
         </div>
       </div>
       {/* Categories Ends Here */}
+
+      {/* Mobile Navigation */}
+      <div className="mobile-container bg-blue-500 hidden">
+        <div className="bottom flex flex-col space-y-3 font-bold text-gray-500 overflow-scroll">
+          {categories.map((item) => {
+            return (
+              <Link to="/SelectedCategory">
+                <a
+                  className="hover:text-blue-500 hover:underline transition duration-500 ease-in-out"
+                  onClick={() => LoadCatproducts(item.id)}
+                >
+                  {item.name}
+                </a>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+      {/* End of mobile Navigation */}
     </div>
   );
 };

@@ -2,8 +2,8 @@ import React from "react";
 
 const SidedPromote = () => {
   return (
-    <div className="p-3 rounded-lg w-[30%]">
-      <div className="flex p-3 text-blue-500 mt-3 flex-col bg-white h-64 overflow-hidden rounded-2xl">
+    <div className="rounded-lg w-[30%]">
+      <div className="flex p-3 text-blue-500 flex-col bg-white h-60 overflow-hidden rounded-2xl">
         <div>
           <h5>No Dullling</h5> <h1 className="font-semibold">Shopping!!!</h1>{" "}
           <p>
