@@ -27,7 +27,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
               <div className="flex items-center ">
                 <h5 className="uppercase font-semibold">items</h5>
               </div>
-              <div className="flex space-x-5 justify-end items-center">
+              <div className="flex  justify-around items-center">
                 <h5 className="uppercase font-semibold">quantity</h5>
                 <h5 className="uppercase font-semibold">unit price</h5>
                 <h5 className="uppercase font-semibold">subtotal</h5>
@@ -40,7 +40,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                   <div className="table_content p-3 flex flex-col">
                     <div className="grid grid-cols-2">
                       {/* Product Description Starts Here */}
-                      <div className="flex space-x-2">
+                      <div className="flex space-x-2 ">
                         <div className="cart_img p-2">
                           <img
                             src={product.imageId}
@@ -118,7 +118,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
               })}
             </tbody>
             <div className="flex space-x-4 justify-end px-4 pb-3">
-              <h5 className="font-semibold text-3xl">Total:</h5>
+              <h5 className="font-medium text-3xl">Total:</h5>
               <h5 className="font-bold text-3xl text-orange-500">
                 &#8358;{total}
               </h5>
@@ -160,27 +160,29 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                 </svg>
                 <span className="font-semibold">Warranty</span>
               </h5>
-              <div>
+              <div className="my-2 w-full">
                 {cus_name === "Anonymous" ? (
                   <a
                     href="/user/login"
-                    class="w-full bg-blue-500 rounded-lg font-semibold"
+                    class="w-full bg-blue-500 button rounded-lg font-semibold text-white"
                   >
                     Proceed To Check Out
                   </a>
                 ) : (
-                  <a href="/order" class="button w-full font-semibold">
+                  <a
+                    href="/order"
+                    class="w-full bg-blue-500 button rounded-lg font-semibold text-white"
+                  >
                     Proceed To Check Out
                   </a>
                 )}
               </div>
               <div>
-                <a
-                  href="#"
-                  class="button mt-2 w-full bg-white border-2 border-blue-500 font-semibold"
-                >
-                  <span className="text-blue-500">Continue Shopping</span>
-                </a>
+                <Link to="/">
+                  <button className="bg-white rounded-lg border-2 py-3 border-blue-500 font-semibold text-blue-500 w-full">
+                    Continue Shopping
+                  </button>{" "}
+                </Link>
               </div>
             </div>
           </div>

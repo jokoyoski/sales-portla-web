@@ -78,7 +78,7 @@ const Selected = ({
                     />
                   </svg>
                 </div>{" "}
-                <p className="xm:text-center">
+                <p className="xm:text-center font-semibold text-gray-300">
                   {
                     store.getState().productDetailsReducer.productDetails
                       .productDescription
@@ -87,8 +87,10 @@ const Selected = ({
                 <hr className="border-gray-200" />
                 {/* Second Row */}
                 <div className="flex xm:justify-center space-x-2 items-center">
-                  <h4 className="text-black">&#8358;{Selected.basePrice}</h4>{" "}
-                  <h5 className="line-through text-gray-300 font-medium">
+                  <h4 className="text-black font-semibold">
+                    &#8358;{Selected.basePrice}
+                  </h4>{" "}
+                  <h5 className="line-through text-gray-300 font-semibold">
                     {Selected.basePrice}
                   </h5>
                   <div className="rounded-full mb-3 bg-[#ef892338] px-3">
@@ -101,9 +103,8 @@ const Selected = ({
                 <hr className="border-gray-200" />
                 <div className="flex flex-space-1 xm:justify-center items-center">
                   <button
-                    className="md:h-7 h-5 w-5  md:w-7 text-2xl flex justify-center items-center md:rounded-full rounded-lg bg-blue-700 text-white font-medium focus:outline-none"
                     style={{ cursor: "pointer" }}
-                    class="px-3 py-2 rounded-lg flex space-x-2 bg-blue-500 text-white font-bold"
+                    className="md:h-7 h-5 w-5  md:w-7 justify-center items-center rounded-lg flex bg-blue-500 text-white font-bold"
                     onClick={() =>
                       addItem(
                         store.getState().productDetailsReducer.productDetails
@@ -118,7 +119,7 @@ const Selected = ({
                     {itemCount}
                   </span>
                   <button
-                    class="sm:px-3 px-2 py-1 sm:py-2 h-5 w-5 md:h-7 md:w-7 rounded-lg sm:text-lg flex justify-center items-center space-x-2 bg-blue-500 text-white font-bold"
+                    class="md:h-7 h-5 w-5  md:w-7 rounded-lg sm:text-lg flex justify-center items-center space-x-2 bg-blue-500 text-white font-bold"
                     onClick={() =>
                       removeItem(
                         store.getState().productDetailsReducer.productDetails
@@ -134,11 +135,11 @@ const Selected = ({
                 </div>
                 {/* Differenciate Buttons Increament */}
                 <hr className="border-gray-200" />
-                <div className="py-2 flex xm:justify-center">
+                <div className="py-2 flex xm:justify-center xm:w-full">
                   <Link to="/main/cart">
                     <button
                       type="button"
-                      class="px-10 xm:px-10 py-2 rounded-lg xm:w-full flex space-x-2 bg-blue-500 text-white font-bold"
+                      class="px-10 py-2 rounded-lg xm:w-full flex space-x-2 bg-blue-500 text-white font-bold"
                     >
                       Buy Now
                     </button>
