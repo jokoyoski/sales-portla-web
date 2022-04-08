@@ -1,23 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.f667c234.chunk.css",
-    "main.js": "/static/js/main.f04c209e.chunk.js",
-    "main.js.map": "/static/js/main.f04c209e.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.254d69f6.js",
-    "runtime-main.js.map": "/static/js/runtime-main.254d69f6.js.map",
+    "main.css": "/static/css/main.69a72455.chunk.css",
+    "main.js": "/static/js/main.ce27e8ad.chunk.js",
+    "main.js.map": "/static/js/main.ce27e8ad.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.ba2ed34a.js",
+    "runtime-main.js.map": "/static/js/runtime-main.ba2ed34a.js.map",
     "static/css/2.539a4d28.chunk.css": "/static/css/2.539a4d28.chunk.css",
-    "static/js/2.ee0ba4dd.chunk.js": "/static/js/2.ee0ba4dd.chunk.js",
-    "static/js/2.ee0ba4dd.chunk.js.map": "/static/js/2.ee0ba4dd.chunk.js.map",
+    "static/js/2.0d8f085a.chunk.js": "/static/js/2.0d8f085a.chunk.js",
+    "static/js/2.0d8f085a.chunk.js.map": "/static/js/2.0d8f085a.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.539a4d28.chunk.css.map": "/static/css/2.539a4d28.chunk.css.map",
-    "static/css/main.f667c234.chunk.css.map": "/static/css/main.f667c234.chunk.css.map",
-    "static/js/2.ee0ba4dd.chunk.js.LICENSE.txt": "/static/js/2.ee0ba4dd.chunk.js.LICENSE.txt",
-    "static/media/Banner-01.49e66d12.png": "/static/media/Banner-01.49e66d12.png",
-    "static/media/Banner-02.db24d054.png": "/static/media/Banner-02.db24d054.png",
-    "static/media/Banner-03.9021bb10.png": "/static/media/Banner-03.9021bb10.png",
-    "static/media/Banner-04.b2ffb663.png": "/static/media/Banner-04.b2ffb663.png",
-    "static/media/Banner-05.6036e0aa.png": "/static/media/Banner-05.6036e0aa.png",
+    "static/css/main.69a72455.chunk.css.map": "/static/css/main.69a72455.chunk.css.map",
+    "static/js/2.0d8f085a.chunk.js.LICENSE.txt": "/static/js/2.0d8f085a.chunk.js.LICENSE.txt",
     "static/media/BizinCLOUD Logo Main.786db1dc.png": "/static/media/BizinCLOUD Logo Main.786db1dc.png",
+    "static/media/Home-Display.77ba696e.gif": "/static/media/Home-Display.77ba696e.gif",
     "static/media/Password-Illustration.108c59fa.svg": "/static/media/Password-Illustration.108c59fa.svg",
     "static/media/Pretty-grouped.d34811d6.png": "/static/media/Pretty-grouped.d34811d6.png",
     "static/media/Rectangle1.e123d778.png": "/static/media/Rectangle1.e123d778.png",
@@ -27,10 +23,10 @@
     "static/media/jacket.addadd46.jpeg": "/static/media/jacket.addadd46.jpeg"
   },
   "entrypoints": [
-    "static/js/runtime-main.254d69f6.js",
+    "static/js/runtime-main.ba2ed34a.js",
     "static/css/2.539a4d28.chunk.css",
-    "static/js/2.ee0ba4dd.chunk.js",
-    "static/css/main.f667c234.chunk.css",
-    "static/js/main.f04c209e.chunk.js"
+    "static/js/2.0d8f085a.chunk.js",
+    "static/css/main.69a72455.chunk.css",
+    "static/js/main.ce27e8ad.chunk.js"
   ]
 }

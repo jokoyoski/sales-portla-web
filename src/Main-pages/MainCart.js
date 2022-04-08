@@ -19,15 +19,15 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
   return (
     <div>
       <Header />{" "}
-      <div className="px-28 ">
+      <div className="md:px-28 sm:px-5 xm:px-3">
         {" "}
-        <div className="my-10 flex space-x-5">
-          <div className="flex w-[70%] bg-white rounded-2xl flex-col">
+        <div className="my-10 flex xm:flex-col-reverse xm:flex-col space-x-5 xm:space-x-0 xm:gap-7">
+          <div className="flex w-[70%] xm:w-full bg-white rounded-2xl flex-col">
             <div className="grid grid-cols-2 p-3  text-white  rounded-t-2xl bg-gradient-to-r h-14 from-blue-600 to-orange-700">
               <div className="flex items-center ">
                 <h5 className="uppercase font-semibold">items</h5>
               </div>
-              <div className="flex  justify-around items-center">
+              <div className="flex  justify-around items-center xm:hidden">
                 <h5 className="uppercase font-semibold">quantity</h5>
                 <h5 className="uppercase font-semibold">unit price</h5>
                 <h5 className="uppercase font-semibold">subtotal</h5>
@@ -38,7 +38,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
               {cartItems.map((product) => {
                 return (
                   <div className="table_content p-3 flex flex-col">
-                    <div className="grid grid-cols-2">
+                    <div className="grid sm:grid-cols-2 xm:grid-rows-2">
                       {/* Product Description Starts Here */}
                       <div className="flex space-x-2 ">
                         <div className="cart_img p-2">
@@ -85,7 +85,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                         <div className="price">
                           {" "}
                           <div className="flex flex-col">
-                            <h2 className="text-sm font-semibold hidden">
+                            <h2 className="text-sm font-semibold sm:hidden">
                               Qty
                             </h2>
                             <h4 className="font-semibold">
@@ -95,7 +95,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                         </div>
                         <div className="price flex flex-col">
                           {" "}
-                          <h2 className="text-sm font-semibold hidden">
+                          <h2 className="text-sm font-semibold sm:hidden">
                             Price
                           </h2>
                           <h4 className="font-semibold">
@@ -103,7 +103,7 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                           </h4>
                         </div>
                         <div className="total text-orange-500 flex flex-col">
-                          <h2 className="text-sm font-semibold hidden">
+                          <h2 className="text-sm font-semibold sm:hidden">
                             Sub.Total
                           </h2>
                           <h4 className="font-semibold">
@@ -117,14 +117,14 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
                 );
               })}
             </tbody>
-            <div className="flex space-x-4 justify-end px-4 pb-3">
+            <div className="flex space-x-4 sm:justify-end justify-center px-4 pb-3">
               <h5 className="font-medium text-3xl">Total:</h5>
               <h5 className="font-bold text-3xl text-orange-500">
                 &#8358;{total}
               </h5>
             </div>
           </div>
-          <div className="w-[30%] h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
+          <div className="w-[30%] xm:w-full h-full bg-white rounded-2xl  p-4 delivery_info flex flex-col">
             <div className="flex space-x-3">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -162,19 +162,17 @@ const MainCart = ({ cartItems, total, clearItem, cus_name }) => {
               </h5>
               <div className="my-2 w-full">
                 {cus_name === "Anonymous" ? (
-                  <a
-                    href="/user/login"
-                    class="w-full bg-blue-500 button rounded-lg font-semibold text-white"
-                  >
-                    Proceed To Check Out
-                  </a>
+                  <Link to="/user/login">
+                    <button className="w-full bg-blue-500 button rounded-lg font-semibold text-white">
+                      Proceed To Check Out
+                    </button>{" "}
+                  </Link>
                 ) : (
-                  <a
-                    href="/order"
-                    class="w-full bg-blue-500 button rounded-lg font-semibold text-white"
-                  >
-                    Proceed To Check Out
-                  </a>
+                  <Link to="/order">
+                    <button className="w-full bg-blue-500 button rounded-lg font-semibold text-white">
+                      Proceed To Check Out
+                    </button>
+                  </Link>
                 )}
               </div>
               <div>
