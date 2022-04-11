@@ -7,12 +7,10 @@ import { MDBIcon } from "mdb-react-ui-kit";
 import { LOAD_RELATED_ITEMS } from "../../redux-store/constants/constants";
 
 const Header = ({ itemCount, categories, cus_name, LoadCatproducts }) => {
-  console.log("Here are the product Categories", categories);
   const [showBasic, setShowBasic] = useState(false);
   const [mobile, setMobile] = useState(false);
 
   const changeMobile = () => {
-    console.log("Mobile Called");
     mobile === false ? setMobile(true) : setMobile(false);
   };
 
