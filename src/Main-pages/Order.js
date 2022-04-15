@@ -20,7 +20,7 @@ import CarouselPage from "./Cart";
 import Header from "./header/Header";
 import Category from "./Category";
 import DropdownPage from "../components/dropdown";
-import ModalPage from "../components/Modal"
+import ModalPage from "../components/Modal";
 import Modal from "../components/Modal";
 import Modalcheckout from "../components/Modalcheckout";
 import AddressModal from "../components/AddressModal";
@@ -28,29 +28,46 @@ import { cacNumber, companyId } from "../components/utils/constants";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import {
-  selectCartItems, selectCartTotal
+  selectCartItems,
+  selectCartTotal,
 } from "../redux-store/reducers/cart-reducer/cart.selector";
 import { selectCartItemsCount } from "../redux-store/reducers/cart-reducer/cart.selector";
-import { ClearItemFromCart, AddItem, RemoveItem } from '../redux-store/reducers/cart-reducer/cart.action';
+import {
+  ClearItemFromCart,
+  AddItem,
+  RemoveItem,
+} from "../redux-store/reducers/cart-reducer/cart.action";
 import { store } from "../redux-store/store";
-import AddLocationForm from '../Main-pages/location/AddLocationForm';
+import AddLocationForm from "../Main-pages/location/AddLocationForm";
 import Popup from "../utilities/Popup";
 import PickUpStation from "../Main-pages/address/PickUpStation";
 import Controls from "../controls/Controls";
 
-
-export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, AddPayment, LoadAddress, selected_address, itemCount, total, states, pickUpStations }) {
+export function App({
+  cus_name,
+  address,
+  cus_number,
+  cartItems,
+  pay_is_pick_up,
+  AddPayment,
+  LoadAddress,
+  selected_address,
+  itemCount,
+  total,
+  states,
+  pickUpStations,
+}) {
   const [showBasic, setShowBasic] = useState(false);
-  const [openPopup, setOpenPopup] = useState(false)
-  const [pick_up, setPickUp] = useState('')
-  const [cash, setCash] = useState(0)
-  const [addOpenPopup, setAddOpenPopup] = useState(false)
+  const [openPopup, setOpenPopup] = useState(false);
+  const [pick_up, setPickUp] = useState("");
+  const [cash, setCash] = useState(0);
+  const [addOpenPopup, setAddOpenPopup] = useState(false);
 
   var _value = false;
   useEffect(() => {
     LoadAddress();
-    localStorage.setItem("pick_up", 0)
-    return () => { };
+    localStorage.setItem("pick_up", 0);
+    return () => {};
   }, []);
 
   var confirm = () => {
@@ -72,38 +89,33 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
       referenceNumber: 5555555,
       isOnlineTransaction: true,
       salesOrders: cartItems,
-
-    }
-    console.log(pick_up)
-    console.log(cash)
-    console.log(payload.selectedAddressId)
-    if (pick_up === '') {
-      alert("Please select the delivery  mode")
-    }
-    else if (pick_up=='false' && payload.pickupStationId > 0) {
+    };
+    console.log(pick_up);
+    console.log(cash);
+    console.log(payload.selectedAddressId);
+    if (pick_up === "") {
+      alert("Please select the delivery  mode");
+    } else if (pick_up == "false" && payload.pickupStationId > 0) {
       payload.pickupStationId = 0;
     } else if (cash == 0) {
-      alert("Please select method mode")
-    } else if (pick_up=='true' && payload.pickupStationId == 0) {
-      alert("Please select a pick up station")
-    } else if (payload.selectedAddressId == undefined && pick_up =='false') {
-      alert("Please select address to deliver product")
+      alert("Please select method mode");
+    } else if (pick_up == "true" && payload.pickupStationId == 0) {
+      alert("Please select a pick up station");
+    } else if (payload.selectedAddressId == undefined && pick_up == "false") {
+      alert("Please select address to deliver product");
+    } else {
+      AddPayment(payload);
     }
-    else {
-     AddPayment(payload)
-    }
-
-
-  }
+  };
 
   //SelectedAddress(address[0])
   var is_pick_up = (e) => {
-    setPickUp(e.target.value)
-  }
+    setPickUp(e.target.value);
+  };
 
   var is_cash_on_delivery = (e) => {
-    setCash(e.target.value)
-  }
+    setCash(e.target.value);
+  };
 
   return (
     <div>
@@ -123,21 +135,29 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                       <i class="far fa-check-circle text-success"></i>{" "}
                       <strong>Address Details</strong>
                     </h6>
-                    <a href="#" data-mdb-toggle="modal"
-                      data-mdb-target="#exampleModal3"> <strong>Change</strong></a>
+                    <a
+                      href="#"
+                      data-mdb-toggle="modal"
+                      data-mdb-target="#exampleModal3"
+                    >
+                      {" "}
+                      <strong>Change</strong>
+                    </a>
                     <h6
                       className="text-primary"
-                      style={{ position: "absolute", right: "2rem", textAlign: 'center' }}
+                      style={{
+                        position: "absolute",
+                        right: "2rem",
+                        textAlign: "center",
+                      }}
                     >
                       <Popup
                         title="Add Location Form"
                         openPopup={addOpenPopup}
                         setOpenPopup={setAddOpenPopup}
                       >
-
                         <AddLocationForm />
                       </Popup>
-
                       <Popup
                         title="Pick up Station"
                         openPopup={openPopup}
@@ -145,19 +165,20 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                       >
                         <PickUpStation statesV={states} />
                       </Popup>
-
                       <Controls.Button
                         text="Add New"
                         variant="outlined"
-                        onClick={() => { setAddOpenPopup(true); }}
-                      />
-                      {" "}
+                        onClick={() => {
+                          setAddOpenPopup(true);
+                        }}
+                      />{" "}
                     </h6>
                   </div>
                   <hr />
                   <h5 class="card-title">{cus_name}</h5>
                   <p class="card-text">
-                    {selected_address.address ?? "No saved Address"}<br />
+                    {selected_address.address ?? "No saved Address"}
+                    <br />
                     {cus_number}
                   </p>
                 </div>
@@ -181,12 +202,18 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                     <strong>How do you want your order to be delivered</strong>
                   </h6>
                   {/* <!-- Default radio --> */}
-                  <div class="form-check">
-                    <input type="radio" onChange={is_pick_up} value={false} name="gender" />
+                  <div class="form-check flex items-center">
+                    <input
+                      type="radio"
+                      onChange={is_pick_up}
+                      value={false}
+                      name="gender"
+                      className="mr-2"
+                    />
 
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label class="form-check-label font-semibold" for="flexRadioDefault1">
                       {" "}
-                      <strong>To my Doorstep</strong>
+                      To my Doorstep
                     </label>
                     <p>
                       {" "}
@@ -196,12 +223,19 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                   </div>
                   <hr />
                   {/* <!-- Default checked radio --> */}
-                  <div class="form-check">
-                    <input type="radio" onChange={is_pick_up} value={true} name="gender" />
+                  <div class="form-check flex items-center">
 
-                    <label class="form-check-label" for="flexRadioDefault2">
+                    <input
+                      type="radio"
+                      onChange={is_pick_up}
+                      value={true}
+                      name="gender"
+                      className="mr-2"
+                    />
+
+                    <label class="form-check-label font-semibold mb-2" for="flexRadioDefault2">
                       {" "}
-                      <strong>Pickup Station</strong>{" "}
+                     Pickup Station
                     </label>
                     <p>
                       {" "}
@@ -213,7 +247,9 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                       <Controls.Button
                         text="Select Pick up Station"
                         variant="outlined"
-                        onClick={() => { setOpenPopup(true); }}
+                        onClick={() => {
+                          setOpenPopup(true);
+                        }}
                       />{" "}
                     </a>
                   </div>
@@ -238,30 +274,45 @@ export function App({ cus_name, address, cus_number, cartItems, pay_is_pick_up, 
                     <strong>How do you want to make your Payment</strong>
                   </h6>
                   {/* <!-- Default radio --> */}
-                  <div class="form-check">
-                    <input type="radio" onChange={is_cash_on_delivery} value={2} name="gender1" />
+                  <div class="form-check flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      onChange={is_cash_on_delivery}
+                      value={2}
+                      name="gender1"
+                    />
 
-
-                    <label class="form-check-label" for="flexRadioDefault1">
+                    <label
+                      class="form-check-label font-semibold"
+                      for="flexRadioDefault1"
+                    >
                       {" "}
-                      <strong>Cash on Delivery</strong>
+                      Cash on Delivery
                     </label>
                   </div>
                   <hr />
                   {/* <!-- Default checked radio --> */}
-                  <div class="form-check">
-                    <input type="radio" onChange={is_cash_on_delivery} value={1} name="gender1" />
-                    <label class="form-check-label" for="flexRadioDefault2">
+                  <div class="form-check flex items-center space-x-2">
+                    <input
+                      type="radio"
+                      onChange={is_cash_on_delivery}
+                      value={1}
+                      name="gender1"
+                    />
+                    <label
+                      class="form-check-label font-semibold"
+                      for="flexRadioDefault2"
+                    >
                       {" "}
-                      <strong>Credit/Debit Card</strong>{" "}
+                      Credit/Debit Card
                     </label>
                   </div>
                 </div>
               </div>
-              <div className="d-flex justify-content-center pt-4">
+              <div className="flex justify-center py-3">
                 <button
                   type="button"
-                  class="btn btn-success"
+                  class="button btn-success rounded-lg font-semibold"
                   onClick={confirm}
                 >
                   Confirm Order
@@ -383,12 +434,9 @@ const mapToDispatchToProps = (dispatch) => ({
     dispatch({ type: "ADD_PAYMENT", payload });
   },
 
-
   SelectedAddress(payload) {
     dispatch({ type: "SELECTED_ADDRESS", payload });
   },
-
-
 });
 
 function mapStateToProps(state) {
@@ -401,7 +449,7 @@ function mapStateToProps(state) {
     cus_number: state.userReducerSales.cus_number,
     states: state.utilityReducerSales.states,
     cartItems: state.cartReducerSales.cartItems,
-    address: state.utilityReducerSales.address
+    address: state.utilityReducerSales.address,
   };
 }
 

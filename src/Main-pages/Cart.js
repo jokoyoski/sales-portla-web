@@ -9,9 +9,9 @@ import BannerGif from "../assets/images/Home-Display.gif";
 
 const CarouselPage = ({ cartItems, total, AddOrders, ClearCart }) => {
   return (
-    <div className="w-[70%]">
+    <div className="md:w-[70%] w-full">
       <div className="">
-        <img src={BannerGif} alt="hero-img" className="rounded-2xl" />
+        <img src={BannerGif} alt="hero-img" className="rounded-2xl w-full h-full object-contain" />
       </div>
     </div>
   );

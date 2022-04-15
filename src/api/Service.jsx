@@ -73,7 +73,6 @@ export function request(method, body, url) {
       return status >= 200 && status < 400;
     },
   };
-  console.log(config);
   return new Promise(function (resolve, reject) {
     axios(config)
       .then(function (response) {
