@@ -23,7 +23,7 @@ const Products = ({ products, SetProduct }) => {
             {products.map((product) => {
               return (
                 <div className="md:h-[24rem]">
-                  <div className="shadow-md p-3 md:w-[15rem] w-24">
+                  <div className="shadow-md p-3 md:w-[15rem] w-60">
                     {" "}
                     <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>
@@ -117,7 +117,7 @@ const Products = ({ products, SetProduct }) => {
             {products.map((product) => {
               return (
                 <div className="md:h-[24rem]">
-                  <div className="shadow-md p-3 md:w-[15rem] w-24">
+                  <div className="shadow-md p-3 md:w-[15rem] w-60">
                     {" "}
                     <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>
@@ -209,7 +209,7 @@ const Products = ({ products, SetProduct }) => {
             {products.map((product) => {
               return (
                 <div className="md:h-[24rem]">
-                  <div className="shadow-md p-3 md:w-[15rem] w-24">
+                  <div className="shadow-md p-3 md:w-[15rem] w-60">
                     {" "}
                     <div className="md:grid md:grid-cols-2  flex justify-around items-center">
                       <span>

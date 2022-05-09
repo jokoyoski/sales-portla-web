@@ -46,6 +46,7 @@ export function Dashboard({
       <div>
         <Products products={products} />
       </div>
+
       {/*Footer  */}
       <div>
         <Footer />

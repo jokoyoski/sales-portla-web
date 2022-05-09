@@ -5,14 +5,13 @@ import Header from "./header/Header";
 
 const SelectedCategory = ({ items }) => {
   console.log(items, "this are your items ===");
-  console.log(items?.[0].basePrice);
   return (
     <>
       <Header />
       <div className="flex justify-center">
         <div className="md:w-[80%] w-[90%] gap-4 md:my-10 flex">
           {/* Filter By Side */}
-          <div className="bg-white rounded-2xl w-[30%] h-72 p-3 flex flex-col">
+          <div className="bg-white rounded-2xl w-[25%] h-72 p-3 flex flex-col">
             <div className="w-full flex justify-between">
               <h6 className="uppercase">price(#)</h6>
               <h6 className="text-blue-500 uppercase">apply</h6>
@@ -72,17 +71,17 @@ const SelectedCategory = ({ items }) => {
           {/* End Filter By Side */}
 
           {/* Categorized Column with products */}
-          <div className="rounded-2xl flex flex-col w-[70%]">
+          <div className="rounded-2xl flex flex-col w-[75%]">
             <div className="bg-gradient-to-r from-blue-700 flex items-center px-7  to-blue-400 rounded-t-2xl text-white h-16">
-              <h4 className="font-medium">{items[0].categoryName}</h4>
+              <h4 className="font-medium">{items[0]?.categoryName}</h4>
             </div>
             {/* Main Products Container*/}
             {/* Main Top before products below */}
-            <div className="flex bg-white rounded-b-2xl">
+            <div className="flex flex-wrap w-full bg-white rounded-b-2xl">
               {items?.map((item) => {
                 return (
                   <>
-                    <div className="p-3">
+                    <div className="">
                       <div className="p-3 flex gap-4 overflow-x-scroll">
                         {/* Product Here */}
                         <div className="md:h-[24rem]">
